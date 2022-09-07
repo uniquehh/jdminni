@@ -3,19 +3,27 @@
   <navigation-bar title="首页" background-color="#FFCA28">
   </navigation-bar>
 </page-meta>
-<view>
+<view class="index">
   <view class="search">
     <view class="search-box">
       <view class="inputbox">
-        <text>图标</text>
-        <input type="text" />
+      <cover-image src="../../img/seatch1.png"></cover-image>
+        <input placeholder="游戏主机" type="text" />
       </view>
       <view class="btn">搜索</view>
     </view>
   </view>
   <view class="container">
     <view class="aside">
-      侧边栏
+      <scroll-view
+      scroll-y="true"
+      enhanced="{{true}}"
+      show-scrollbar="{{false}}"
+      bounces="{{true}}"
+      >
+        <view class="menu" wx:for="{{aside}}" wx:key="index">{{item}}
+        </view>
+      </scroll-view>
     </view>
     <view class="main">
       <view class="head">
@@ -23,13 +31,25 @@
       </view>
       <view class="wrap">
         <view class="list">
-          <view class="item">主体内容</view>
-          <view class="item">主体内容</view>
-          <view class="item">主体内容</view>
-          <view class="item">主体内容</view>
+          <view class="itembox"
+            wx:for="{{produce}}"
+            wx:for-index="indexs"
+            wx:for-item="items"
+            wx:key="indexs"
+          >
+            <view>{{items.type}}</view>
+            <navigator url="../hinfo/hinfo"
+            class="item" wx:for="{{items.goods}}" wx:for-index="indexss"
+            wx:for-item="itemss"
+            wx:key="indexss"
+            >
+              <image aspectFit src="{{itemss.img}}"></image>
+              <view>{{itemss.pname}}</view>
+            </navigator>
+          </view>
         </view>
       </view>
     </view>
   </view>
-  <page-container show="true" position="right" custom-style="margin-left: 50px;">弹出内容</page-container>
+  <page-container show="" position="right" custom-style="margin-left: 50px;">弹出内容</page-container>
 </view>

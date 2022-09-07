@@ -4,7 +4,8 @@
     "pages/type/type",
     "pages/surpri/surpri",
     "pages/spcar/spcar",
-    "pages/self/self"
+    "pages/self/self",
+    "pages/hinfo/hinfo"
   ],
   "window":{
     "backgroundTextStyle":"light",
