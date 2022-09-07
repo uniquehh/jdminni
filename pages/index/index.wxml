@@ -1,0 +1,35 @@
+<!--index.wxml-->
+<page-meta>
+  <navigation-bar title="首页" background-color="#FFCA28">
+  </navigation-bar>
+</page-meta>
+<view>
+  <view class="search">
+    <view class="search-box">
+      <view class="inputbox">
+        <text>图标</text>
+        <input type="text" />
+      </view>
+      <view class="btn">搜索</view>
+    </view>
+  </view>
+  <view class="container">
+    <view class="aside">
+      侧边栏
+    </view>
+    <view class="main">
+      <view class="head">
+        头部标题
+      </view>
+      <view class="wrap">
+        <view class="list">
+          <view class="item">主体内容</view>
+          <view class="item">主体内容</view>
+          <view class="item">主体内容</view>
+          <view class="item">主体内容</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <page-container show="true" position="right" custom-style="margin-left: 50px;">弹出内容</page-container>
+</view>

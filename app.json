@@ -1,0 +1,47 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/type/type",
+    "pages/surpri/surpri",
+    "pages/spcar/spcar",
+    "pages/self/self"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./img/index.png",
+        "selectedIconPath": "./img/index.png"
+      },
+      {
+        "pagePath": "pages/type/type",
+        "iconPath": "./img/type.png",
+        "selectedIconPath": "./img/type.png"
+      },
+      {
+        "pagePath": "pages/surpri/surpri",
+        "iconPath": "./img/surpri.png",
+        "selectedIconPath": "./img/surpri.png"
+      },
+      {
+        "pagePath": "pages/spcar/spcar",
+        "iconPath": "./img/spcar.png",
+        "selectedIconPath": "./img/spcar.png"
+      },
+      {
+        "pagePath": "pages/self/self",
+        "iconPath": "./img/self.png",
+        "selectedIconPath": "./img/self.png"
+      }
+    ]
+  }
+}

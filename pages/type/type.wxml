@@ -1,0 +1,9 @@
+<!--pages/type/type.wxml-->
+<view class="nav">
+  <view class="anv-box">
+    <view class="nav-left">
+      &gl;
+    </view>
+    <view class="nav-right"></view>
+  </view>
+</view>
