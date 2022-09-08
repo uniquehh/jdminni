@@ -7,7 +7,7 @@
   <view class="search">
     <view class="search-box">
       <view class="inputbox">
-      <cover-image src="../../img/seatch1.png"></cover-image>
+      <image src="../../img/search1.png"></image>
         <input placeholder="游戏主机" type="text" />
       </view>
       <view class="btn">搜索</view>
@@ -26,29 +26,33 @@
       </scroll-view>
     </view>
     <view class="main">
-      <view class="head">
-        头部标题
-      </view>
-      <view class="wrap">
-        <view class="list">
-          <view class="itembox"
-            wx:for="{{produce}}"
-            wx:for-index="indexs"
-            wx:for-item="items"
-            wx:key="indexs"
-          >
-            <view>{{items.type}}</view>
-            <navigator url="../hinfo/hinfo"
-            class="item" wx:for="{{items.goods}}" wx:for-index="indexss"
-            wx:for-item="itemss"
-            wx:key="indexss"
+      <scroll-view
+      scroll-y="true"
+      >
+        <view class="head">
+          头部标题
+        </view>
+        <view class="wrap">
+          <view class="list">
+            <view class="itembox"
+              wx:for="{{produce}}"
+              wx:for-index="indexs"
+              wx:for-item="items"
+              wx:key="indexs"
             >
-              <image aspectFit src="{{itemss.img}}"></image>
-              <view>{{itemss.pname}}</view>
-            </navigator>
+              <view>{{items.type}}</view>
+              <navigator url="../hinfo/hinfo"
+              class="item" wx:for="{{items.goods}}" wx:for-index="indexss"
+              wx:for-item="itemss"
+              wx:key="indexss"
+              >
+                <image aspectFit src="{{itemss.img}}"></image>
+                <view>{{itemss.pname}}</view>
+              </navigator>
+            </view>
           </view>
         </view>
-      </view>
+      </scroll-view>
     </view>
   </view>
   <page-container show="" position="right" custom-style="margin-left: 50px;">弹出内容</page-container>

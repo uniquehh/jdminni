@@ -14,13 +14,16 @@
   display: flex;
 }
 .aside scroll-view{
-  height: 1006rpx;
+  height: 91.4vh;
 }
 .menu{
   padding: 20rpx 20rpx;
 }
 .main{
   flex: 1 1 auto;
+}
+.main scroll-view{
+  height: 91.4vh;
 }
 .search{
   border-bottom: 2rpx solid #E5E5E5;
@@ -29,35 +32,30 @@
   background-color: white;
   z-index: 999;
 }
-.search cover-image{
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 20rpx;
+.search image{
+  width: 5vh;
+  height: 5vh;
+  margin-right: 1.5vh;
 }
 .search-box{
-  margin: 0 16rpx;
+  margin: 0 1.5vh;
   display: flex;
-  padding: 16rpx 0;
+  align-items: center;
+  padding: 1vh 0;
 }
 .search-box .btn{
-  margin-left: 10rpx;
-  height: 70rpx;
-  line-height: 70rpx;
+  margin-left: 1vh;
+  width: 6vh;
+  text-align: center;
 }
 .search-box .inputbox{
   flex: 1 1 auto;
   display: flex;
   background-color: #F7F7F7;
-  height: 70rpx;
-  padding: 0 20rpx;
-  border-radius: 40rpx;
+  height: 5vh;
+  padding: 0 2vh;
+  border-radius: 6vh;
   align-items: center;
-}
-.inputbox text{
-  height: 70rpx;
-  line-height: 70rpx;
-  padding-right: 10rpx;
-  margin-right: 10rpx;
 }
 .container .head{
   margin-bottom: 10rpx;
@@ -65,9 +63,6 @@
 }
 .container .list{
   padding: 20rpx 40rpx;
-}
-.main .wrap{
-  height: 954rpx;
 }
 .container .itembox{
   margin-bottom: 20rpx;

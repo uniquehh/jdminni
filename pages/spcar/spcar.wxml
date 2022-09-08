@@ -1,2 +1,128 @@
 <!--pages/spcar/spcar.wxml-->
-<text>pages/spcar/spcar.wxml</text>
+<page-meta>
+  <navigation-bar title=" "></navigation-bar>
+</page-meta>
+<view class="spcar">
+  <view class="position">
+    <view class="posibox">
+      <view class="left">
+        <image src="../../img/position.png" mode="aspectFit"></image>
+        <text>成都市金牛区</text>
+      </view>
+      <view class="right">
+        <text>|</text>
+        <text>编辑商品</text>
+      </view>
+    </view>
+  </view>
+  <view class="head">
+    <text class="comnum">全部（1）</text>
+    <text class="manjian">跨店满减（0）</text>
+  </view>
+  <view class="list">
+    <view class="list-main">
+      <view class="item">
+        <checkbox-group bindchange="spcarItemCheck">
+          <label>
+            <view class="dianpu">
+              <checkbox class="check" value="" />
+              <view class="name">
+                <image src="../../img/dianpu.png"></image>
+                联合促销
+              </view>
+            </view>
+          </label>
+          <view class="agin">
+            <view class="bdtext">满2类总价9.7折，每类最多5件</view>
+            <view class="guang">
+              <text>再逛逛</text>
+              <image src="../../img/rightjian.svg"></image>
+            </view>
+          </view>
+          <label>
+            <view class="produce">
+              <checkbox value="" />
+              <view class="pro-main">
+                <view>
+                  <image class="proimage" src="../../img/dianpu.png"></image>
+                </view>
+                <view class="info">
+                  <view class="title">
+                    格力空调格力空调格力空调格力空调格力空调
+                  </view>
+                  <view class="tabs">
+                    <view class="fuwu">
+                      <view class="tuijian">【店长推荐】556L变频空调</view>
+                      <view>选服务
+                        <image src="../../img/xia.svg"></image>
+                      </view>
+                    </view>
+                    <view class="cuxiao">
+                      <view class="tabbtn">换促销
+                        <image src="../../img/xia.svg"></image>
+                      </view>
+                      <view class="baitiao">白条3期免息</view>
+                    </view>
+                    <view class="yuyue">预约中，即将开始</view>
+                    <view class="prinum">
+                      <view class="price">
+                        <view class="pricebox">
+                          <text class="fuhao">￥</text>
+                          <text class="jiage">2779</text>
+                          <text class="xiaoshu">.00</text>
+                        </view>
+                        <view class="imgbox">
+                          <image class="xinrenjia" src="../../img/xinrenjia.png"></image>
+                          <image class="cgprice" src="../../img/xia.svg"></image>
+                        </view>
+                      </view>
+                      <view class="num">
+                        <view class="jianhao"></view>
+                        <input type="text" />
+                        <text class="jiahao">+</text>
+                      </view>
+                    </view>
+                    <view class="guanzhu">
+                      <text>移入关注</text>
+                      <text class="shuxian">|</text>
+                      <text>删除</text>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+  <view>
+    <image class="jdtupian" src="../../img/jdtupian.png"></image>
+  </view>
+  <view class="division">
+    <view class="line"></view>
+    <view class="mayb">
+      可能你还想要
+    </view>
+    <view class="line"></view>
+  </view>
+  <view class="goodslist">
+    <view class="goods">
+      <navigator url="../hinfo/hinfo" class="goodnav"
+      >
+        <view class="gwrap">
+          <view class="goodimg">
+            <image src="../../img/good.webp"></image>
+          </view>
+          <view class="goodinfo"></view>
+        </view>
+      </navigator>
+      <navigator url="../hinfo/hinfo" class="goodnav"
+      >
+        <view class="gwrap">
+        123
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

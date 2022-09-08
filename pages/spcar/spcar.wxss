@@ -1,1 +1,291 @@
 /* pages/spcar/spcar.wxss */
+.spcar{
+  background-color: #F2F2F2;
+  height: 100%;
+  min-width: 375px;
+  font-size: 32rpx;
+}
+.position{
+  margin-bottom: 2vh;
+}
+.posibox{
+  border-top: 1px solid #F2F2F2;
+  background-color: white;
+  height: 12vh;
+  width: 750rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.posibox .left{
+  padding-left: 30rpx;
+}
+.posibox .right{
+  padding-right: 15rpx;
+}
+.posibox image{
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+.posibox .right>text{
+  margin-right: 15rpx;
+}
+.spcar .head{
+  background-color: white;
+  padding: 10px 30rpx;
+  margin-bottom: 20px;
+}
+.head .comnum{
+  margin-right: 10px;
+}
+.list {
+  margin-bottom: 20px;
+}
+.agin{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 688rpx;
+}
+.agin image{
+  width: 8px;
+  height: 8px;
+  vertical-align: middle;
+}
+.agin .bdtext{
+  font-size: 24rpx;
+  margin-left: 80rpx;
+  padding: 20px 0;
+}
+.agin .guang{
+  display: flex;
+  align-items: center;
+}
+.list checkbox{
+  margin-right: 15px;
+}
+.list checkbox .wx-checkbox-input{
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #BEBEBE;
+}
+.list-main .item{
+  background-color: white;
+  border-radius: 40rpx;
+  padding: 30rpx;
+}
+.dianpu {
+  display: flex;
+  align-items: center;
+}
+.dianpu .name image{
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-bottom: 1px;
+}
+.produce,.pro-main{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pro-main .proimage{
+  width: 200rpx;
+  height: 100px;
+  margin-right: 10px;
+}
+.info .title{
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; 
+  display: -webkit-box;
+  overflow: hidden;
+  margin-bottom: 5px;
+  width: 390rpx;
+}
+.tabs image{
+  width: 8px;
+  height: 8px;
+  vertical-align: middle;
+}
+.fuwu {
+  display: flex;
+  background-color: #F2F2F2;
+  border-radius: 10px;
+  font-size: 28rpx;
+  padding: 0 4px;
+  margin-bottom: 5px;
+}
+.fuwu .tuijian{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 5px;
+  width: 245rpx;
+}
+.cuxiao{
+  margin-bottom: 5px;
+  display: flex;
+  font-size: 28rpx;
+}
+.cuxiao .tabbtn{
+  width: 64px;
+  background-color: #F2F2F2;
+  border-radius: 20px;
+  padding-left: 8px;
+  margin-right: 10px;
+}
+.cuxiao .baitiao{
+  color: red;
+}
+.yuyue{
+  color: red;
+  font-size: 28rpx;
+}
+.prinum{
+  display: flex;
+  justify-content: space-between;
+  width: 390rpx;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.price{
+  color: red;
+  display: flex;
+}
+.price .fuhao{
+  font-size: 24rpx;
+}
+.price .jiage{
+  font-size: 34rpx;
+}
+.price .xiaoshu{
+  font-size: 24rpx;
+}
+.price .xinrenjia{
+  width: 60rpx;
+  height: 30rpx;
+  margin-right: 2px;
+}
+.price .cgprice{
+  width: 16rpx;
+  height: 16rpx;
+}
+.prinum .num{
+  display: flex;
+  align-items: center;
+  height: 20px;
+}
+.num input{
+  width: 80rpx;
+  padding: 5px 0;
+  background-color: #F2F2F2;
+  text-align: center;
+  margin: 0 5px;
+  min-height: 0;
+  height: 10px !important;
+}
+.jianhao{
+  width: 10px;
+  height: 0px;
+  border: 1px solid black;
+}
+.jiahao{
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+.guanzhu{
+  font-size: 24rpx;
+  text-align: right;
+}
+.guanzhu .shuxian{ 
+  margin: 0 5px;
+  font-size: 22rpx;
+  color: #BEBEBE;
+}
+.jdtupian{
+  width: 730rpx;
+  margin: 0 10rpx;
+  height: 169rpx;
+  font-size: 0;
+  margin-bottom: 20px;
+}
+.division{
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.division .line{
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  height: 4rpx;
+  background-color: #ccc;
+}
+.mayb{
+  padding-bottom: 6rpx;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  height: 30rpx;
+  line-height: 30rpx;
+  color: #999;
+  position: relative;
+  padding: 0 50rpx;
+  margin-bottom: 20px;
+}
+.mayb::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  border-radius: 100%;
+  margin-top: -6rpx;
+  width: 10rpx;
+  height: 10rpx;
+  background: #ccc;
+}
+.mayb::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border-radius: 100%;
+  margin-top: -6rpx;
+  width: 10rpx;
+  height: 10rpx;
+  background: #ccc;
+}
+.goods{
+  padding: 10rpx;
+}
+.goods::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.goodnav{
+  width: 50%;
+  float: left;
+}
+
+.gwrap{
+  margin: 0 10rpx;
+  background-color: white;
+  border-radius: 10px;
+}
+.goodimg{
+  font-size: 0;
+}
+.goodimg image{
+  width: 100%;
+  height: 348rpx;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
