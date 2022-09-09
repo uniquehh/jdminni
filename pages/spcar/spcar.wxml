@@ -6,7 +6,7 @@
   <view class="position">
     <view class="posibox">
       <view class="left">
-        <image src="../../img/position.png" mode="aspectFit"></image>
+        <image src="../../img/hposition.png" mode="aspectFit"></image>
         <text>成都市金牛区</text>
       </view>
       <view class="right">
@@ -23,81 +23,106 @@
     <view class="list-main">
       <view class="item">
         <checkbox-group bindchange="spcarItemCheck">
-          <label>
-            <view class="dianpu">
+          <view class="dianpu">
+            <label>
               <checkbox class="check" value="" />
-              <view class="name">
-                <image src="../../img/dianpu.png"></image>
-                联合促销
-              </view>
+            </label>
+            <view class="name">
+              <image src="../../img/hdianpu.png"></image>
+              联合促销
             </view>
-          </label>
+          </view>
           <view class="agin">
             <view class="bdtext">满2类总价9.7折，每类最多5件</view>
             <view class="guang">
               <text>再逛逛</text>
-              <image src="../../img/rightjian.svg"></image>
+              <image src="../../img/hrightjian.svg"></image>
             </view>
           </view>
-          <label>
-            <view class="produce">
-              <checkbox value="" />
-              <view class="pro-main">
-                <view>
-                  <image class="proimage" src="../../img/dianpu.png"></image>
-                </view>
-                <view class="info">
+          <view class="produce">
+            <view class="pro-main">
+              <view class="checkgood">
+                <label>
+                  <checkbox value="" />
+                </label>
+                <navigator url="../hinfo/hinfo">
+                  <image class="proimage" src="../../img/hgood.webp"></image>
+                </navigator>
+              </view>
+              <view class="info">
+                <navigator url="../hinfo/hinfo">
                   <view class="title">
                     格力空调格力空调格力空调格力空调格力空调
                   </view>
-                  <view class="tabs">
-                    <view class="fuwu">
-                      <view class="tuijian">【店长推荐】556L变频空调</view>
-                      <view>选服务
-                        <image src="../../img/xia.svg"></image>
+                </navigator>
+                <view class="tabs">
+                  <view class="fuwu">
+                    <view class="tuijian">【店长推荐】556L变频空调</view>
+                    <view>选服务
+                      <image src="../../img/hxia.svg"></image>
+                    </view>
+                  </view>
+                  <view class="cuxiao">
+                    <view class="tabbtn">换促销
+                      <image src="../../img/hxia.svg"></image>
+                    </view>
+                    <view class="baitiao">白条3期免息</view>
+                  </view>
+                  <view class="yuyue">预约中，即将开始</view>
+                  <view class="prinum">
+                    <view class="price">
+                      <view class="pricebox">
+                        <text class="fuhao">￥</text>
+                        <text class="jiage">2779</text>
+                        <text class="xiaoshu">.00</text>
+                      </view>
+                      <view class="imgbox">
+                        <image class="xinrenjia" src="../../img/hxinrenjia.png"></image>
+                        <image class="cgprice" src="../../img/hxia.svg"></image>
                       </view>
                     </view>
-                    <view class="cuxiao">
-                      <view class="tabbtn">换促销
-                        <image src="../../img/xia.svg"></image>
-                      </view>
-                      <view class="baitiao">白条3期免息</view>
+                    <view class="num">
+                      <view class="jianhao"></view>
+                      <input type="text" />
+                      <text class="jiahao">+</text>
                     </view>
-                    <view class="yuyue">预约中，即将开始</view>
-                    <view class="prinum">
-                      <view class="price">
-                        <view class="pricebox">
-                          <text class="fuhao">￥</text>
-                          <text class="jiage">2779</text>
-                          <text class="xiaoshu">.00</text>
-                        </view>
-                        <view class="imgbox">
-                          <image class="xinrenjia" src="../../img/xinrenjia.png"></image>
-                          <image class="cgprice" src="../../img/xia.svg"></image>
-                        </view>
-                      </view>
-                      <view class="num">
-                        <view class="jianhao"></view>
-                        <input type="text" />
-                        <text class="jiahao">+</text>
-                      </view>
-                    </view>
-                    <view class="guanzhu">
-                      <text>移入关注</text>
-                      <text class="shuxian">|</text>
-                      <text>删除</text>
-                    </view>
+                  </view>
+                  <view class="guanzhu">
+                    <text>移入关注</text>
+                    <text class="shuxian">|</text>
+                    <text>删除</text>
                   </view>
                 </view>
               </view>
             </view>
-          </label>
+          </view>
+          <view class="jiesuan">
+            <view class="jiesuanbox">
+              <view class="checkall">
+                <label>
+                  <checkbox class="jscheck"></checkbox>
+                  全选
+                </label>
+              </view>
+              <view class="sumprice">
+                <view class="zongji"> 总计:</view>
+                <view class="zongjinum">
+                ￥0.00
+                </view>
+                <navigator 
+                url="../payment/payment"
+                class="tojiesuan">
+                  去结算(0件)
+                </navigator>
+              </view>
+            </view>
+          </view>
         </checkbox-group>
       </view>
     </view>
   </view>
   <view>
-    <image class="jdtupian" src="../../img/jdtupian.png"></image>
+    <image class="jdtupian" src="../../img/hjdtupian.png"></image>
   </view>
   <view class="division">
     <view class="line"></view>
@@ -108,19 +133,33 @@
   </view>
   <view class="goodslist">
     <view class="goods">
-      <navigator url="../hinfo/hinfo" class="goodnav"
-      >
+      <navigator url="../hinfo/hinfo" class="goodnav">
         <view class="gwrap">
           <view class="goodimg">
-            <image src="../../img/good.webp"></image>
+            <image src="../../img/hgood.webp"></image>
           </view>
-          <view class="goodinfo"></view>
-        </view>
-      </navigator>
-      <navigator url="../hinfo/hinfo" class="goodnav"
-      >
-        <view class="gwrap">
-        123
+          <view class="goodinfo">
+            <view class="goodtitle">
+              美菱(MELING)【离子净系列】556升一级能效变频双开门对开两门电冰箱家用风冷无霜BCD-556WPCX净味大容量
+            </view>
+            <view class="goodtab">
+              <view class="tabcont">
+                <image src="../../img/hzuidijia.png"></image>
+                <text>7天最低价</text>
+              </view>
+            </view>
+            <view class="price">
+              <view class="pricebox">
+                <text class="fuhao goodfuhao">￥</text>
+                <text class="jiage goodjiage">2779</text>
+                <text class="xiaoshu goodxiaoshu">.00</text>
+              </view>
+              <view class="imgbox miaoshabox">
+                <image class="miaosha" src="../../img/hmiaosha.png"></image>
+              </view>
+            </view>
+            <view class="pinglun">1000+条评论</view>
+          </view>
         </view>
       </navigator>
     </view>

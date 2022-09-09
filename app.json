@@ -5,7 +5,8 @@
     "pages/surpri/surpri",
     "pages/spcar/spcar",
     "pages/self/self",
-    "pages/hinfo/hinfo"
+    "pages/hinfo/hinfo",
+    "pages/payment/payment"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -17,31 +18,37 @@
   "sitemapLocation": "sitemap.json",
   "tabBar": {
     "borderStyle": "black",
+    "selectedColor": "#D81E06",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "./img/index.png",
-        "selectedIconPath": "./img/index.png"
+        "iconPath": "./img/hindex.png",
+        "selectedIconPath": "./img/hindex.png",
+        "text": "首页"
       },
       {
         "pagePath": "pages/type/type",
-        "iconPath": "./img/type.png",
-        "selectedIconPath": "./img/type.png"
+        "iconPath": "./img/htype.png",
+        "selectedIconPath": "./img/htype.png",
+        "text": "分类"
       },
       {
         "pagePath": "pages/surpri/surpri",
-        "iconPath": "./img/surpri.png",
-        "selectedIconPath": "./img/surpri.png"
+        "iconPath": "./img/hsurpri.png",
+        "selectedIconPath": "./img/hsurpri.png",
+        "text": "京喜"
       },
       {
         "pagePath": "pages/spcar/spcar",
-        "iconPath": "./img/spcar.png",
-        "selectedIconPath": "./img/spcar.png"
+        "iconPath": "./img/hspcar.png",
+        "selectedIconPath": "./img/hspcar.png",
+        "text": "购物车"
       },
       {
         "pagePath": "pages/self/self",
-        "iconPath": "./img/self.png",
-        "selectedIconPath": "./img/self.png"
+        "iconPath": "./img/hself.png",
+        "selectedIconPath": "./img/hself.png",
+        "text": "登录"
       }
     ]
   }

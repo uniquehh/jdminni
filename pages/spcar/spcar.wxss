@@ -5,19 +5,25 @@
   min-width: 375px;
   font-size: 32rpx;
 }
+.spcar::after{
+  content: "";
+  display: block;
+  position: sticky;
+  height: 88rpx;
+}
 .position{
-  margin-bottom: 2vh;
+  margin-bottom: 30rpx;
 }
 .posibox{
-  border-top: 1px solid #F2F2F2;
+  border-top: 2rpx solid #F2F2F2;
   background-color: white;
-  height: 12vh;
+  height: 120rpx;
   width: 750rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 40rpx;
+  border-bottom-right-radius: 40rpx;
 }
 .posibox .left{
   padding-left: 30rpx;
@@ -26,9 +32,9 @@
   padding-right: 15rpx;
 }
 .posibox image{
-  margin-right: 10px;
-  width: 16px;
-  height: 16px;
+  margin-right: 20rpx;
+  width: 32rpx;
+  height: 32rpx;
   vertical-align: middle;
 }
 .posibox .right>text{
@@ -36,14 +42,14 @@
 }
 .spcar .head{
   background-color: white;
-  padding: 10px 30rpx;
-  margin-bottom: 20px;
+  padding: 20rpx 30rpx;
+  margin-bottom: 40rpx;
 }
 .head .comnum{
-  margin-right: 10px;
+  margin-right: 20rpx;
 }
 .list {
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 .agin{
   display: flex;
@@ -52,27 +58,27 @@
   width: 688rpx;
 }
 .agin image{
-  width: 8px;
-  height: 8px;
+  width: 16rpx;
+  height: 16rpx;
   vertical-align: middle;
 }
 .agin .bdtext{
   font-size: 24rpx;
   margin-left: 80rpx;
-  padding: 20px 0;
+  padding: 40rpx 0;
 }
 .agin .guang{
   display: flex;
   align-items: center;
 }
 .list checkbox{
-  margin-right: 15px;
+  margin-right: 30rpx;
 }
 .list checkbox .wx-checkbox-input{
   border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  border: 2px solid #BEBEBE;
+  width: 30rpx;
+  height: 30rpx;
+  border: 4rpx solid #BEBEBE;
 }
 .list-main .item{
   background-color: white;
@@ -84,60 +90,64 @@
   align-items: center;
 }
 .dianpu .name image{
-  width: 18px;
-  height: 18px;
+  width: 36rpx;
+  height: 36rpx;
   vertical-align: middle;
-  margin-bottom: 1px;
+  margin-bottom: 2rpx;
 }
 .produce,.pro-main{
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
 }
 .pro-main .proimage{
   width: 200rpx;
-  height: 100px;
-  margin-right: 10px;
+  height: 200rpx;
+  margin-right: 20rpx;
+}
+.checkgood{
+  display: flex;
+  align-items: center;
+  height: 200rpx;
 }
 .info .title{
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; 
   display: -webkit-box;
   overflow: hidden;
-  margin-bottom: 5px;
+  margin-bottom: 10rpx;
   width: 390rpx;
 }
 .tabs image{
-  width: 8px;
-  height: 8px;
+  width: 16rpx;
+  height: 16rpx;
   vertical-align: middle;
 }
 .fuwu {
   display: flex;
   background-color: #F2F2F2;
-  border-radius: 10px;
+  border-radius: 20rpx;
   font-size: 28rpx;
-  padding: 0 4px;
-  margin-bottom: 5px;
+  padding: 0 8rpx;
+  margin-bottom: 10rpx;
 }
 .fuwu .tuijian{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-right: 5px;
+  margin-right: 10rpx;
   width: 245rpx;
 }
 .cuxiao{
-  margin-bottom: 5px;
+  margin-bottom: 10rpx;
   display: flex;
   font-size: 28rpx;
 }
 .cuxiao .tabbtn{
-  width: 64px;
+  width: 128rpx;
   background-color: #F2F2F2;
-  border-radius: 20px;
-  padding-left: 8px;
-  margin-right: 10px;
+  border-radius: 40rpx;
+  padding-left: 16rpx;
+  margin-right: 20rpx;
 }
 .cuxiao .baitiao{
   color: red;
@@ -151,11 +161,13 @@
   justify-content: space-between;
   width: 390rpx;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20rpx;
 }
 .price{
   color: red;
   display: flex;
+  align-content: center;
+  font-weight: bold;
 }
 .price .fuhao{
   font-size: 24rpx;
@@ -169,7 +181,7 @@
 .price .xinrenjia{
   width: 60rpx;
   height: 30rpx;
-  margin-right: 2px;
+  margin-right: 4rpx;
 }
 .price .cgprice{
   width: 16rpx;
@@ -178,46 +190,85 @@
 .prinum .num{
   display: flex;
   align-items: center;
-  height: 20px;
+  height: 40rpx;
 }
 .num input{
   width: 80rpx;
-  padding: 5px 0;
+  padding: 10rpx 0;
   background-color: #F2F2F2;
   text-align: center;
-  margin: 0 5px;
+  margin: 0 10rpx;
   min-height: 0;
-  height: 10px !important;
+  height: 20rpx !important;
 }
 .jianhao{
-  width: 10px;
+  width: 20rpx;
   height: 0px;
-  border: 1px solid black;
+  border: 2rpx solid black;
 }
 .jiahao{
   font-weight: bold;
-  margin-bottom: 3px;
+  margin-bottom: 6rpx;
 }
 .guanzhu{
   font-size: 24rpx;
   text-align: right;
 }
 .guanzhu .shuxian{ 
-  margin: 0 5px;
+  margin: 0 10rpx;
   font-size: 22rpx;
   color: #BEBEBE;
+}
+.jiesuan{
+  background-color: rgba(255, 255, 255, 0.9);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 750rpx;
+}
+.jiesuan .jscheck{
+  margin-right: 20rpx;
+}
+.jiesuanbox{
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  margin: 0 30rpx;
+  padding: 10rpx 0;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+.sumprice{
+  display: flex;
+  align-content: center;
+  font-size: 36rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+.zongjinum{
+  font-weight: bold;
+}
+.tojiesuan{
+  padding: 10rpx 10rpx;
+  background-color: red;
+  color: white;
+  border-radius: 40rpx;
+  margin-left: 20rpx;
+  height: 48rpx;
+  line-height: 48rpx;
 }
 .jdtupian{
   width: 730rpx;
   margin: 0 10rpx;
   height: 169rpx;
   font-size: 0;
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 .division{
   display: flex;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 20rpx;
 }
 .division .line{
   -webkit-box-flex: 1;
@@ -238,7 +289,7 @@
   color: #999;
   position: relative;
   padding: 0 50rpx;
-  margin-bottom: 20px;
+  margin-bottom: 40rpx;
 }
 .mayb::after{
   content: '';
@@ -273,19 +324,70 @@
 .goodnav{
   width: 50%;
   float: left;
+  margin-bottom: 40rpx;
 }
-
 .gwrap{
   margin: 0 10rpx;
   background-color: white;
-  border-radius: 10px;
-}
-.goodimg{
-  font-size: 0;
+  border-radius: 20rpx;
 }
 .goodimg image{
   width: 100%;
   height: 348rpx;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+.goodinfo{
+  padding: 10rpx;
+}
+.goodtitle{
+  overflow: hidden;
+  color: #434343;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+}
+.tabcont{
+  background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+  width: 200rpx;
+  padding-left: 4px;
+  margin: 10rpx 0;
+}
+.tabcont image{
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 4rpx;
+}
+.miaosha{
+  width: 70rpx;
+  height: 40rpx;
+  vertical-align: middle;
+}
+.miaoshabox{
+  height: 40rpx;
+  padding-top: 4rpx;
+  margin-left: 10rpx;
+}
+.pricebox .goodfuhao{
+  font-size: 36rpx;
+}
+.pricebox .goodjiage{
+  font-size: 46rpx;
+}
+.pricebox .goodxiaoshu{
+  font-size: 36rpx;
+}
+.pinglun{
+  max-width: 100%;
+  color: #999;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding-bottom: 20rpx;
 }

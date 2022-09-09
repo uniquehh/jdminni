@@ -33,8 +33,8 @@
   z-index: 999;
 }
 .search image{
-  width: 5vh;
-  height: 5vh;
+  width: 40rpx;
+  height: 40rpx;
   margin-right: 1.5vh;
 }
 .search-box{

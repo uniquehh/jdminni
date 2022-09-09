@@ -1,0 +1,297 @@
+.payment{
+  background-color: #F2F2F2;
+  height: 100%;
+  min-width: 375px;
+  font-size: 32rpx;
+}
+/* 地址 */
+.address{
+  border-top: 2rpx solid #F2F2F2;
+  background-color: white;
+  position: relative;
+  margin-bottom: 30rpx;
+}
+.adrmain{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+.adrhead,.adrcenter,.adrfooter{
+  margin-bottom: 20rpx;
+}
+.adrhead{
+  display: flex;
+  align-items: center;
+}
+.adrhtab{
+  font-size: 24rpx;
+  color: white;
+  background-color: red;
+  width: 60rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  margin-right: 10rpx;
+  text-align: center;
+  border-radius: 4rpx;
+  margin-top: 2rpx;
+}
+.adrcenter{
+  font-size: 38rpx;
+  font-weight: bold;
+}
+.adrjiantou image{
+  width: 20rpx;
+  height: 20rpx;
+}
+.divis-line{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  width: 750rpx;
+  justify-content: space-between;
+}
+.divisred{
+  background-color: red;
+  height: 10rpx;
+  width: 50rpx;
+  transform: skewX(-45deg);
+}
+.divisblue{
+  background-color: blue;
+  height: 10rpx;
+  width: 50rpx;
+  transform: skewX(-45deg);
+}
+/* 订单列表 */
+.orderlist{
+  background-color: white;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+}
+.odlistmain{
+  padding: 30rpx;
+}
+.oditem{
+  border-bottom: 2rpx solid #F2F2F2;
+  margin-bottom: 20rpx;
+}
+.odcont{
+  display: flex;
+  align-items: center;
+  width: 470rpx;
+  margin-bottom: 30rpx;
+}
+.odtitle{
+  margin-bottom: 40rpx; 
+}
+.odimage image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}
+.odgdtitle{
+  color: #1a1a1a;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 28rpx;
+  width: 470rpx;
+  margin-bottom: 10rpx;
+}
+.odgdpara{
+  color: gray;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-size: 26rpx;
+  width: 470rpx;
+  margin-bottom: 10rpx;
+}
+.odgdprice{
+  margin-bottom: 10rpx;
+}
+.prinum{
+  display: flex;
+  justify-content: space-between;
+  width: 470rpx;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.price{
+  color: red;
+  display: flex;
+  align-content: center;
+  font-weight: bold;
+}
+.price .fuhao{
+  font-size: 24rpx;
+}
+.price .jiage{
+  font-size: 34rpx;
+}
+.price .xiaoshu{
+  font-size: 24rpx;
+}
+.price .xinrenjia{
+  width: 70rpx;
+  height: 35rpx;
+  margin-right: 20rpx;
+  vertical-align: middle;
+}
+.price .cgprice{
+  width: 26rpx;
+  height: 26rpx;
+  vertical-align: middle;
+}
+.odgdnum{
+  font-size: 28rpx;
+  color: gray;
+}
+.odgdtag{
+  width: 470rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.tagitem{
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fa2c19;
+  font-size: 24rpx;
+  max-width: 220rpx;
+  border: 2rpx solid #fa2c19;
+  padding: 2rpx 8rpx;
+  border-radius: 8rpx;
+  margin-right: 6rpx;
+}
+.expres{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.exright image{
+  width: 20rpx;
+  height: 20rpx;
+  vertical-align: middle;
+}
+.exright{
+  display: flex;
+  align-items: center;
+}
+.exrighttext{
+  margin-right: 10rpx;
+}
+.fuwutime{
+  margin-bottom: 60rpx;
+  text-align: right;
+}
+.thwuyou{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+.thwybox{
+  display: flex;
+  align-items: center;
+}
+.thwytext{
+  margin-right: 10rpx;
+}
+.thwybox image {
+  width: 28rpx;
+  height: 28rpx;
+  vertical-align: middle;
+}
+.thwyprice{
+  display: flex;
+  align-items: center;
+}
+.thwypnum{
+  margin-right: 18rpx;
+}
+/* 控制最外层容器大小 */
+.thwyprice .wx-switch-input{width:88rpx !important;height:48rpx !important;}
+/* 控制关闭时遮盖容器大小 */
+.thwyprice .wx-switch-input::before{width:84rpx !important;height: 44rpx !important;}
+/* 控制圆形大小 */
+.thwyprice .wx-switch-input::after{width: 44rpx !important;height: 44rpx !important;}
+.smqujian{
+  text-align: right;
+  margin-right: 115rpx;
+}
+.odcomputed{
+  background-color: white;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+}
+.odcpmain{
+  padding: 30rpx;
+}
+.odcpmain image{
+  width: 20rpx;
+  height: 20rpx;
+  vertical-align: middle;
+}
+.jdleft image{
+  width: 28rpx;
+  height: 28rpx;
+  vertical-align: middle;
+}
+.prmoney,.yunfei,.youhui,.jingdou,.lipin{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 38rpx;
+}
+.yhright,.lpright{
+  display: flex;
+  align-items: center;
+}
+.yhnum,.lptext{
+  margin-right: 10rpx;
+}
+.yhnum{
+  color: #fa2c19;
+}
+.lptext,.jdright{
+  color: gray;
+}
+.prmright,.yfright,.jdright{
+  margin-right: 26rpx;
+}
+.yhltag{
+  width: 490rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.yhltitem{
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fa2c19;
+  font-size: 24rpx;
+  max-width: 340rpx;
+  border: 2rpx solid #fa2c19;
+  padding: 0 8rpx;
+  border-radius: 8rpx;
+  margin-left: 10rpx;
+}
+.hejimoney{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.hejinum{
+  margin-bottom: 0;
+  width: unset;
+}

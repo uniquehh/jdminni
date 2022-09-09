@@ -1,13 +1,13 @@
 <!--index.wxml-->
 <page-meta>
-  <navigation-bar title="首页" background-color="#FFCA28">
+  <navigation-bar title=" ">
   </navigation-bar>
 </page-meta>
 <view class="index">
   <view class="search">
     <view class="search-box">
       <view class="inputbox">
-      <image src="../../img/search1.png"></image>
+      <image src="../../img/hsearch1.svg"></image>
         <input placeholder="游戏主机" type="text" />
       </view>
       <view class="btn">搜索</view>
