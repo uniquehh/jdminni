@@ -1,4 +1,11 @@
 /* pages/spcar/spcar.wxss */
+.bordertop{
+  border-top: 2rpx solid #F5F5F5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
 .spcar{
   background-color: #F2F2F2;
   height: 100%;
@@ -15,7 +22,6 @@
   margin-bottom: 30rpx;
 }
 .posibox{
-  border-top: 2rpx solid #F2F2F2;
   background-color: white;
   height: 120rpx;
   width: 750rpx;

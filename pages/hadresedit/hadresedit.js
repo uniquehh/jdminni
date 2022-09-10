@@ -1,4 +1,4 @@
-// pages/payment/payment.js
+// pages/hadresedit/hadresedit.js
 Page({
 
   /**

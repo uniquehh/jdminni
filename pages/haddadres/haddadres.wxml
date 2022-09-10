@@ -1,0 +1,69 @@
+<!--pages/haddadres/haddadres.wxml-->
+<page-meta>
+  <navigation-bar title="新增收货地址"></navigation-bar>
+</page-meta>
+<view class="bordertop"></view>
+<view class="addadres">
+  <view class="addmain">
+    <view class="addbesic">
+      <view class="besictext">
+        <text>收货人</text>
+        <input type="text" value="" placeholder="请填写收货人姓名" />
+      </view>
+      <view class="besictext">
+        <text>联系方式</text>
+        <view class="teltext">+86</view>
+        <image class="telimg" src="../../img/hxia.svg"></image>
+        <input type="text" value="" placeholder="请填写收货人手机号" />
+      </view>
+      <view class="besictext">
+        <text>收货人</text>
+        <view class="pickerbox">
+          <picker mode="region">
+            <view class="picker">
+              <input type="text" value="" placeholder="省市区县、乡镇等" />
+              <image class="pickerimage" src="../../img/hrightjian.svg"></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class="besictext besiclast">
+        <text>详细地址</text>
+        <input type="text" value="" placeholder="街道、门牌号等" />
+      </view>
+    </view>
+    <view class="orattribute">
+      <view class="odatmain">
+        <view class="tags">
+          <view class="tagtext">标签</view>
+          <view class="tagbox">
+            <view class="tag">学校</view>
+            <view class="tag">家</view>
+            <view class="tag">公司</view>
+            <view class="tag addtag">+</view>
+          </view>
+        </view>
+        <view class="shibie">
+          <view class="title">智能识别地址：</view>
+          <view class="areabox">
+            <textarea class="znshibie" rows="3" placeholder="粘贴整段文字，如：北京市大兴区科创十一街京东集团总部，张小三，12345679876" auto-height="true"></textarea>
+          </view>
+        </view>
+        <view class="tishibox">
+          <view class="tstbox">
+            <view class="tstext">设为默认地址</view>
+            <view class="tishi">提醒：设为默认地址后，每次下单会默认使用该地址</view>
+          </view>
+          <switch></switch>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="confirm">
+    <view class="cfbtnbox">
+      <button class="confirmbtn">
+        确认
+      </button>
+    </view>
+  </view>
+</view>

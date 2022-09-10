@@ -1,0 +1,41 @@
+<!--pages/hadreslist/hadreslist.wxml-->
+<page-meta>
+  <navigation-bar title="收货地址"></navigation-bar>
+</page-meta>
+<view class="bordertop"></view>
+<view class="address">
+  <view class="adrslist">
+    <radio-group>
+      <view class="adrsitem">
+        <label class="radiolabel">
+          <radio class="radio"></radio>
+          <view class="itemmain">
+            <view class="adrsbasic">
+              <view class="moren">默认</view>
+              <view class="adrstext">四川成都市金牛区抚琴街道</view>
+            </view>
+            <view class="xiaoqu">
+              为民信局南区
+            </view>
+            <view class="basicinfo">
+              <text>木木</text>
+              <text>130****5450</text>
+            </view>
+          </view>
+        </label>
+        <navigator url="../hadresedit/hadresedit">
+          <view class="editimg">
+            <image src="../../img/hedit.svg"></image>
+          </view>
+        </navigator>
+      </view>
+    </radio-group>
+    <view class="addadres">
+      <navigator url="../haddadres/haddadres">
+        <view class="addbtn">
+        新增收货地址
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

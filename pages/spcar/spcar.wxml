@@ -2,6 +2,7 @@
 <page-meta>
   <navigation-bar title=" "></navigation-bar>
 </page-meta>
+<view class="bordertop"></view>
 <view class="spcar">
   <view class="position">
     <view class="posibox">
@@ -110,7 +111,7 @@
                 ￥0.00
                 </view>
                 <navigator 
-                url="../payment/payment"
+                url="../hpayment/hpayment"
                 class="tojiesuan">
                   去结算(0件)
                 </navigator>

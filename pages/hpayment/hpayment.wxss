@@ -1,12 +1,24 @@
+.bordertop{
+  border-top: 2rpx solid #F5F5F5;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
 .payment{
   background-color: #F2F2F2;
   height: 100%;
   min-width: 375px;
   font-size: 32rpx;
 }
+.payment::after{
+  content: "";
+  display: block;
+  height: 126rpx;
+  position: sticky;
+}
 /* 地址 */
 .address{
-  border-top: 2rpx solid #F2F2F2;
   background-color: white;
   position: relative;
   margin-bottom: 30rpx;
@@ -245,17 +257,17 @@
   height: 28rpx;
   vertical-align: middle;
 }
-.prmoney,.yunfei,.youhui,.jingdou,.lipin{
+.prmoney,.yunfei,.youhui,.jingdou,.lipin,.invomain{
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 38rpx;
 }
-.yhright,.lpright{
+.yhright,.lpright,.invoright{
   display: flex;
   align-items: center;
 }
-.yhnum,.lptext{
+.yhnum,.lptext,.invortext{
   margin-right: 10rpx;
 }
 .yhnum{
@@ -264,8 +276,11 @@
 .lptext,.jdright{
   color: gray;
 }
+.prmright{
+  font-weight: bold;
+}
 .prmright,.yfright,.jdright{
-  margin-right: 26rpx;
+  margin-right: 30rpx;
 }
 .yhltag{
   width: 490rpx;
@@ -291,7 +306,54 @@
   align-items: center;
   justify-content: flex-end;
 }
-.hejinum{
+.hejinum,.paymnum{
   margin-bottom: 0;
   width: unset;
+}
+.divisionline{
+  border-bottom: 2rpx solid #F2F2F2;
+  margin-bottom: 26rpx;
+}
+.invoice{
+  background-color: white;
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+}
+.invomain{
+  padding: 30rpx;
+}
+.invoright image{
+  width: 20rpx;
+  height: 20rpx;
+  vertical-align: middle;
+}
+.paymentbtn{
+  background-color: white;
+  border-radius: 20rpx;
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+}
+.paymain{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+}
+.paymain .paymfh{
+  font-size: 34rpx;
+}
+.paymain .paymjg{
+  font-size: 50rpx;
+}
+.paymain .paymxs{
+  font-size: 34rpx;
+}
+.paybtn{
+  padding: 20rpx 50rpx;
+  background-color: red;
+  color: white;
+  border-radius: 50rpx;
+  font-weight: bold;
+  font-size: 40rpx;
 }

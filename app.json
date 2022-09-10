@@ -6,7 +6,10 @@
     "pages/spcar/spcar",
     "pages/self/self",
     "pages/hinfo/hinfo",
-    "pages/payment/payment"
+    "pages/hpayment/hpayment",
+    "pages/hadreslist/hadreslist",
+    "pages/hadresedit/hadresedit",
+    "pages/haddadres/haddadres"
   ],
   "window":{
     "backgroundTextStyle":"light",
