@@ -23,7 +23,7 @@
             </view>
           </view>
         </label>
-        <navigator url="../hadresedit/hadresedit">
+        <navigator url="../haddadres/haddadres?adres=edit">
           <view class="editimg">
             <image src="../../img/hedit.svg"></image>
           </view>
@@ -31,7 +31,7 @@
       </view>
     </radio-group>
     <view class="addadres">
-      <navigator url="../haddadres/haddadres">
+      <navigator url="../haddadres/haddadres?adres=add">
         <view class="addbtn">
         新增收货地址
         </view>

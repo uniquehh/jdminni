@@ -9,6 +9,7 @@
 .addadres{
   background-color: #F5F5F5;
   min-width: 375px;
+  height: 100vh;
 }
 .addmain{
   font-size: 32rpx;
@@ -23,12 +24,26 @@
 .besictext{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 40rpx 0;
   border-bottom: 2rpx solid #F5F5F5;
+  line-height: 10rpx;
 }
-.besictext>text{
+.besictext text{
   margin-right: 30rpx;
   width: 140rpx;
+}
+.besictext input{
+  height: 40rpx;
+}
+.left{
+  display: flex;
+  align-items: center;
+}
+.clearcont image{
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
 }
 .teltext{
   margin-right: 0 !important;
@@ -59,6 +74,7 @@
 .orattribute{
   background-color: white;
   border-radius: 20rpx;
+  margin-bottom: 20rpx;
 }
 .odatmain{
   padding: 30rpx;
@@ -105,7 +121,24 @@
   padding: 24rpx;
   background-color: #F5F5F5;
   border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+.areabtn{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   margin-bottom: 60rpx;
+}
+.areabtn .clear{
+  color: gray;
+}
+.shibiebtn{
+  border: 2rpx solid red;
+  color: red;
+  text-align: center;
+  margin-left: 20rpx;
+  padding: 0 10rpx;
+  border-radius: 10rpx;
 }
 /* 提示文本 */
 .tstext{
@@ -126,7 +159,7 @@
 }
 /* 确认按钮样式 */
 .confirm{
-  padding: 22rpx 0;
+  margin-bottom: 20rpx;
 }
 .cfbtnbox{
   margin: 0 26rpx;
@@ -141,4 +174,17 @@
   margin: 0 !important;
   border-radius: 60rpx !important;
   width: 100% !important;
+}
+.delete{
+  background-color: white;
+  border: 2rpx solid red;
+  color: red;
+  text-align: center;
+  padding: 24rpx 0;
+  margin: 0 !important;
+  border-radius: 60rpx !important;
+  width: 100% !important;
+}
+.footerbtn{
+  overflow: hidden;
 }

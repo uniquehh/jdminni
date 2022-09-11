@@ -8,7 +8,6 @@
     "pages/hinfo/hinfo",
     "pages/hpayment/hpayment",
     "pages/hadreslist/hadreslist",
-    "pages/hadresedit/hadresedit",
     "pages/haddadres/haddadres"
   ],
   "window":{

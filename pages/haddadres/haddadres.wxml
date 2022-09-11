@@ -7,31 +7,49 @@
   <view class="addmain">
     <view class="addbesic">
       <view class="besictext">
-        <text>收货人</text>
-        <input type="text" value="" placeholder="请填写收货人姓名" />
-      </view>
-      <view class="besictext">
-        <text>联系方式</text>
-        <view class="teltext">+86</view>
-        <image class="telimg" src="../../img/hxia.svg"></image>
-        <input type="text" value="" placeholder="请填写收货人手机号" />
-      </view>
-      <view class="besictext">
-        <text>收货人</text>
-        <view class="pickerbox">
-          <picker mode="region">
-            <view class="picker">
-              <input type="text" value="" placeholder="省市区县、乡镇等" />
-              <image class="pickerimage" src="../../img/hrightjian.svg"></image>
-            </view>
-          </picker>
+        <view class="left">
+          <text>收货人</text>
+          <input type="text" value="" placeholder="请填写收货人姓名" />
+        </view>
+        <view class="clearcont">
+          <image src="../../img/hcleartext.svg"></image>
         </view>
       </view>
+      <view class="besictext">
+        <view class="left">
+          <text>联系方式</text>
+          <view class="teltext">+86</view>
+          <image class="telimg" src="../../img/hxia.svg"></image>
+          <input type="text" value="" placeholder="请填写收货人手机号" />
+        </view>
+        <view class="clearcont">
+          <image src="../../img/hcleartext.svg"></image>
+        </view>
+      </view>
+      <view class="besictext">
+        <view class="left">
+          <text>所在地区</text>
+          <view class="pickerbox">
+            <picker mode="region">
+              <view class="picker">
+                <input type="text" value="" placeholder="省市区县、乡镇等" />
+              </view>
+            </picker>
+          </view>
+        </view>
+        <image class="pickerimage" src="../../img/hrightjian.svg"></image>
+      </view>
       <view class="besictext besiclast">
-        <text>详细地址</text>
-        <input type="text" value="" placeholder="街道、门牌号等" />
+        <view class="left">
+          <text>详细地址</text>
+          <input type="text" value="" placeholder="街道、门牌号等" />
+        </view>
+        <view class="clearcont">
+          <image src="../../img/hcleartext.svg"></image>
+        </view>
       </view>
     </view>
+    <!-- 标签 -->
     <view class="orattribute">
       <view class="odatmain">
         <view class="tags">
@@ -43,10 +61,14 @@
             <view class="tag addtag">+</view>
           </view>
         </view>
-        <view class="shibie">
+        <view wx:if="{{isAdd}}" class="shibie">
           <view class="title">智能识别地址：</view>
           <view class="areabox">
             <textarea class="znshibie" rows="3" placeholder="粘贴整段文字，如：北京市大兴区科创十一街京东集团总部，张小三，12345679876" auto-height="true"></textarea>
+          </view>
+          <view class="areabtn">
+            <view class="clear">清空</view>
+            <view class="shibiebtn">识别</view>
           </view>
         </view>
         <view class="tishibox">
@@ -59,11 +81,20 @@
       </view>
     </view>
   </view>
-  <view class="confirm">
-    <view class="cfbtnbox">
-      <button class="confirmbtn">
-        确认
-      </button>
+  <view class="footerbtn">
+    <view class="confirm">
+      <view class="cfbtnbox">
+        <button class="confirmbtn">
+          确认
+        </button>
+      </view>
+    </view>
+    <view wx:if="{{!isAdd}}" class="confirm">
+      <view class="cfbtnbox">
+        <button class="delete">
+          删除
+        </button>
+      </view>
     </view>
   </view>
 </view>

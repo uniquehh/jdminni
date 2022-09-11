@@ -5,14 +5,22 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isAdd:true,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    if(options.adres == "add"){
+      this.setData({
+        isAdd:true,
+      })
+    }else if(options.adres == "edit"){
+      this.setData({
+        isAdd:false,
+      })
+    }
   },
 
   /**
