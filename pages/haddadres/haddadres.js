@@ -1,21 +1,26 @@
-// pages/spcar/spcar.js
+// pages/haddadres/haddadres.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isAdd:true,
+  },
 
-  },
-  // 购物车商品复选框选项组
-  spcarItemCheck(e){
-    console.log(e);
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    if(options.adres == "add"){
+      this.setData({
+        isAdd:true,
+      })
+    }else if(options.adres == "edit"){
+      this.setData({
+        isAdd:false,
+      })
+    }
   },
 
   /**

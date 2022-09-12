@@ -1,0 +1,189 @@
+<page-meta>
+<navigation-bar title="确认订单"></navigation-bar>
+</page-meta>
+<view class="bordertop"></view>
+<view class="payment">
+  <!-- 地址区域 -->
+  <view class="address">
+    <navigator url="../hadreslist/hadreslist">
+      <view class="adrmain">
+        <view class="adrcont">
+          <view class="adrhead">
+            <view class="adrhtab">默认</view>
+            <view class="adrhtext">四川成都市金牛区抚琴街道</view>
+          </view>
+          <view class="adrcenter">为民信局</view>
+          <view class="adrfooter">木木 130****5450</view>
+        </view>
+        <view class="adrjiantou">
+          <image src="../../img/hrightjian.svg"></image>
+        </view>
+      </view>
+    </navigator>
+    <view class="divis-line">
+      <view class="divisred"></view>
+      <view class="divisblue"></view>
+      <view class="divisred"></view>
+      <view class="divisblue"></view>
+      <view class="divisred"></view>
+      <view class="divisblue"></view>
+      <view class="divisred"></view>
+      <view class="divisblue"></view>
+      <view class="divisred"></view>
+      <view class="divisblue"></view>
+    </view>
+  </view>
+  <!-- 订单列表 -->
+  <view class="orderlist">
+    <view class="odlistmain">
+      <view class="oditem">
+        <view class="odtitle">JD 京东自营</view>
+        <navigator url="../hinfo/hinfo">
+          <view class="odcont">
+            <view class="odimage">
+              <image src="../../img/hgood.webp"></image>
+            </view>
+            <view class="odinfo">
+              <view class="odgdtitle">
+                美菱(MELING)【离子净系列】556升一级能效变频双开门对开两门电冰箱家用风冷无霜BCD-556WPCX净味大容量
+              </view>
+              <view class="odgdpara">
+                【大1匹】风酷三级 性价比优选
+              </view>
+              <view class="odgdprice">
+                <view class="prinum">
+                  <view class="price">
+                    <view class="pricebox">
+                      <text class="fuhao">￥</text>
+                      <text class="jiage">2779</text>
+                      <text class="xiaoshu">.00</text>
+                    </view>
+                    <view class="imgbox">
+                      <image class="xinrenjia" src="../../img/hxinrenjia.png"></image>
+                      <image class="cgprice" src="../../img/hpriceshuomin.svg"></image>
+                    </view>
+                  </view>
+                  <view class="odgdnum">
+                    13.00kg x 1
+                  </view>
+                </view>
+              </view>
+              <view class="odgdtag">
+                <text class="tagitem">支持7天无理由退货</text>
+                <text class="tagitem">支持7天无理由退货</text>
+              </view>
+            </view>
+          </view>
+        </navigator>
+        <view class="expres">
+          <view class="exleft">配送</view>
+          <view class="exright">
+            <view class="exrighttext">
+              京东快递
+            </view>
+            <image src="../../img/hrightjian.svg"></image>
+          </view>
+        </view>
+      </view>
+      <view class="fuwutime">
+        <view class="shtime">大件送货：9月16日【周五】</view>
+        <view class="aztime">大件安装：9月17日【周六】</view>
+      </view>
+      <view class="thwuyou">
+        <view class="thwybox">
+          <view class="thwytext">退换无忧</view>
+          <image src="../../img/hpriceshuomin.svg"></image>
+        </view>
+        <view class="thwyprice">
+          <view class="thwypnum">￥3.00</view>
+          <switch></switch>
+        </view>
+      </view>
+      <view class="smqujian">
+        可享1次免费上门取件
+      </view>
+    </view>
+  </view>
+  <!-- 订单总额 -->
+  <view class="odcomputed">
+    <view class="odcpmain">
+      <view class="prmoney">
+        <view class="prmleft">商品金额</view>
+        <view class="prmright">￥2779.00</view>
+      </view>
+      <view class="yunfei">
+      <view class="yfleft">运费</view>
+      <view class="yfright">￥0.00
+      </view>
+      </view>
+      <view class="youhui">
+        <view class="yhleft">
+          <view class="yhltag">
+            优惠卷
+            <text class="yhltitem">已选推荐优惠（含新人专享券）</text>
+          </view>
+        </view>
+        <view class="yhright">
+          <view class="yhnum">-￥5.00</view>
+          <image src="../../img/hrightjian.svg"></image>
+        </view>
+      </view>
+      <view class="jingdou">
+        <view class="jdleft">
+        京豆
+        <image src="../../img/hpriceshuomin.svg"></image>
+        </view>
+        <view class="jdright">共9，满500可用</view>
+      </view>
+      <view class="lipin">
+        <view class="lpleft">礼品卡(京东卡/E卡)</view>
+        <view class="lpright">
+          <view class="lptext">无可用</view>
+          <image src="../../img/hrightjian.svg"></image>
+        </view>
+      </view>
+      <view class="divisionline"></view>
+      <view class="hejimoney">
+        <view class="hjmtext">合计：</view>
+        <view class="prinum hejinum">
+          <view class="price">
+            <view class="pricebox">
+              <text class="fuhao">￥</text>
+              <text class="jiage">2779</text>
+              <text class="xiaoshu">.00</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="invoice">
+    <view class="invomain">
+      <view class="involeft">
+        发票
+      </view>
+      <view class="invoright">
+        <view class="invortext">电子[商品明细-个人]</view>
+        <image src="../../img/hrightjian.svg"></image>
+      </view>
+    </view>
+  </view>
+  <view class="paymentbtn">
+    <view class="paymain">
+      <view class="paymleft">
+        <view class="prinum paymnum">
+          <view class="price">
+            <view class="pricebox">
+              <text class="fuhao paymfh">￥</text>
+              <text class="jiage paymjg">2779</text>
+              <text class="xiaoshu paymxs">.00</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="paymright">
+        <view class="paybtn">在线支付</view>
+      </view>
+    </view>
+  </view>
+</view>

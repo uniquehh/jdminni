@@ -1,54 +1,73 @@
+.index{
+  display: flex;
+  flex-direction: column;
+}
 .container{
   display: flex;
+  flex: 1 1 auto;
+}
+.acurr{
+  background-color: white;
 }
 .aside{
   background-color: #F7F7F7;
-  padding: 5px 10px;
+  display: flex;
+}
+.aside scroll-view{
+  height: 91.4vh;
+}
+.menu{
+  padding: 20rpx 20rpx;
 }
 .main{
   flex: 1 1 auto;
 }
-.search{
-    display: flex;
+.main scroll-view{
+  height: 91.4vh;
 }
-.goBack{
-    text-align: center;
-    line-height: 45px;
+.search{
+  border-bottom: 2rpx solid #E5E5E5;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 999;
+}
+.search image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 1.5vh;
 }
 .search-box{
-  margin: 0 5px;
+  margin: 0 1.5vh;
   display: flex;
-  padding: 5px 0px;
+  align-items: center;
+  padding: 1vh 0;
 }
 .search-box .btn{
-  margin-left: 5px;
-  height: 35px;
-  line-height: 35px;
+  margin-left: 1vh;
+  width: 6vh;
+  text-align: center;
 }
 .search-box .inputbox{
   flex: 1 1 auto;
   display: flex;
   background-color: #F7F7F7;
-  height: 35px;
-  padding: 0px 10px;
-  border-radius: 20px;
+  height: 5vh;
+  padding: 0 2vh;
+  border-radius: 6vh;
   align-items: center;
 }
-.inputbox text{
-  height: 35px;
-  line-height: 35px;
-  padding-right: 5px;
-  margin-right: 5px;
-  border-right: 1px solid #b2d4f0;
-}
 .container .head{
-  margin-bottom: 5px;
-  padding: 0px 10px;
+  margin-bottom: 10rpx;
+  padding: 0 20rpx;
 }
 .container .list{
-  padding: 10px 20px;
+  padding: 20rpx 40rpx;
 }
-.container .list::after{
+.container .itembox{
+  margin-bottom: 20rpx;
+}
+.container .itembox::after{
   content: "";
   display: block;
   clear: both;
@@ -56,6 +75,14 @@
 .container .list .item{
   float: left;
   width: 33%;
+  height: 200rpx;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 16rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.item image{
+  width: 100%;
 }
