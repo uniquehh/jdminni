@@ -1,0 +1,66 @@
+/* pages/component/brand.wxss */
+.circle{
+  border-radius: 50%;
+  border: 1px solid #999;
+  width: 24rpx;
+  height: 24rpx;
+  text-align: center;
+  color:white;
+  font-size: 12px;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+.circlechecked{
+  font-size:12px;
+  color: white;
+  text-align: center;
+  border-radius: 50%;
+  width: 28rpx;
+  height: 28rpx;
+  background-color: red;
+  font-size: 10px;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+.checkwrap{
+  display: flex;
+  font-size:14px;
+  padding-left: 10px;
+}
+.check{
+  display: none;
+}
+.checkq::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.checkitem{
+  float: left;
+  width: 50%;
+  box-sizing: border-box;
+  padding:10px 10px 10px 0;
+  border-bottom: 1px solid #eee;
+}
+.checkitem:nth-of-type(2n) .checkwrap{
+  border-left: 1px solid #eee;
+}
+.btns{
+  display: flex;
+}
+.resetBtn{
+  background-color: white;
+  color:red;
+  font-weight: normal;
+  border-radius: 0;
+}
+.confirmBtn{
+  background-color: red;
+  color:white;
+  font-weight: normal;
+  border-radius: 0;
+}
+.brand{
+  background-color: white;
+  width: 100%;
+}

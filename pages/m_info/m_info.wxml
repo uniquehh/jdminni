@@ -1,0 +1,318 @@
+<!--pages/m_info/m_info.wxml-->
+<scroll-view scroll-y="true"style="height: calc(100vh - 50px);">
+  <view style="margin-top: 20px;background-color: #f2f2f2;">
+      <view class="proimg">
+        <image mode="widthFix" style="width: 100%;" src="/img/m_info.png" alt=""/>
+        <view class="goBack" bindtap="goBack">返回</view>
+        <view class="backImg">
+          <view class="i_price">
+            <view>家电99超级秒杀节 巅峰开抢</view>
+            <view>￥<text style="font-size: 22px;">2299</text>.00</view>
+          </view>
+          <view class="timecount">
+            <view>距活动结束</view>
+            <view>{{countTime}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="infowrap">
+        <view class="info1">
+          <image mode="widthFix" style="width: 45px; vertical-align: middle;" src="/img/m_jdxj.png" />
+          京东旗下智能生活品牌
+        </view>
+        <view class="info2">
+          <view class="info2_cont">
+            <image mode="widthFix" style="width: 25px;" src="/img/m_zy.png" />
+            美的(Media)大1匹 风酷 新三级能效变频冷暖 自清洁 壁挂式 空调挂机 京东小家智能家电 KFR-26GW/N8XHC3
+          </view>
+          <view class="collect">
+            <view style="margin-left:15px;"></view>
+            <view style="margin-left:15px;">收藏</view>
+          </view>
+        </view>
+        <view class="info3">【家电99超级秒杀节】9日限时到手价不高于2299元！【加购抽0元空调】直播间下单更优惠！【更多劲爆好物】空调空调空调</view>
+      </view>
+      <view class="infowrap infowrap2">
+        <view class="i-discount" style="border-bottom: 1px solid #eee;">
+          <view style="margin-right:10px;flex-shrink:0 ;font-size:13px;font-weight: bold;">优惠</view>
+          <view style="flex-grow: 1;">
+            <view class="i_disconts i_disconts1">满999减30</view>
+            <view class="xx">
+              <text class="i_disconts i_disconts2">满额返券</text>
+              购满1元饭100元美的冰箱券（部分部分部分）
+            </view>
+          </view>
+          <view style="flex-shrink:0" bindtap="addpro" data-modle="discount">
+            <image mode="widthFix" style="width: 25px;" src="/img/m_more.png" />
+          </view>
+        </view>
+        <view class="i-discount" style="padding-top:20px;padding-bottom:0">
+          <view style="margin-right:10px;flex-shrink:0 ;font-size:13px;font-weight: bold;">白条</view>
+          <view style="flex-grow: 1;">
+            <view class="xx">6期内免息</view>
+          </view>
+          <view style="flex-shrink:0">
+            <image mode="widthFix" style="width: 25px;" src="/img/m_more.png" />
+          </view>
+        </view>
+      </view>
+      <view class="infowrap infowrap2" style="padding-bottom:0">
+        <view class="i-discount" style="border-bottom: 1px solid #eee;">
+          <view style="margin-right:10px;flex-shrink:0 ;font-size:13px;font-weight: bold;">已选</view>
+          <view style="flex-grow: 1;">
+            <view class="xx">【大1匹】风酷三级 性价比优选，1个</view>
+            <view style="font-size: 12px; color:#999;margin-top:5px">本商品支持精选服务，点击可选服务</view>
+          </view>
+          <view style="flex-shrink:0" bindtap="addpro" data-modle="shopcar">
+            <image mode="widthFix" style="width: 25px;" src="/img/m_more.png" />
+          </view>
+        </view>
+        <view class="i-discount" style="border-bottom: 1px solid #eee;padding-top:20px">
+          <view style="margin-right:10px;flex-shrink:0 ;font-size:13px;font-weight: bold;">送至</view>
+          <view style="flex-grow: 1;">
+            <view class="xx">北京朝阳区三环到四环之间</view>
+            <view style="font-size: 12px; color:#999;margin-top:5px">
+              <!-- <image sytle="width:20px;height:20px" src="/img/m_jdwl.png"/> -->
+              <text style="color: #FA422C;">有货</text>
+              下单后2-6天发货
+            </view>
+          </view>
+          <view style="flex-shrink:0">
+            <image mode="widthFix" style="width: 25px;" src="/img/m_more.png" />
+          </view>
+        </view>
+        <view class="i-discount" style="padding:20px 0;">
+          <view style="margin-right:10px;flex-shrink:0 ;font-size:13px;font-weight: bold;">重量</view>
+          <view style="flex-grow: 1;">
+            <view class="xx">不记重量</view>
+          </view>
+          <view style="flex-shrink:0">
+            <image mode="widthFix" style="width: 25px;" src="/img/m_more.png" />
+          </view>
+        </view>
+        <view>
+          <image src="/img/m_sb.png" style="width: 750rpx;margin-left: -20px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;" mode="widthFix"/>
+        </view>
+      </view>
+      <view class="infowrap infowrap2 infowrap3">
+        <view class="i-discount">
+        <view class="column"></view>
+          <view style="margin-right:10px;flex-shrink:0 ;font-size:15px;font-weight: bold;">评论
+              <text style="font-size: 10px;">
+              <text style="font-weight: bold;">200</text>万+</text>
+              <text style="font-size: 13px;color:#8c8c8c;margin-left: 160px;font-weight: normal;">好评度<text style="font-weight: bold;">99%</text></text>
+          </view>
+          <view style="flex-shrink:0" bindtap="addpro" data-modle="discount">
+            <image mode="widthFix" style="width: 12px;" src="/img/m_contmore.png" />
+          </view>
+        </view>
+        <view class="contTypes">
+          <view class="contType" >送货安装(13613)</view>
+          <view class="contType" >外观漂亮(10268)</view>
+          <view class="contType" >超级省电(13613)</view>
+          <view class="contType" >美观大方(13613)</view>
+        </view>
+        <view class="i_cont">
+          <view style="display: flex;">
+            <view class="icon"></view>
+            <view class="nickname">拼**天</view>
+            <view style="display: flex;margin-left:5px;">
+              <view class="star"></view>
+              <view class="star"></view>
+              <view class="star"></view>
+              <view class="star"></view>
+              <view class="star"></view>
+            </view>
+            <view class="conttime">2022-04-16</view>
+          </view>
+          <view class="precont">
+            物流快，送货也快，次日就到了 外形外观：简单大方，不挑装修风格，非常适合年轻人 冷暖效果：很快就冷下来了 送货安装：当天到货当天安装，很快。 静音效果：空调空调空调
+          </view>
+          <view>
+            <view class="contimg">
+              <image src="/img/m_taylor.png" mode="widthFix" class="contimgitem"/>
+            </view>
+            <view class="contimg">
+              <image src="/img/m_taylor.png" mode="widthFix" class="contimgitem"/>
+            </view>
+            <view class="contimg">
+              <image src="/img/m_taylor.png" mode="widthFix" class="contimgitem"/>
+            </view>
+          </view>
+        </view>
+        <view class="i_cont i_cont2">
+          <view style="display: flex;">
+            <view class="icon"></view>
+            <view class="nickname">拼**天</view>
+            <view style="display: flex;margin-left:5px;">
+              <view class="star"></view>
+              <view class="star"></view>
+              <view class="star"></view>
+              <view class="star"></view>
+              <view class="star"></view>
+            </view>
+            <view class="conttime">2022-04-16</view>
+          </view>
+          <view class="precont">
+            物流快，送货也快，次日就到了 外形外观：简单大方，不挑装修风格，非常适合年轻人 冷暖效果：很快就冷下来了 送货安装：当天到货当天安装，很快。 静音效果：空调空调空调
+          </view>
+          <view>
+            <view class="contimg">
+              <image src="/img/m_taylor.png" mode="widthFix" class="contimgitem"/>
+            </view>
+            <view class="contimg">
+              <image src="/img/m_taylor.png" mode="widthFix" class="contimgitem"/>
+            </view>
+            <view class="contimg">
+              <image src="/img/m_taylor.png" mode="widthFix" class="contimgitem"/>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view style="padding: 18px;background-color: white;border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+        <view class="i-discount">
+        <view class="column"></view>
+          <view style="margin-right:10px;flex-shrink:0 ;font-size:15px;font-weight: bold;">问答
+              <text style="font-size: 10px;">
+              <text style="font-weight: bold;">200</text>万+</text>
+              <text style="font-size: 13px;color:#8c8c8c;margin-left: 160px;font-weight: normal;">查看全部问答</text>
+          </view>
+          <view style="flex-shrink:0" bindtap="addpro" data-modle="discount">
+            <image mode="widthFix" style="width: 12px;" src="/img/m_contmore.png" />
+          </view>
+        </view>
+        <view class="ques">
+          <view class="que">
+            <text class="question">问</text>
+            <text class="queinfo">住二楼，免费安装吗</text>
+            <text class="quetime">共23个回答</text>
+          </view>
+          <view class="que">
+            <text class="question">问</text>
+            <text class="queinfo">住二楼，免费安装吗安装安装安装安装安装安装安装安装</text>
+            <text class="quetime">共23个回答</text>
+          </view>
+        </view>
+      </view>
+  </view>
+</scroll-view>
+<view class="buypro">
+  <view style="margin-right:20px;font-size:13px;">
+    <view class="i_store"></view>
+    店铺
+  </view>
+  <view style="margin-right:20px;font-size:13px;">客服</view>
+  <view style="margin-right:15px;font-size:13px;">购物车</view>
+  <view class="i_btns">
+    <view style="margin-right:6px">
+      <button class="i-btn" style="background-color: #F2390C;" bindtap="addpro"
+      data-modle="shopcar">加入购物车</button>
+    </view>
+    <view>
+      <button class="i-btn" style="background-color: #FFCA0D;" bindtap="addpro"
+      data-modle="shopcar">立即购买</button>
+    </view>
+  </view>
+</view>
+<page-container show="{{showPop}}" round="true" custom-style="max-height:80%;">
+  <view wx:if="{{shopcar}}">
+    <view class="titlewrap">
+      <view>
+        <image mode="heightFix" class="popimg" src="/img/m_info.png"/>
+      </view>
+      <view class="poptitle">
+        <view style="color:#f2270c;margin-bottom:5px">￥<text style="font-size:24px">2349</text>.00</view>
+        <view style="font-size: 12px;"><text style="margin-right: 10px;color: #8c8c8c;">已选</text>【大1匹】风酷三级 性价比优选,1个</view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" style="height: 330px;">
+      <view class="cho">
+        <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">匹数</view>
+        <radio-group bindchange="radiochange">
+          <view style="display: flex;flex-wrap: wrap;">
+            <label wx:for="{{list}}" wx:key="listkey" class="choitem {{item.checked?'choitem_checked':''}}">
+              <radio style="display: none;" checked="{{item.checked}}" value="{{item.value}}"/>{{item.name}}
+            </label>
+          </view>
+        </radio-group>
+        <view >{{item.name}}</view>
+      </view>
+      <view class="chonum">
+        <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">数量</view>
+        <view class="numitem">
+          <view class="countnum" bindtap="reduceNum">-</view>
+          <view class="numinput">
+            <input class="n_input" value="{{num}}" type="number"/>
+          </view>
+          <view class="countnum" bindtap="addNum">+</view>
+        </view>
+      </view>
+      <view style="padding: 0 18px;">
+        <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">京选服务</view>
+        <view>
+          <view class="servtitle">超值新品</view>
+          <view class="servgroup">
+            <radio-group>
+              <view class="servitem">
+                <label for="">
+                  <radio class="servradio"/>
+                  <view style="display: inline-block;width: 90%;margin-left: 30px;">
+                    <text style="color: #333;font-size: 13px;line-height: 1em;padding-bottom: 3px;padding-top: 3px;display: block;width: 100%;">十年免费换新<text class="servprice">￥135.00</text></text>
+                    <view style="color: #8c8c8c;font-size: 11px;">性能故障 只换不修</view>
+                  </view>
+                </label>
+              </view>
+              <view class="servitem">
+                <label for="">
+                  <radio class="servradio"/>
+                  <view style="display: inline-block;width: 90%;margin-left: 30px;">
+                    <text style="color: #333;font-size: 13px;line-height: 1em;padding-bottom: 3px;padding-top: 3px;display: block;width: 100%;">十年免费换新<text class="servprice">￥135.00</text></text>
+                    <view style="color: #8c8c8c;font-size: 11px;">性能故障 只换不修</view>
+                  </view>
+                </label>
+              </view>
+            </radio-group>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="i_confirm">
+      <button class="addconfirm" bindtap="addselfpro">确认</button>
+    </view>
+    <view class="closepop" bindtap="closePop">
+      <image src="/img/m_closepop.png" mode="widthFix" style="width: 20px;" />
+    </view>
+  </view>
+  <view wx:if="{{!shopcar}}"class="parclose">
+    <view class="i_yh">优惠</view>
+    <view>
+      <view class="yh_title">促销</view>
+      <view style="font-size: 14px;">
+        <text class="i_disconts i_disconts2">满额返券</text>购买1元返100元美的冰箱券（部分商品用）
+        <text>></text>
+      </view>
+    </view>
+    <view>
+      <view class="yh_title">领券</view>
+      <view class="yh">
+          <view class="yh_left">
+            <view style="margin-bottom: 10px;">￥<text style="font-size: 36px;font-weight: bold;">30</text></view>
+            <view style="font-size: 15px;">满999元可用</view>
+          </view>
+          <view class="yh_right">
+            <view style="margin-bottom: 20px;font-size: 12px;color:#666">
+              <image src='/img/m_dq.png' mode="widthFix" style="width: 40px;vertical-align: bottom;" />
+              仅可购买自营部分商品
+            </view>
+            <view class="yhbtn">
+              2022.09.01-2022.09.30
+              <button class="yh_btn">领取</button>
+            </view>
+          </view>
+      </view>
+    </view>
+      <view class="closepop" bindtap="closePop">
+        <image src="/img/m_closepop.png" mode="widthFix" style="width: 20px;" />
+      </view>
+  </view>
+</page-container>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "brandForm":"/pages/component/brand",
+    "filtForm":"/pages/component/filt"
+  }
+}

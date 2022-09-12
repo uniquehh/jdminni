@@ -1,0 +1,4 @@
+<!--pages/m_login/m_login.wxml-->
+<view>
+  <button bindtap="wxlogin">授权登录</button>
+</view>

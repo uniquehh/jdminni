@@ -1,0 +1,102 @@
+<!--pages/component/filt.wxml-->
+<view>
+
+  <scroll-view scroll-y="true" style="height: 100vh;">
+    <view style="background-color: #F7F7F7;width: 90%;">
+      <view class="title">
+        配送至<text class="address">北京-朝阳区-三环到四环之间></text>
+      </view>
+      <view class="chooseType">
+        <view class="chooseitem">1</view>
+        <view class="chooseitem">2</view>
+        <view class="chooseitem">3</view>
+        <view class="chooseitem">4</view>
+      </view>
+      <view class="title">
+      分类<text class="address alltype">全部分类></text>
+      </view>
+      <view class="price">
+        <view class="p_title">价格</view>
+        <view class="p_input">
+          <input class="input" type="number"/>
+          <view class="input line"></view>
+          <input class="input" type="number"/>
+        </view>
+          <view class="chooseType choosePrice">
+            <view class="chooseitem priceitem">
+              <view>1859-2420</view>
+              <view>17%选择</view>
+            </view>
+            <view class="chooseitem priceitem">
+              <view>1859-2420</view>
+              <view>17%选择</view>
+            </view>
+            <view class="chooseitem priceitem">
+              <view>1859-2420</view><view>17%选择</view>
+            </view>
+          </view>
+      </view>
+      <view class="price">
+        <view class="p_title">品牌</view>
+          <view class="chooseType">
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              <button class="brandbtn">查看全部></button>
+            </view>
+          </view>
+      </view>
+      <view class="price">
+        <view class="p_title">匹数</view>
+          <view class="chooseType">
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+            <view class="chooseitem">
+              海尔（Haier）
+            </view>
+          </view>
+      </view>
+      <view class="clear">
+        <button class="clearchoose">清除选项</button>
+      </view>
+    </view>
+  </scroll-view>
+</view>

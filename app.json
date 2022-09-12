@@ -1,5 +1,8 @@
 {
   "pages":[
+    "pages/m_login/m_login",
+    "pages/m_info/m_info",
+    "pages/m_category/m_category",
     "pages/index/index",
     "pages/type/type",
     "pages/surpri/surpri",
@@ -11,10 +14,8 @@
     "pages/haddadres/haddadres"
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor":"#fff",
+    "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
