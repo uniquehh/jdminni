@@ -21,8 +21,9 @@
         enhanced="{{true}}"
         show-scrollbar="{{false}}"
         bounces="{{true}}"
+        scroll-into-view="{{currentType}}"
         >
-          <view class="menu" wx:for="{{aside}}" wx:key="index"
+          <view class="menu {{currentType==item.id?'acurr':''}}" wx:for="{{aside}}" wx:key="index"
           bindtap="goodTypeClick"
           data-parent="{{item}}"
           >{{item.type_name}}
@@ -35,7 +36,7 @@
       scroll-y="true"
       >
         <view class="head">
-          头部标题
+          {{parentName}}
         </view>
         <view class="wrap">
           <view class="list">
