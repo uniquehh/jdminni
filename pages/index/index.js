@@ -1,35 +1,61 @@
 // pages/index/index.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    aside:["侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏","侧边栏"],
-    produce:[
-      {type:"家电",goods:[
-        {pname:"冰箱", img:"../../img/hindex.png"},
-        {pname:"冰箱", img:"../../img/hindex.png"},
-        {pname:"冰箱", img:"../../img/hindex.png"},
-        {pname:"冰箱", img:"../../img/hindex.png"},
-      ]},
-      {type:"数码",goods:[
-        {pname:"手机", img:"../../img/hindex.png"},
-        {pname:"手机", img:"../../img/hindex.png"},
-        {pname:"手机", img:"../../img/hindex.png"},
-        {pname:"手机", img:"../../img/hindex.png"},
-        {pname:"手机", img:"../../img/hindex.png"},
-        {pname:"手机", img:"../../img/hindex.png"},
-        {pname:"手机", img:"../../img/hindex.png"},
-      ]},
-    ],
+    aside:[],
+    produce:[],
   },
-  // "侧边栏","侧边栏","侧边栏","侧边栏",
+  toCategory(e){
+    let goodType = e.currentTarget.dataset.goodtype.good_type_id ;
+    wx.navigateTo({
+      url: `../m_category/m_category?goodtype=${goodType}`,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    let thiss=this;
+    let templist=[];
+    wx.request({
+      url: 'http://api_devs.wanxikeji.cn/api/goodType',
+      success(res){
+        templist=res.data.data;
+        // 一级
+        templist.forEach(item=>{
+          if(item.parent_id==0){
+           thiss.data.aside.push(item); 
+          }
+        });
+        // 二级
+        thiss.data.aside.forEach(pitem=>{
+          pitem.children=[];
+          templist.forEach(citem=>{
+            if(citem.parent_id==pitem.good_type_id){
+              pitem.children.push(citem);
+            }
+          })
+        });
+        // 三级
+        thiss.data.aside.forEach(gpitem=>{
+          gpitem.children.forEach(pitem=>{
+            pitem.children=[];
+            templist.forEach(citem=>{
+              if(citem.parent_id==pitem.good_type_id){
+                pitem.children.push(citem);
+              } 
+            })
+          })
+        })
+        console.log(thiss.data.aside,133);
+        thiss.setData({
+          aside:thiss.data.aside,
+          // produce:thiss.data.produce,
+        })
+      }
+    });
   },
 
   /**

@@ -1,14 +1,12 @@
 <!--index.wxml-->
-<view style="margin-top:20px;">
+<view >
   <view class="search">
-    <view class="goBack">
-       返回
-    </view>
     <view class="search-box">
       <view class="inputbox">
-        <text>图标</text>
-        <input type="text" />
+      <image src="../../img/hsearch1.svg"></image>
+        <input placeholder="游戏主机" type="text" />
       </view>
+      <view class="btn">搜索</view>
     </view>
   </view>
   <view class="container">
@@ -51,18 +49,18 @@
       </view>
       <view class="wrap">
         <view class="list">
-          <view class="layout" bindtap="toInfo">
+          <view class="layout" bindtap="toInfo" wx:for="{{prolist}}" wx:key="prolistkey">
             <view class="layimg">
-                <image class="img" src="/img/m_air.png" />
+                <image class="img" src="{{item.img}}" />
             </view>
             <view class="laycont">
-                <view class="title">山王（SANSUI）空调挂机大1匹大1.5匹2匹冷暖定频壁挂式空调家空调空调空调空调空调空调</view>
+                <view class="title">{{item.good_name}}</view>
                 <view>
-                    <text class="tag">五级能效</text>
-                    <text class="tag">独立除湿</text>
+                    <text class="tag">good_id:{{item.good_id}}</text>
+                    <text class="tag">promotionPrice:{{item.promotion_price}}</text>
                 </view>
                 <view class="m_pri">
-                    ￥<text class="price">1892</text>
+                    ￥<text class="price">{{item.price}}</text>
                     <text class="discount">领券满999减10</text>
                     <text class="discount">满999减10</text>
                 </view>

@@ -21,7 +21,7 @@
       show-scrollbar="{{false}}"
       bounces="{{true}}"
       >
-        <view class="menu" wx:for="{{aside}}" wx:key="index">{{item}}
+        <view class="menu" wx:for="{{aside}}" wx:key="index">{{item.type_name}}
         </view>
       </scroll-view>
     </view>
@@ -39,16 +39,20 @@
               wx:for-index="indexs"
               wx:for-item="items"
               wx:key="indexs"
+              wx:if="{{items.children.length>0}}"
             >
-              <view>{{items.type}}</view>
-              <navigator url="../hinfo/hinfo"
-              class="item" wx:for="{{items.goods}}" wx:for-index="indexss"
+              <view>{{items.type_name}}</view>
+              <view
+              class="item" wx:for="{{items.children}}" wx:for-index="indexss"
               wx:for-item="itemss"
+              bindtap="toCategory" 
+              data-goodType="{{itemss}}"
               wx:key="indexss"
+              open-type="navigate"
               >
-                <image aspectFit src="{{itemss.img}}"></image>
-                <view>{{itemss.pname}}</view>
-              </navigator>
+                <image aspectFit src="/img/m_taylor.png"></image>
+                <view>{{itemss.type_name}}</view>
+              </view>
             </view>
           </view>
         </view>

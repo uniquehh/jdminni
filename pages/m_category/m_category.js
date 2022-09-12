@@ -19,7 +19,7 @@ Page({
     showfilt:false,
     popPosition:'',
     customStyle:"",
-    duration:300
+    prolist:[],
   },
   showSec(e){
     // if(e.currentTarget.dataset.showoff==false){
@@ -49,7 +49,7 @@ Page({
   },
   // 事件处理函数
   toInfo() {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../m_info/m_info'
     })
   },
@@ -59,14 +59,24 @@ Page({
       customStyle:"display:none"
     })
   },
-  onLoad() {
-    // wx.request({
-    //   url: 'http://api_devs.wanxikeji.cn/api/goodList',
-    //   data:{ },
-    //   success(res){
-    //     console.log(res,223);
-    //   }
-    // })
+  onLoad(option) {
+    console.log(option);
+    let sl=this;
+    wx.request({
+      url: 'http://api_devs.wanxikeji.cn/api/goodList',
+      // data:{
+      //   good_type:option.goodtype,
+      // },
+      success(res){
+        if(res.data.code==2000){
+          sl.data.prolist=res.data.data.data;
+          console.log(sl.data.prolist,123);
+          sl.setData({
+            prolist:sl.data.prolist,
+          })
+        }
+      }
+    })
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

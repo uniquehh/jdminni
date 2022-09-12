@@ -19,7 +19,7 @@ Page({
   },
   goBack(){
     wx.navigateBack({
-      delta:0,
+      delta: 0,
     })
   },
   radiochange(e){
