@@ -6,11 +6,31 @@ Page({
   data: {
     aside:[],
     asideChild:[],
+    scrollTop:"",
   },
   /**
    * 生命周期函数--监听页面加载
    */
+  // 滚动事件
+  asideGunDong(e){
+    this.data.scrollTop = e.detail.scrollTop
+  },
+  // 抬起事件
+  mouseup(){
+    if(this.data.scrollTop<40){
+      this.setData({
+        scrollTop:'40',
+      })
+    }else if(this.data.scrollTop>737){
+      this.setData({
+        scrollTop:'737',
+      })
+    }
+  },
   onLoad(options) {
+    this.setData({
+      scrollTop:'20',
+    })
     let that = this
     // 请求商品分类数据
     function getGoodType(){
@@ -61,7 +81,12 @@ Page({
   },
   // 侧边栏点击函数
   goodTypeClick(e){
-    console.log(e.currentTarget.dataset.parent);
+    if(this.data.scrollTop<737){
+      this.setData({
+        scrollTop:e.currentTarget.offsetTop,
+      })
+    }
+    console.log(e.currentTarget);
     let gpItem=e.currentTarget.dataset.parent.good_type_id;
     this.data.aside.forEach((item)=>{
       if(gpItem==item.good_type_id){
@@ -73,6 +98,7 @@ Page({
       })
       console.log(this.data.asideChild);
   },
+  // 跳转至商品详情页
   toCategory(e){
     let typeId=e.currentTarget.dataset.goodtype;
     wx.setStorageSync('typeId', typeId);

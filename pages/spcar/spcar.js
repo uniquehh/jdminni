@@ -31,11 +31,34 @@ Page({
   },
   // 点击函数--登录
   clickLogin(){
-    let userInfo = "";
+    let openid = "";
+    let nick_name = "";
+    let icon = "";
     wx.getUserProfile({
       desc: 'login',
       success(res){
         console.log(res);
+        nick_name = res.userInfo.nickName
+        icon = res.userInfo.avatarUrl
+        wx.login({
+          success(res){
+            console.log("login",res);
+            if (res.code) {
+              //发起网络请求换取openid
+              wx.request({
+                url: 'http://api_devs.wanxikeji.cn/api/codeExchangeOpenid',
+                data: {
+                  code: res.code
+                },
+                success(res){
+                  console.log("id",res);
+                }
+              })
+            } else {
+              console.log('登录失败！' + res.errMsg)
+            }
+          }
+        })
       },
     })
   },
