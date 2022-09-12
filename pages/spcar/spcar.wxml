@@ -20,13 +20,16 @@
     <text class="comnum">全部（1）</text>
     <text class="manjian">跨店满减（0）</text>
   </view>
-  <view class="list">
+  <view wx:if="{{!isLogin}}" class="nologin">
+    请您登录后查看！
+  </view>
+  <view wx:if="{{isLogin}}" class="list">
     <view class="list-main">
       <view class="item">
         <checkbox-group bindchange="spcarItemCheck">
           <view class="dianpu">
             <label>
-              <checkbox class="check" value="" />
+              <checkbox color="#fff" class="check" value="" />
             </label>
             <view class="name">
               <image src="../../img/hdianpu.png"></image>
@@ -44,7 +47,7 @@
             <view class="pro-main">
               <view class="checkgood">
                 <label>
-                  <checkbox value="" />
+                  <checkbox color="#fff" value="" />
                 </label>
                 <navigator url="../hinfo/hinfo">
                   <image class="proimage" src="../../img/hgood.webp"></image>
@@ -128,7 +131,7 @@
   <view class="division">
     <view class="line"></view>
     <view class="mayb">
-      可能你还想要
+      <view>可能你还想要</view>
     </view>
     <view class="line"></view>
   </view>

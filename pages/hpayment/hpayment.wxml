@@ -96,7 +96,7 @@
         </view>
         <view class="thwyprice">
           <view class="thwypnum">￥3.00</view>
-          <switch></switch>
+          <switch color="#FF0000"></switch>
         </view>
       </view>
       <view class="smqujian">

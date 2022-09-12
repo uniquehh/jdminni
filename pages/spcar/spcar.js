@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isLogin:false,
   },
   // 购物车商品复选框选项组
   spcarItemCheck(e){
@@ -15,7 +15,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    // 判断是否登录
+    if(!wx.getStorageSync('token')){
+      this.setData({
+        isLogin:false,
+      })
+    }else{
+      this.setData({
+        isLogin:true,
+      })
+    }
   },
 
   /**

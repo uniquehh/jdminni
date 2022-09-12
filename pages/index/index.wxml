@@ -15,15 +15,20 @@
   </view>
   <view class="container">
     <view class="aside">
-      <scroll-view
-      scroll-y="true"
-      enhanced="{{true}}"
-      show-scrollbar="{{false}}"
-      bounces="{{true}}"
-      >
-        <view class="menu" wx:for="{{aside}}" wx:key="index">{{item}}
-        </view>
-      </scroll-view>
+      <view class="scrollbox">
+        <scroll-view
+        scroll-y="true"
+        enhanced="{{true}}"
+        show-scrollbar="{{false}}"
+        bounces="{{true}}"
+        >
+          <view class="menu" wx:for="{{aside}}" wx:key="index"
+          bindtap="goodTypeClick"
+          data-parent="{{item}}"
+          >{{item.type_name}}
+          </view>
+        </scroll-view>
+      </view>
     </view>
     <view class="main">
       <scroll-view
@@ -34,7 +39,7 @@
         </view>
         <view class="wrap">
           <view class="list">
-            <view class="itembox"
+            <!-- <view class="itembox"
               wx:for="{{produce}}"
               wx:for-index="indexs"
               wx:for-item="items"
@@ -49,11 +54,10 @@
                 <image aspectFit src="{{itemss.img}}"></image>
                 <view>{{itemss.pname}}</view>
               </navigator>
-            </view>
+            </view> -->
           </view>
         </view>
       </scroll-view>
     </view>
   </view>
-  <page-container show="" position="right" custom-style="margin-left: 50px;">弹出内容</page-container>
 </view>

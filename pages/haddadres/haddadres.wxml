@@ -1,6 +1,6 @@
 <!--pages/haddadres/haddadres.wxml-->
 <page-meta>
-  <navigation-bar title="新增收货地址"></navigation-bar>
+  <navigation-bar title="{{isAdd?'新增收货地址':'编辑收货地址'}}"></navigation-bar>
 </page-meta>
 <view class="bordertop"></view>
 <view class="addadres">
@@ -8,7 +8,7 @@
     <view class="addbesic">
       <view class="besictext">
         <view class="left">
-          <text>收货人</text>
+          <view class="text">收货人</view>
           <input type="text" value="" placeholder="请填写收货人姓名" />
         </view>
         <view class="clearcont">
@@ -17,7 +17,7 @@
       </view>
       <view class="besictext">
         <view class="left">
-          <text>联系方式</text>
+          <view class="text">联系方式</view>
           <view class="teltext">+86</view>
           <image class="telimg" src="../../img/hxia.svg"></image>
           <input type="text" value="" placeholder="请填写收货人手机号" />
@@ -28,20 +28,20 @@
       </view>
       <view class="besictext">
         <view class="left">
-          <text>所在地区</text>
+          <view class="text">所在地区</view>
           <view class="pickerbox">
             <picker mode="region">
-              <view class="picker">
-                <input type="text" value="" placeholder="省市区县、乡镇等" />
+              <view class="pickertext">
+                <view class="wenben">省市区县、乡镇等</view>
+                <image class="pickerimage" src="../../img/hrightjian.svg"></image>
               </view>
             </picker>
           </view>
         </view>
-        <image class="pickerimage" src="../../img/hrightjian.svg"></image>
       </view>
       <view class="besictext besiclast">
         <view class="left">
-          <text>详细地址</text>
+          <view class="text">详细地址</view>
           <input type="text" value="" placeholder="街道、门牌号等" />
         </view>
         <view class="clearcont">
@@ -76,7 +76,7 @@
             <view class="tstext">设为默认地址</view>
             <view class="tishi">提醒：设为默认地址后，每次下单会默认使用该地址</view>
           </view>
-          <switch></switch>
+          <switch color="#FF0000"></switch>
         </view>
       </view>
     </view>
