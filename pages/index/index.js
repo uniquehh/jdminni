@@ -1,63 +1,79 @@
 // pages/index/index.js
+import runtime from "../../utils/runtime"
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     aside:[],
-    produce:[],
-  },
-  toCategory(e){
-    let goodType = e.currentTarget.dataset.goodtype.good_type_id ;
-    wx.navigateTo({
-      url: `../m_category/m_category?goodtype=${goodType}`,
-    })
+    asideChild:[],
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    let thiss=this;
-    let templist=[];
-    wx.request({
-      url: 'http://api_devs.wanxikeji.cn/api/goodType',
-      success(res){
-        templist=res.data.data;
-        // 一级
-        templist.forEach(item=>{
-          if(item.parent_id==0){
-           thiss.data.aside.push(item); 
-          }
-        });
-        // 二级
-        thiss.data.aside.forEach(pitem=>{
-          pitem.children=[];
-          templist.forEach(citem=>{
-            if(citem.parent_id==pitem.good_type_id){
-              pitem.children.push(citem);
-            }
-          })
-        });
-        // 三级
-        thiss.data.aside.forEach(gpitem=>{
-          gpitem.children.forEach(pitem=>{
-            pitem.children=[];
-            templist.forEach(citem=>{
-              if(citem.parent_id==pitem.good_type_id){
-                pitem.children.push(citem);
-              } 
+    let that = this
+    // 请求商品分类数据
+    function getGoodType(){
+      wx.request({
+        url: "http://api_devs.wanxikeji.cn/api/goodType",
+        data:{
+          groupid:1,
+        },
+        success(res){
+          if(res.data.code==2000){
+            console.log(res.data);
+            // 一级分类
+            let temp = res.data.data.filter(item=>{
+              if(item.parent_id===0){
+                item.child = []
+                return item
+              }
+            });
+            // 二级分类
+            temp.forEach((item)=>{
+              res.data.data.forEach((items)=>{
+                if(item.good_type_id === items.parent_id){
+                  items.child = []
+                  item.child.push(items)
+                }
+              })
+            });
+            // 三级分类
+            temp.forEach((item)=>{
+              item.child.forEach((items)=>{
+                res.data.data.forEach((itemss)=>{
+                  if(items.good_type_id === itemss.parent_id){
+                    itemss.child = []
+                    items.child.push(itemss)
+                  }
+                })
+              })
+            });
+            console.log(temp);
+            that.setData({
+              aside:temp,
             })
-          })
-        })
-        console.log(thiss.data.aside,133);
-        thiss.setData({
-          aside:thiss.data.aside,
-          // produce:thiss.data.produce,
-        })
-      }
-    });
+          }else{
+            console.log("接口请求错误");
+          }
+        }
+      })
+    }
+    getGoodType()
   },
+  // 侧边栏点击函数
+  goodTypeClick(e){
+    console.log(e.currentTarget.dataset.parent);
+    // this.data.aside.forEach((item)=>{
+    //   // if(parent.getGoodType){
 
+    //   // }
+    //   // this.setData({
+    //   //   asideChild:
+    //   // })
+    // })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -89,8 +105,8 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {
-
+  onPullDownRefresh(e) {
+    
   },
 
   /**

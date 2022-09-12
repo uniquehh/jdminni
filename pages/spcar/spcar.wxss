@@ -12,12 +12,6 @@
   min-width: 375px;
   font-size: 32rpx;
 }
-.spcar::after{
-  content: "";
-  display: block;
-  position: sticky;
-  height: 88rpx;
-}
 .position{
   margin-bottom: 30rpx;
 }
@@ -54,6 +48,11 @@
 .head .comnum{
   margin-right: 20rpx;
 }
+.nologin{
+  text-align: center;
+  height: 200rpx;
+  line-height: 200rpx;
+}
 .list {
   margin-bottom: 40rpx;
 }
@@ -80,11 +79,15 @@
 .list checkbox{
   margin-right: 30rpx;
 }
-.list checkbox .wx-checkbox-input{
+.list .wx-checkbox-input{
   border-radius: 50%;
   width: 30rpx;
   height: 30rpx;
   border: 4rpx solid #BEBEBE;
+}
+.list .wx-checkbox-input-checked{
+  background-color: red;
+  border: 4rpx solid red;
 }
 .list-main .item{
   background-color: white;
@@ -275,6 +278,7 @@
   display: flex;
   align-items: center;
   padding: 0 20rpx;
+  margin-bottom: 60rpx;
 }
 .division .line{
   -webkit-box-flex: 1;
@@ -290,12 +294,9 @@
   -webkit-flex: 0 1 auto;
   -ms-flex: 0 1 auto;
   flex: 0 1 auto;
-  height: 30rpx;
-  line-height: 30rpx;
   color: #999;
   position: relative;
   padding: 0 50rpx;
-  margin-bottom: 40rpx;
 }
 .mayb::after{
   content: '';

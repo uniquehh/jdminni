@@ -15,15 +15,20 @@
   </view>
   <view class="container">
     <view class="aside">
-      <scroll-view
-      scroll-y="true"
-      enhanced="{{true}}"
-      show-scrollbar="{{false}}"
-      bounces="{{true}}"
-      >
-        <view class="menu" wx:for="{{aside}}" wx:key="index">{{item.type_name}}
-        </view>
-      </scroll-view>
+      <view class="scrollbox">
+        <scroll-view
+        scroll-y="true"
+        enhanced="{{true}}"
+        show-scrollbar="{{false}}"
+        bounces="{{true}}"
+        >
+          <view class="menu" wx:for="{{aside}}" wx:key="index"
+          bindtap="goodTypeClick"
+          data-parent="{{item}}"
+          >{{item.type_name}}
+          </view>
+        </scroll-view>
+      </view>
     </view>
     <view class="main">
       <scroll-view
@@ -34,30 +39,25 @@
         </view>
         <view class="wrap">
           <view class="list">
-            <view class="itembox"
+            <!-- <view class="itembox"
               wx:for="{{produce}}"
               wx:for-index="indexs"
               wx:for-item="items"
               wx:key="indexs"
-              wx:if="{{items.children.length>0}}"
             >
-              <view>{{items.type_name}}</view>
-              <view
-              class="item" wx:for="{{items.children}}" wx:for-index="indexss"
+              <view>{{items.type}}</view>
+              <navigator url="../hinfo/hinfo"
+              class="item" wx:for="{{items.goods}}" wx:for-index="indexss"
               wx:for-item="itemss"
-              bindtap="toCategory" 
-              data-goodType="{{itemss}}"
               wx:key="indexss"
-              open-type="navigate"
               >
-                <image aspectFit src="/img/m_taylor.png"></image>
-                <view>{{itemss.type_name}}</view>
-              </view>
-            </view>
+                <image aspectFit src="{{itemss.img}}"></image>
+                <view>{{itemss.pname}}</view>
+              </navigator>
+            </view> -->
           </view>
         </view>
       </scroll-view>
     </view>
   </view>
-  <page-container show="" position="right" custom-style="margin-left: 50px;">弹出内容</page-container>
 </view>
