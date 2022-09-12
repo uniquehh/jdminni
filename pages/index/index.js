@@ -7,6 +7,8 @@ Page({
     aside:[],
     asideChild:[],
     scrollTop:"",
+    parentName:'',
+    currentType:"",
   },
   /**
    * 生命周期函数--监听页面加载
@@ -45,6 +47,7 @@ Page({
             let temp = res.data.data.filter(item=>{
               if(item.parent_id===0){
                 item.child = []
+                item.id="m"+item.good_type_id;
                 return item
               }
             });
@@ -70,6 +73,9 @@ Page({
             });
             that.setData({
               aside:temp,
+              currentType:temp[0].id,
+              parentName:temp[0].type_name,
+              asideChild:temp[0].child
             })
           }else{
             console.log("接口请求错误");
@@ -77,32 +83,39 @@ Page({
         }
       })
     }
-    getGoodType()
+    getGoodType();
   },
   // 侧边栏点击函数
   goodTypeClick(e){
-    if(this.data.scrollTop<737){
+    if(this.data.scrollTop>737){
+      this.setData({
+        scrollTop:737,
+      })
+    }else{
       this.setData({
         scrollTop:e.currentTarget.offsetTop,
       })
     }
     console.log(e.currentTarget);
+    let gpId=e.currentTarget.dataset.parent.id;
     let gpItem=e.currentTarget.dataset.parent.good_type_id;
+    this.data.currentType=gpId;
     this.data.aside.forEach((item)=>{
       if(gpItem==item.good_type_id){
         this.data.asideChild=item.child;
+        this.data.parentName=item.type_name;
       }
       this.setData({
           asideChild:this.data.asideChild,
+          parentName:this.data.parentName,
+          currentType:this.data.currentType
         })
       })
-      console.log(this.data.asideChild);
   },
   // 跳转至商品详情页
   toCategory(e){
     let typeId=e.currentTarget.dataset.goodtype;
     wx.setStorageSync('typeId', typeId);
-    console.log(wx.getStorageSync('typeId'));
     wx.navigateTo({
       url: `../m_category/m_category`,
     })
