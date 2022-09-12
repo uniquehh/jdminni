@@ -22,7 +22,6 @@ Page({
         },
         success(res){
           if(res.data.code==2000){
-            console.log(res.data);
             // 一级分类
             let temp = res.data.data.filter(item=>{
               if(item.parent_id===0){
@@ -50,7 +49,6 @@ Page({
                 })
               })
             });
-            console.log(temp);
             that.setData({
               aside:temp,
             })
@@ -65,14 +63,24 @@ Page({
   // 侧边栏点击函数
   goodTypeClick(e){
     console.log(e.currentTarget.dataset.parent);
-    // this.data.aside.forEach((item)=>{
-    //   // if(parent.getGoodType){
-
-    //   // }
-    //   // this.setData({
-    //   //   asideChild:
-    //   // })
-    // })
+    let gpItem=e.currentTarget.dataset.parent.good_type_id;
+    this.data.aside.forEach((item)=>{
+      if(gpItem==item.good_type_id){
+        this.data.asideChild=item.child;
+      }
+      this.setData({
+          asideChild:this.data.asideChild,
+        })
+      })
+      console.log(this.data.asideChild);
+  },
+  toCategory(e){
+    let typeId=e.currentTarget.dataset.goodtype;
+    wx.setStorageSync('typeId', typeId);
+    console.log(wx.getStorageSync('typeId'));
+    wx.navigateTo({
+      url: `../m_category/m_category`,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

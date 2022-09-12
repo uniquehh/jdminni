@@ -15,7 +15,9 @@ Page({
     ],
     countTime:'',
     num:1,
-    shopcar:false
+    shopcar:false,
+    information:{},
+    price:[],
   },
   goBack(){
     wx.navigateBack({
@@ -90,8 +92,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    let proinfo=JSON.parse(wx.getStorageSync('information'));
+    let tempPri=proinfo.price;
+    let priArr=tempPri.split(".");
+    this.setData({
+      information:proinfo,
+      price:priArr
+    })
     setInterval(()=>{
-      this.data.countTime=this.countDown('2022-09-12 12:30:00')
+      this.data.countTime=this.countDown('2022-09-13 12:30:00')
       this.setData({
         countTime:this.data.countTime,
       })

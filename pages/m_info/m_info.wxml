@@ -1,13 +1,13 @@
 <!--pages/m_info/m_info.wxml-->
 <scroll-view scroll-y="true"style="height: calc(100vh - 50px);">
-  <view style="margin-top: 20px;background-color: #f2f2f2;">
+  <view style="background-color: #f2f2f2;">
       <view class="proimg">
-        <image mode="widthFix" style="width: 100%;" src="/img/m_info.png" alt=""/>
+        <image mode="widthFix" style="width: 100%;" src="{{information.img}}" alt=""/>
         <view class="goBack" bindtap="goBack">返回</view>
         <view class="backImg">
           <view class="i_price">
             <view>家电99超级秒杀节 巅峰开抢</view>
-            <view>￥<text style="font-size: 22px;">2299</text>.00</view>
+            <view>￥<text style="font-size: 22px;">{{price[0]}}</text>.{{price[1]}}</view>
           </view>
           <view class="timecount">
             <view>距活动结束</view>
@@ -21,9 +21,9 @@
           京东旗下智能生活品牌
         </view>
         <view class="info2">
-          <view class="info2_cont">
+          <view class="info2_cont" style="min-width: 600rpx;">
             <image mode="widthFix" style="width: 25px;" src="/img/m_zy.png" />
-            美的(Media)大1匹 风酷 新三级能效变频冷暖 自清洁 壁挂式 空调挂机 京东小家智能家电 KFR-26GW/N8XHC3
+            {{information.good_name}}
           </view>
           <view class="collect">
             <view style="margin-left:15px;"></view>
@@ -198,11 +198,23 @@
 </scroll-view>
 <view class="buypro">
   <view style="margin-right:20px;font-size:13px;">
-    <view class="i_store"></view>
+    <view class="i_store">
+      <image mode="widthFix" style="width: 18px;margin-left: 3px;" src="/img/m_store.png" />
+    </view>
     店铺
   </view>
-  <view style="margin-right:20px;font-size:13px;">客服</view>
-  <view style="margin-right:15px;font-size:13px;">购物车</view>
+  <view style="margin-right:20px;font-size:13px;">
+    <view class="i_store">
+      <image mode="widthFix" style="width: 20px;margin-left:2px" src="/img/m_server.png" />
+    </view>
+    客服
+  </view>
+  <view style="margin-right:15px;font-size:13px;">
+    <view class="i_store">
+      <image mode="widthFix" style="width: 20px;margin-left:7px" src="/img/m_scar.png" />
+    </view>
+    购物车
+  </view>
   <view class="i_btns">
     <view style="margin-right:6px">
       <button class="i-btn" style="background-color: #F2390C;" bindtap="addpro"

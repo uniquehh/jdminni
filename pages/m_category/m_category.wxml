@@ -49,7 +49,7 @@
       </view>
       <view class="wrap">
         <view class="list">
-          <view class="layout" bindtap="toInfo" wx:for="{{prolist}}" wx:key="prolistkey">
+          <view class="layout" bindtap="toInfo" wx:for="{{prolist}}" wx:key="prolistkey" data-proinfo="{{item}}">
             <view class="layimg">
                 <image class="img" src="{{item.img}}" />
             </view>

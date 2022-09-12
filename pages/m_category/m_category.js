@@ -48,9 +48,12 @@ Page({
     })
   },
   // 事件处理函数
-  toInfo() {
+  toInfo(e) {
+    console.log(e.currentTarget.dataset,122);
+    let information=JSON.stringify(e.currentTarget.dataset.proinfo);
+    wx.setStorageSync('information', information)
     wx.navigateTo({
-      url: '../m_info/m_info'
+      url: `../m_info/m_info`
     })
   },
   closePop(){
@@ -60,13 +63,13 @@ Page({
     })
   },
   onLoad(option) {
-    console.log(option);
+    let id=wx.getStorageSync('typeId');
     let sl=this;
     wx.request({
       url: 'http://api_devs.wanxikeji.cn/api/goodList',
-      // data:{
-      //   good_type:option.goodtype,
-      // },
+      data:{
+        good_type:id,
+      },
       success(res){
         if(res.data.code==2000){
           sl.data.prolist=res.data.data.data;
