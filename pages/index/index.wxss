@@ -54,6 +54,10 @@
 }
 .menu{
   padding: 20rpx 20rpx;
+  max-width: 135rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .main{
   flex: 1 1 auto;
