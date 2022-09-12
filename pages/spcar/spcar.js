@@ -1,6 +1,5 @@
 // pages/spcar/spcar.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -26,7 +25,20 @@ Page({
       })
     }
   },
-
+  // 点击函数--返回上一个页面
+  goBack(){
+    console.log("原生得tabbar页面无法返回上一页，我也很无奈")
+  },
+  // 点击函数--登录
+  clickLogin(){
+    let userInfo = "";
+    wx.getUserProfile({
+      desc: 'login',
+      success(res){
+        console.log(res);
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

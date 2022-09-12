@@ -95,9 +95,14 @@ Page({
       this.setData({
         countTime:this.data.countTime,
       })
-    },1000)
+    },1000);
   },
-
+  // 购物车点击函数--跳转到购物车
+  toSpcar(){
+    wx.switchTab({
+      url: '/pages/spcar/spcar',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

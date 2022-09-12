@@ -1,5 +1,4 @@
 // pages/index/index.js
-import runtime from "../../utils/runtime"
 Page({
   /**
    * 页面的初始数据

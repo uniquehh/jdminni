@@ -202,7 +202,11 @@
     店铺
   </view>
   <view style="margin-right:20px;font-size:13px;">客服</view>
-  <view style="margin-right:15px;font-size:13px;">购物车</view>
+  <view style="margin-right:15px;font-size:13px;"
+  bindtap="toSpcar"
+  >
+    购物车
+  </view>
   <view class="i_btns">
     <view style="margin-right:6px">
       <button class="i-btn" style="background-color: #F2390C;" bindtap="addpro"

@@ -6,6 +6,22 @@
   width: 100%;
   z-index: 999;
 }
+.headnav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70rpx;
+  width: 750rpx;
+  border-bottom: 2rpx solid #F5F5F5;
+}
+.headnav .title{
+  font-size: 36rpx;
+}
+.goback,.more{
+  width: 40rpx;
+  vertical-align: middle;
+  padding: 0 20rpx;
+}
 .spcar{
   background-color: #F2F2F2;
   height: 100%;
@@ -24,6 +40,9 @@
   align-items: center;
   border-bottom-left-radius: 40rpx;
   border-bottom-right-radius: 40rpx;
+}
+.posiboxtwo{
+  justify-content: center;
 }
 .posibox .left{
   padding-left: 30rpx;
@@ -48,10 +67,30 @@
 .head .comnum{
   margin-right: 20rpx;
 }
-.nologin{
+.nolgone{
+  font-size: 28rpx;
+}
+.loginbtn{
+  width: 70rpx;
+  padding: 10rpx 20rpx;
+  background-color: red;
+  color: white;
   text-align: center;
-  height: 200rpx;
-  line-height: 200rpx;
+  border-radius: 30rpx;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+}
+.nolgtwo{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300rpx;
+}
+.nolgtwo image{
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 20rpx;
 }
 .list {
   margin-bottom: 40rpx;
