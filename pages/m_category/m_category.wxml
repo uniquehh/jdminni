@@ -1,0 +1,85 @@
+<!--index.wxml-->
+<view style="margin-top:20px;">
+  <view class="search">
+    <view class="goBack">
+       返回
+    </view>
+    <view class="search-box">
+      <view class="inputbox">
+        <text>图标</text>
+        <input type="text" />
+      </view>
+    </view>
+  </view>
+  <view class="container">
+    <view class="topNav">
+        <scroll-view style="background-color:#E8E8ED;" scroll-x="true">
+        <view class="testmove">
+            <view class="test" wx:for="{{scrData}}" wx:key="scrkey">
+                <image class="img" src="/img/m_air.png"/>
+                <view class="navCont">{{item}}</view>
+            </view>
+        </view>
+        </scroll-view>
+    </view>
+    <view class="main">
+      <view class="head">
+        <view class="s_list">
+            <view class="screen ">综合<view class="dropdown"></view></view>
+            <view class="screen screen1">销量</view>
+            <view class="screen">有货优先<view class="dropdown"></view></view>
+            <view class="line"></view>
+            <view class="screen screen2" bindtap="showSec" data-position="right">筛选</view>
+        </view>
+        <scroll-view scroll-x="true">
+            <view class="m_category"  >
+                <view class="m_item" wx:for="{{catData}}" bindtap="{{item.showTr?'showSec':''}}"  data-showoff="{{item.showOut}}" data-index="{{index}}" data-position="top" wx:key="catkey">{{item.name}}
+                  <!-- 下拉三角 -->
+                  <view class="dropdown2" wx:if="{{item.showTr}}"></view>
+                </view>
+                  <!-- 弹窗展示内容 -->
+                <!-- <view class="dropCont" wx:if="{{showBrand}}">
+                  <brandForm></brandForm>
+                </view> -->
+            </view>
+        </scroll-view>
+        <view class="click" style="position: relative;z-index: -1;">
+            <view>
+                点击筛选<image src="/img/m_ms.png" alt=""/>活动商品
+            </view>
+        </view>
+      </view>
+      <view class="wrap">
+        <view class="list">
+          <view class="layout" bindtap="toInfo">
+            <view class="layimg">
+                <image class="img" src="/img/m_air.png" />
+            </view>
+            <view class="laycont">
+                <view class="title">山王（SANSUI）空调挂机大1匹大1.5匹2匹冷暖定频壁挂式空调家空调空调空调空调空调空调</view>
+                <view>
+                    <text class="tag">五级能效</text>
+                    <text class="tag">独立除湿</text>
+                </view>
+                <view class="m_pri">
+                    ￥<text class="price">1892</text>
+                    <text class="discount">领券满999减10</text>
+                    <text class="discount">满999减10</text>
+                </view>
+                <view>
+                    <view class="comment">
+                        2万+条评论 <text>好评率98％</text>
+                    </view>
+                    <view class="comment store">欧楠电器专营店></view>
+                </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <page-container show="{{showPop}}" position="{{popPosition}}" custom-style="{{customStyle}}" duration="{{duration}}" overlay-style="margin-top:250px" bind:clickoverlay="closePop">
+    <brandForm wx:if="{{showBrand}}"></brandForm>
+    <filtForm wx:if="{{!showBrand}}"></filtForm>
+  </page-container>
+</view>

@@ -1,0 +1,19 @@
+<!--pages/component/brand.wxml-->
+<view class="brand">
+  <form>
+    <scroll-view scroll-y="true" style="max-height: 320rpx;">
+      <checkbox-group bindchange="check" class="checkq">
+        <label class="checkitem" wx:for="{{arr}}" wx:key="lablekey">
+          <view class="checkwrap">
+            <view class="{{item.checked?'circlechecked':'circle'}}">√</view>
+            <checkbox class="check" value="{{item.value}}"  bindtap="test"/>{{item.name}}
+          </view>
+        </label>
+      </checkbox-group>
+    </scroll-view>
+    <view class='btns'>
+      <button form-type="reset" class="resetBtn" >重置</button>
+      <button form-type="submit" class="confirmBtn" >确认</button>
+    </view>
+  </form>
+</view>

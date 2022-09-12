@@ -1,16 +1,15 @@
 <!--index.wxml-->
-<page-meta>
-  <navigation-bar title="首页" background-color="#FFCA28">
-  </navigation-bar>
-</page-meta>
-<view>
+<view style="margin-top:45px;">
   <view class="search">
+    <view class="goBack">
+       返回
+    </view>
     <view class="search-box">
       <view class="inputbox">
         <text>图标</text>
         <input type="text" />
       </view>
-      <view class="btn">搜索</view>
+      <!-- <view class="btn">搜索</view> -->
     </view>
   </view>
   <view class="container">
@@ -31,5 +30,5 @@
       </view>
     </view>
   </view>
-  <page-container show="true" position="right" custom-style="margin-left: 50px;">弹出内容</page-container>
+  <page-container show="{{false}}" position="right" custom-style="margin-left: 50px;">弹出内容</page-container>
 </view>

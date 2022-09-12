@@ -8,6 +8,13 @@
 .main{
   flex: 1 1 auto;
 }
+.search{
+    display: flex;
+}
+.goBack{
+    text-align: center;
+    line-height: 45px;
+}
 .search-box{
   margin: 0 5px;
   display: flex;
