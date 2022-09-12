@@ -3,11 +3,19 @@
   <navigation-bar title=" "></navigation-bar>
 </page-meta>
 <view class="bordertop"></view>
+<view class="headnav">
+  <view class="imgbox" bindtap="goBack">
+    <image src="../../img/hleftjian.svg" class="goback"
+    ></image>
+  </view>
+  <view class="title" bindtap="test">购物车</view>
+  <image src="../../img/hmore.svg" class="more"></image>
+</view>
 <view class="spcar">
   <view class="position">
-    <view class="posibox">
+    <view class="posibox" wx:if="{{isLogin}}">
       <view class="left">
-        <image src="../../img/hposition.png" mode="aspectFit"></image>
+        <image bindtap="goBack" src="../../img/hposition.png" mode="aspectFit"></image>
         <text>成都市金牛区</text>
       </view>
       <view class="right">
@@ -15,13 +23,22 @@
         <text>编辑商品</text>
       </view>
     </view>
+    <view class="posibox posiboxtwo" wx:if="{{!isLogin}}">
+      <view  class="nolgone">
+      登陆后可同步账户购物车中的商品
+      </view>
+      <view class="loginbtn"
+      bindtap="clickLogin"
+      >登录</view>
+    </view>
   </view>
-  <view class="head">
+  <view wx:if="{{isLogin}}" class="head">
     <text class="comnum">全部（1）</text>
     <text class="manjian">跨店满减（0）</text>
   </view>
-  <view wx:if="{{!isLogin}}" class="nologin">
-    请您登录后查看！
+  <view wx:if="{{!isLogin}}" class="nolgtwo">
+    <image src="../../img/hnologin.png"></image>
+    <view class="nolotext">登陆后可同步购物车中的商品</view>
   </view>
   <view wx:if="{{isLogin}}" class="list">
     <view class="list-main">
