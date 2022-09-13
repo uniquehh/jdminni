@@ -3,7 +3,9 @@
   <view style="background-color: #f2f2f2;">
       <view class="proimg">
         <image mode="widthFix" style="width: 100%;" src="{{information.img}}" alt=""/>
-        <view class="goBack" bindtap="goBack">返回</view>
+        <view class="goBack" bindtap="goBack">
+          <text class="goBackText">{{'<'}}</text>
+        </view>
         <view class="backImg">
           <view class="i_price">
             <view>家电99超级秒杀节 巅峰开抢</view>
@@ -230,10 +232,10 @@
   <view wx:if="{{shopcar}}">
     <view class="titlewrap">
       <view>
-        <image mode="heightFix" class="popimg" src="/img/m_info.png"/>
+        <image mode="heightFix" class="popimg" src="{{information.img}}"/>
       </view>
       <view class="poptitle">
-        <view style="color:#f2270c;margin-bottom:5px">￥<text style="font-size:24px">2349</text>.00</view>
+        <view style="color:#f2270c;margin-bottom:5px">￥<text style="font-size:24px">{{price[0]}}</text>.{{price[1]}}</view>
         <view style="font-size: 12px;"><text style="margin-right: 10px;color: #8c8c8c;">已选</text>【大1匹】风酷三级 性价比优选,1个</view>
       </view>
     </view>
@@ -318,7 +320,7 @@
             </view>
             <view class="yhbtn">
               2022.09.01-2022.09.30
-              <button class="yh_btn">领取</button>
+              <button class="yh_btn" bindtap="getDiscont">领取</button>
             </view>
           </view>
       </view>

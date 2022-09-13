@@ -159,6 +159,7 @@
 }
 .layout{
     display: flex;
+    margin-bottom: 10px;
 }
 .laycont{
     border-bottom: 1px solid #ccc;

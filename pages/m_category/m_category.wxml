@@ -57,7 +57,7 @@
                 <view class="title">{{item.good_name}}</view>
                 <view>
                     <text class="tag">good_id:{{item.good_id}}</text>
-                    <text class="tag">promotionPrice:{{item.promotion_price}}</text>
+                    <text class="tag">type_parent_id:{{item.type_parent_id}}</text>
                 </view>
                 <view class="m_pri">
                     ￥<text class="price">{{item.price}}</text>

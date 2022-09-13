@@ -18,6 +18,7 @@ Page({
     shopcar:false,
     information:{},
     price:[],
+    conponList:[]
   },
   goBack(){
     wx.navigateBack({
@@ -93,11 +94,28 @@ Page({
    */
   onLoad(options) {
     let proinfo=JSON.parse(wx.getStorageSync('information'));
+    console.log(proinfo);
     let tempPri=proinfo.price;
     let priArr=tempPri.split(".");
+    let tempCont=[];
+    let that=this;
     this.setData({
       information:proinfo,
       price:priArr
+    })
+    wx.request({
+      url: 'http://api_devs.wanxikeji.cn/api/couponList',
+      success(res){
+        if(res.data.code==2000){
+          tempCont=res.data.data;
+        }
+        console.log(tempCont);
+        that.data.conponList = tempCont.filter(item=>item.good_type_id==proinfo.type_parent_id);
+        console.log(that.data.conponList);
+        // that.setData({
+        //   conponList:that.data.conponList,
+        // })
+      }
     })
     setInterval(()=>{
       this.data.countTime=this.countDown('2022-09-13 12:30:00')

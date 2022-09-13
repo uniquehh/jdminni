@@ -96,7 +96,6 @@ Page({
         scrollTop:e.currentTarget.offsetTop,
       })
     }
-    console.log(e.currentTarget);
     let gpId=e.currentTarget.dataset.parent.id;
     let gpItem=e.currentTarget.dataset.parent.good_type_id;
     this.data.currentType=gpId;

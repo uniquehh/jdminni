@@ -73,7 +73,6 @@ Page({
       success(res){
         if(res.data.code==2000){
           sl.data.prolist=res.data.data.data;
-          console.log(sl.data.prolist,123);
           sl.setData({
             prolist:sl.data.prolist,
           })
