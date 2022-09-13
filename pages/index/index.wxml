@@ -46,22 +46,24 @@
         </view>
         <view class="wrap">
           <view class="list">
-            <!-- <view class="itembox"
-              wx:for="{{produce}}"
+            <view class="itembox"
+              wx:for="{{asideChild}}"
               wx:for-index="indexs"
               wx:for-item="items"
               wx:key="indexs"
             >
-              <view>{{items.type}}</view>
-              <navigator url="../hinfo/hinfo"
-              class="item" wx:for="{{items.goods}}" wx:for-index="indexss"
+              <view>{{items.type_name}}</view>
+              <view class="item" wx:for="{{items.child}}" wx:for-index="indexss"
               wx:for-item="itemss"
               wx:key="indexss"
+              bindtap="toCategory"
+              data-type="{{itemss}}"
+              data-goodtype="{{itemss.good_type_id}}"
               >
-                <image aspectFit src="{{itemss.img}}"></image>
-                <view>{{itemss.pname}}</view>
-              </navigator>
-            </view> -->
+                <image aspectFit src="/img/m_taylor.png"></image>
+                <view>{{itemss.type_name}}</view>
+              </view>
+            </view>
           </view>
         </view>
       </scroll-view>
