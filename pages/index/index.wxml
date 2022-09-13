@@ -24,6 +24,7 @@
         enable-passive="true"
         scroll-with-animation="true"
         bindtouchend="mouseup"
+        bindtouchstart="mouseDown"
         bindscroll="asideGunDong"
         >
           <view class="menu"></view>
