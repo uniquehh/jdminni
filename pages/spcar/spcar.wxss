@@ -85,7 +85,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 300rpx;
+  height: 400rpx;
 }
 .nolgtwo image{
   width: 150rpx;

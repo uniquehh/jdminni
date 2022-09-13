@@ -1,18 +1,29 @@
 // pages/hadreslist/hadreslist.js
+import { axios } from "../../utils/util"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    addresList:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
+  async onLoad(options) {
+    // 获取地址列表
+    let res1 = await axios({
+      url:'http://api_devs.wanxikeji.cn/api/userAddressList',
+      data:{
+        token: wx.getStorageSync('token'),
+      },
+    })
+    console.log(res1);
+    this.setData({
+      addresList:res1.data.data,
+    })
   },
 
   /**
