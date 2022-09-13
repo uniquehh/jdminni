@@ -9,6 +9,7 @@ Page({
     scrollTop:"",
     parentName:'',
     currentType:"",
+    isMouseUp:"false",
   },
   /**
    * 生命周期函数--监听页面加载
@@ -16,9 +17,23 @@ Page({
   // 滚动事件
   asideGunDong(e){
     this.data.scrollTop = e.detail.scrollTop
+    if(this.data.scrollTop<40&&this.data.isMouseUp){
+      this.setData({
+        scrollTop:'40',
+      })
+    }else if(this.data.scrollTop>737&&this.data.isMouseUp){
+      this.setData({
+        scrollTop:'737',
+      })
+    }
+  },
+  // 按下事件
+  mouseDown(){
+    this.data.isMouseUp = false
   },
   // 抬起事件
   mouseup(){
+    this.data.isMouseUp = true
     if(this.data.scrollTop<40){
       this.setData({
         scrollTop:'40',
@@ -30,9 +45,6 @@ Page({
     }
   },
   onLoad(options) {
-    this.setData({
-      scrollTop:'20',
-    })
     let that = this
     // 请求商品分类数据
     function getGoodType(){
@@ -87,11 +99,7 @@ Page({
   },
   // 侧边栏点击函数
   goodTypeClick(e){
-    if(this.data.scrollTop>737){
-      this.setData({
-        scrollTop:737,
-      })
-    }else{
+    if(this.data.scrollTop<737){
       this.setData({
         scrollTop:e.currentTarget.offsetTop,
       })
