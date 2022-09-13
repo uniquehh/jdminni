@@ -35,10 +35,6 @@
                   <!-- 下拉三角 -->
                   <view class="dropdown2" wx:if="{{item.showTr}}"></view>
                 </view>
-                  <!-- 弹窗展示内容 -->
-                <!-- <view class="dropCont" wx:if="{{showBrand}}">
-                  <brandForm></brandForm>
-                </view> -->
             </view>
         </scroll-view>
         <view class="click" style="position: relative;z-index: -1;">

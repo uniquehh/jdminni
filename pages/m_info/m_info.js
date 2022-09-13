@@ -6,38 +6,42 @@ Page({
    */
   data: {
     showPop:false,
-    list:[
-      {name:"【大1匹】风酷一级 清凉速享",value:1,checked:true},
-      {name:"【1.5匹】风酷一级 清凉速享",value:2,checked:false},
-      {name:"【大1匹】风酷三级 性价比优选",value:3,checked:false},
-      {name:"【1.5匹】风酷三级 性价比优选",value:4,checked:false},
-      {name:"【1.5匹】风酷三级 性价比优选",value:5,checked:false},
-    ],
     countTime:'',
     num:1,
     shopcar:false,
     information:{},
     price:[],
-    conponList:[]
+    conponList:[],
+    sku:{},
+    skuinfo:{},
+    choosedSku:[],
+    tapSKu:false
   },
   goBack(){
     wx.navigateBack({
       delta: 0,
     })
   },
-  radiochange(e){
-    let tempList=this.data.list;
-    let checkItem=e.detail;
-    tempList.forEach(item=>{
-      if(item.value==checkItem.value){
-        item.checked=true;
-      }else{
-        item.checked=false;
+  chooseSku(e){
+    let index=e.currentTarget.dataset.index;
+    let indexs=e.currentTarget.dataset.indexs;
+    this.data.sku.sku_column[index].checked=indexs;
+    let tempSku=[];
+    this.data.sku.sku_column.forEach(item=>{
+     tempSku.push(item.value[item.checked]);
+    });
+    this.data.sku.sku_list.forEach(item=>{
+      if(item.sku.join()==tempSku.join()){
+        this.data.skuinfo=item;
       }
     })
+    this.data.tapSKu=true;
     this.setData({
-      list:tempList,
+      sku:this.data.sku,
+      skuinfo:this.data.skuinfo,
+      tapSKu:this.data.tapSKu
     })
+    console.log(this.data.tapSKu?this.data.choosedSku:'111',12356);
   },
   reduceNum(){
     this.data.num--;
@@ -94,14 +98,36 @@ Page({
    */
   onLoad(options) {
     let proinfo=JSON.parse(wx.getStorageSync('information'));
-    console.log(proinfo);
     let tempPri=proinfo.price;
     let priArr=tempPri.split(".");
     let tempCont=[];
     let that=this;
     this.setData({
-      information:proinfo,
       price:priArr
+    })
+    wx.request({
+      url: 'http://api_devs.wanxikeji.cn/api/goodInfo',
+      data:{
+        good_id:proinfo.good_id,
+      },
+      success(res){
+        if(res.data.code==2000){
+          that.data.information=res.data.data;
+          let tempsku=JSON.parse(res.data.data.info[0].edition);
+          tempsku.sku_column.forEach(item=>{
+              item.checked=0;
+          })
+          that.data.sku=tempsku;
+          that.data.choosedSku=tempsku.sku_list[0].sku;
+          console.log(that.data.sku,457);
+        }
+        that.setData({
+          information:that.data.information,
+          sku:that.data.sku,
+          choosedSku:that.data.choosedSku
+        })
+        
+      }
     })
     wx.request({
       url: 'http://api_devs.wanxikeji.cn/api/couponList',
@@ -109,9 +135,7 @@ Page({
         if(res.data.code==2000){
           tempCont=res.data.data;
         }
-        console.log(tempCont);
         that.data.conponList = tempCont.filter(item=>item.good_type_id==proinfo.type_parent_id);
-        console.log(that.data.conponList);
         // that.setData({
         //   conponList:that.data.conponList,
         // })

@@ -67,9 +67,9 @@ Page({
     let sl=this;
     wx.request({
       url: 'http://api_devs.wanxikeji.cn/api/goodList',
-      data:{
-        good_type:id,
-      },
+      // data:{
+      //   good_type:id,
+      // },
       success(res){
         if(res.data.code==2000){
           sl.data.prolist=res.data.data.data;

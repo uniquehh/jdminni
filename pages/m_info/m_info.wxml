@@ -232,24 +232,21 @@
   <view wx:if="{{shopcar}}">
     <view class="titlewrap">
       <view>
-        <image mode="heightFix" class="popimg" src="{{information.img}}"/>
+        <image  mode="heightFix" class="popimg" src="{{tapSKu?skuinfo.img:information.img}}"/>
       </view>
       <view class="poptitle">
-        <view style="color:#f2270c;margin-bottom:5px">￥<text style="font-size:24px">{{price[0]}}</text>.{{price[1]}}</view>
-        <view style="font-size: 12px;"><text style="margin-right: 10px;color: #8c8c8c;">已选</text>【大1匹】风酷三级 性价比优选,1个</view>
+        <view style="color:#f2270c;margin-bottom:5px">￥<text style="font-size:24px">{{tapSKu?skuinfo.price:price[0]}}</text>.{{tapSKu?'00':price[1]}}</view>
+        <view style="font-size: 12px;"><text style="margin-right: 10px;color: #8c8c8c;">已选</text>{{tapSKu?skuinfo.sku:choosedSku}}</view>
       </view>
     </view>
     <scroll-view scroll-y="true" style="height: 330px;">
-      <view class="cho">
-        <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">匹数</view>
-        <radio-group bindchange="radiochange">
-          <view style="display: flex;flex-wrap: wrap;">
-            <label wx:for="{{list}}" wx:key="listkey" class="choitem {{item.checked?'choitem_checked':''}}">
-              <radio style="display: none;" checked="{{item.checked}}" value="{{item.value}}"/>{{item.name}}
-            </label>
+      <view class="cho" wx:for="{{sku.sku_column}}" wx:key="columnkey">
+        <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;" >{{item.key}}</view>
+          <view style="display: flex;flex-wrap: wrap; margin-right:10px" 
+          wx:for="{{item.value}}" wx:key="listkey" class="choitem {{item.checked==indexs?'choitem_checked':''}}" wx:for-index="indexs" wx:for-item="items"
+          bindtap="chooseSku" data-index="{{index}}" data-indexs="{{indexs}}"
+          >{{items}} 
           </view>
-        </radio-group>
-        <view >{{item.name}}</view>
       </view>
       <view class="chonum">
         <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">数量</view>
