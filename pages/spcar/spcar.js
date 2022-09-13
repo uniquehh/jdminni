@@ -1,10 +1,12 @@
 // pages/spcar/spcar.js
+import { getUserProFile,getUserCode,axios } from "../../utils/util"
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     isLogin:false,
+    spcarList:[],
   },
   // 购物车商品复选框选项组
   spcarItemCheck(e){
@@ -13,7 +15,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
+  async onLoad(options) {
     // 判断是否登录
     if(!wx.getStorageSync('token')){
       this.setData({
@@ -23,44 +25,75 @@ Page({
       this.setData({
         isLogin:true,
       })
+      // 获取购物车数据
+      let spcarData = await axios({
+        url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
+        data:{
+          token: wx.getStorageSync('token'),
+        }
+      })
+      this.setData({
+        spcarList:spcarData.data.data,
+      })
     }
   },
   // 点击函数--返回上一个页面
   goBack(){
-    console.log("原生得tabbar页面无法返回上一页，我也很无奈")
+    console.log("原生tabbar页面无法返回上一页，我也很无奈")
   },
   // 点击函数--登录
-  clickLogin(){
+  async clickLogin(){
     let openid = "";
     let nick_name = "";
     let icon = "";
-    wx.getUserProfile({
-      desc: 'login',
-      success(res){
-        console.log(res);
-        nick_name = res.userInfo.nickName
-        icon = res.userInfo.avatarUrl
-        wx.login({
-          success(res){
-            console.log("login",res);
-            if (res.code) {
-              //发起网络请求换取openid
-              wx.request({
-                url: 'http://api_devs.wanxikeji.cn/api/codeExchangeOpenid',
-                data: {
-                  code: res.code
-                },
-                success(res){
-                  console.log("id",res);
-                }
-              })
-            } else {
-              console.log('登录失败！' + res.errMsg)
-            }
-          }
-        })
+    let code = "";
+    let res1 = await getUserProFile();
+    nick_name = res1.userInfo.nickName
+    icon = res1.userInfo.avatarUrl
+    let res2 = await getUserCode();
+    code = res2.code
+    let res3 = await axios({
+      url: 'http://api_devs.wanxikeji.cn/api/codeExchangeOpenid',
+      data: {
+        code,
       },
     })
+    console.log(res3);
+    // 判断换取openid接口是否成功
+    if(res3.statusCode == 200){
+      if(res3.data.code ==2000){
+        openid = res3.data.data.openid
+      }else{
+        console.log(res3.data.msg);
+      }
+    }else{
+      console.log("换取openid接口请求错误");
+    }
+    // 如果token有效，即调用换取openid接口时返回数据内有info字段
+    // 则说明token依然可用，否则再调用注册接口获取token
+    if(res3.data.data.info){
+      wx.setStorageSync('token', res3.data.data.info.token)
+      // 获取购物车数据
+      let spcarData = await axios({
+        url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
+        data:{
+          token: wx.getStorageSync('token'),
+        }
+      })
+      this.setData({
+        spcarList:spcarData.data.data,
+      })
+    }else{
+      let res4 = await axios({
+        url: 'http://api_devs.wanxikeji.cn/api/register',
+        data: {
+          nick_name,
+          icon,
+          openid,
+        },
+      })
+      wx.setStorageSync('token', res4.data.token)
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

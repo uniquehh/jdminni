@@ -9,7 +9,7 @@
       <view class="besictext">
         <view class="left">
           <view class="text">收货人</view>
-          <input type="text" value="" placeholder="请填写收货人姓名" />
+          <input type="text" value="{{basicInfo.name}}" placeholder="请填写收货人姓名" />
         </view>
         <view class="clearcont">
           <image src="../../img/hcleartext.svg"></image>
@@ -20,7 +20,7 @@
           <view class="text">联系方式</view>
           <view class="teltext">+86</view>
           <image class="telimg" src="../../img/hxia.svg"></image>
-          <input type="text" value="" placeholder="请填写收货人手机号" />
+          <input type="text" value="{{basicInfo.tel}}" placeholder="请填写收货人手机号" />
         </view>
         <view class="clearcont">
           <image src="../../img/hcleartext.svg"></image>
@@ -30,9 +30,13 @@
         <view class="left">
           <view class="text">所在地区</view>
           <view class="pickerbox">
-            <picker mode="region">
+            <picker mode="region"
+            value="{{basicInfo.diqu}}"
+            bindchange="pickerChange"
+            >
               <view class="pickertext">
-                <view class="wenben">省市区县、乡镇等</view>
+                <view class="wenben" wx:if="{{!basicInfo.diqu.length}}">省市区县、乡镇等</view>
+                <view class="wenben" wx:if="{{basicInfo.diqu.length}}">{{basicInfo.diqu}}</view>
                 <image class="pickerimage" src="../../img/hrightjian.svg"></image>
               </view>
             </picker>
@@ -42,7 +46,7 @@
       <view class="besictext besiclast">
         <view class="left">
           <view class="text">详细地址</view>
-          <input type="text" value="" placeholder="街道、门牌号等" />
+          <input type="text" value="{{basicInfo.dizhi}}" placeholder="街道、门牌号等" />
         </view>
         <view class="clearcont">
           <image src="../../img/hcleartext.svg"></image>
@@ -55,7 +59,7 @@
         <view class="tags">
           <view class="tagtext">标签</view>
           <view class="tagbox">
-            <view class="tag">学校</view>
+            <view class="tag" bindtap="test">学校</view>
             <view class="tag">家</view>
             <view class="tag">公司</view>
             <view class="tag addtag">+</view>

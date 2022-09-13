@@ -12,8 +12,8 @@
   <image src="../../img/hmore.svg" class="more"></image>
 </view>
 <view class="spcar">
-  <view class="position">
-    <view class="posibox" wx:if="{{isLogin}}">
+  <view class="position" wx:if="{{isLogin&&spcarList.length}}">
+    <view class="posibox">
       <view class="left">
         <image bindtap="goBack" src="../../img/hposition.png" mode="aspectFit"></image>
         <text>成都市金牛区</text>
@@ -32,13 +32,17 @@
       >登录</view>
     </view>
   </view>
-  <view wx:if="{{isLogin}}" class="head">
+  <view wx:if="{{spcarList.length}}" class="head">
     <text class="comnum">全部（1）</text>
     <text class="manjian">跨店满减（0）</text>
   </view>
   <view wx:if="{{!isLogin}}" class="nolgtwo">
     <image src="../../img/hnologin.png"></image>
     <view class="nolotext">登陆后可同步购物车中的商品</view>
+  </view>
+  <view wx:if="{{!spcarList.length}}" class="nolgtwo">
+    <image src="../../img/hnologin.png"></image>
+    <view class="nolotext">购物车空空如也，去逛逛吧~</view>
   </view>
   <view wx:if="{{isLogin}}" class="list">
     <view class="list-main">

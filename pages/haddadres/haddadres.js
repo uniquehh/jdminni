@@ -1,4 +1,5 @@
 // pages/haddadres/haddadres.js
+import { axios } from "../../utils/util"
 Page({
 
   /**
@@ -6,8 +7,20 @@ Page({
    */
   data: {
     isAdd:true,
+    basicInfo:{
+      name:"",
+      tel:"",
+      diqu:[],
+      dizhi:"",
+    },
   },
-
+  pickerChange(e){
+    console.log(e)
+    this.data.basicInfo.diqu = e.detail.value
+    this.setData({
+      basicInfo:this.data.basicInfo,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,7 +35,10 @@ Page({
       })
     }
   },
-
+  // 测试的点击事件
+  test(){
+    console.log(this.data.basicInfo)
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
