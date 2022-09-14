@@ -1,4 +1,5 @@
 // pages/m_login/m_login.js
+import {getUserProFile,getUserCode,axios} from "../../utils/util"
 Page({
 
   /**
@@ -7,39 +8,42 @@ Page({
   data: {
 
   },
-  wxlogin(){
-    let nickName="";
-    let icon="";
-    let code="";
-    wx.getUserProfile({
-      desc: '微信授权登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        nickName=res.userInfo.nickName;
-        icon=res.userInfo.avatarUrl;
-        wx.login({
-          success(res){
-            code=res.code;
-            console.log(code);
-            wx.request({
-              url: 'http://api_devs.wanxikeji.cn/api/codeExchangeOpenid',
-              data:{
-                code:code,
-              },
-              success(res){
-                console.log(res,74);
-              },
-              fail(res){
-                wx.showToast({
-                  title: res.data.msg,
-                })
-              }
-            })
-          }
-        })
+  async wxlogin(){
+    let nickName_icon = await getUserProFile();
+    let nickName=nickName_icon.userInfo.nickName;
+    let icon=nickName_icon.userInfo.avatarUrl;
+    let codes = await getUserCode();
+    let userInfo=await axios({
+      url:"http://api_devs.wanxikeji.cn/api/codeExchangeOpenid",
+      data:{
+        code:codes.code
       }
     })
-    
-  },
+    let sessionkey=userInfo.data.data.session_key;
+    let openid=userInfo.data.data.openid;
+    wx.setStorageSync('session_key', userInfo.data.data.session_key);
+    wx.setStorageSync('openid', userInfo.data.data.openid);
+    if(!userInfo.data.data.info){
+      console.log(1);
+      let ress=await axios({
+        url:"http://api_devs.wanxikeji.cn/api/register",
+        data:{
+          openid:openid,
+          nick_name:nickName,
+          icon:icon
+        }
+      })
+      let info=ress.data.data;
+      console.log(info);
+      wx.setStorageSync('info', JSON.stringify(info));
+      wx.setStorageSync('token', info.token);
+      wx.navigateBack()
+    }else{
+      wx.setStorageSync('info', JSON.stringify(userInfo.data.data.info));
+      wx.setStorageSync('token', userInfo.data.data.info.token);
+      wx.navigateBack()
+    }
+},
   /**
    * 生命周期函数--监听页面加载
    */

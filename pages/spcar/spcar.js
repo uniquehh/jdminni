@@ -12,6 +12,36 @@ Page({
   spcarItemCheck(e){
     console.log(e);
   },
+  // 删除购物车
+  async deleteSpcar(e){
+    console.log(e.currentTarget.dataset.item,1522);
+    let carItem = e.currentTarget.dataset.item;
+    let delcar= await axios({
+      url:"http://api_devs.wanxikeji.cn/api/shoppingCarDelete",
+      data:{
+        token:wx.getStorageSync('token'),
+        shopping_car_id:carItem.shopping_car_id
+      }
+    })
+    console.log(delcar,13)
+    if(delcar.data.code==2000){
+      // 获取购物车数据
+      let spcarData = await axios({
+        url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
+        data:{
+          token: wx.getStorageSync('token'),
+        }
+      })
+      let temp=spcarData.data.data.data;
+      temp.forEach(item=>{
+        item.sku=JSON.parse(item.sku);
+        item.pirce=item.price.split(".")[0]
+      })
+      this.setData({
+        spcarList:temp,
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -32,8 +62,13 @@ Page({
           token: wx.getStorageSync('token'),
         }
       })
+      let temp=spcarData.data.data.data;
+      temp.forEach(item=>{
+        item.sku=JSON.parse(item.sku);
+        item.pirce=item.price.split(".")[0]
+      })
       this.setData({
-        spcarList:spcarData.data.data,
+        spcarList:temp,
       })
     }
   },
@@ -81,7 +116,7 @@ Page({
         }
       })
       this.setData({
-        spcarList:spcarData.data.data,
+        spcarList:spcarData.data.data.data,
       })
     }else{
       let res4 = await axios({
@@ -105,8 +140,31 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
+  async onShow() {
+    if(!wx.getStorageSync('token')){
+      this.setData({
+        isLogin:false,
+      })
+    }else{
+      this.setData({
+        isLogin:true,
+      })
+      // 获取购物车数据
+      let spcarData = await axios({
+        url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
+        data:{
+          token: wx.getStorageSync('token'),
+        }
+      })
+      let temp=spcarData.data.data.data;
+      temp.forEach(item=>{
+        item.sku=JSON.parse(item.sku);
+        item.pirce=item.price.split(".")[0]
+      })
+      this.setData({
+        spcarList:temp,
+      })
+    }
   },
 
   /**

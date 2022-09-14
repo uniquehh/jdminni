@@ -33,20 +33,20 @@
     </view>
   </view>
   <view wx:if="{{spcarList.length}}" class="head">
-    <text class="comnum">全部（1）</text>
+    <text class="comnum">全部（{{spcarList.length}}）</text>
     <text class="manjian">跨店满减（0）</text>
   </view>
   <view wx:if="{{!isLogin}}" class="nolgtwo">
     <image src="../../img/hnologin.png"></image>
     <view class="nolotext">登陆后可同步购物车中的商品</view>
   </view>
-  <view wx:if="{{!spcarList.length}}" class="nolgtwo">
+  <view wx:if="{{isLogin&&!spcarList.length}}" class="nolgtwo">
     <image src="../../img/hnologin.png"></image>
     <view class="nolotext">购物车空空如也，去逛逛吧~</view>
   </view>
-  <view wx:if="{{isLogin}}" class="list">
+  <view wx:if="{{isLogin&&spcarList.length}}" class="list">
     <view class="list-main">
-      <view class="item">
+      <view class="item" wx:for="{{spcarList}}" wx:key="spcarkey">
         <checkbox-group bindchange="spcarItemCheck">
           <view class="dianpu">
             <label>
@@ -71,19 +71,20 @@
                   <checkbox color="#fff" value="" />
                 </label>
                 <navigator url="../hinfo/hinfo">
-                  <image class="proimage" src="../../img/hgood.webp"></image>
+                  <image class="proimage" src="{{item.sku.img}}"/>
                 </navigator>
               </view>
               <view class="info">
                 <navigator url="../hinfo/hinfo">
                   <view class="title">
-                    格力空调格力空调格力空调格力空调格力空调
+                    {{item.sku.sku}}
                   </view>
                 </navigator>
                 <view class="tabs">
                   <view class="fuwu">
-                    <view class="tuijian">【店长推荐】556L变频空调</view>
-                    <view>选服务
+                    <view class="tuijian">{{item.sku.sku}}</view>
+                    <view>
+                    选服务
                       <image src="../../img/hxia.svg"></image>
                     </view>
                   </view>
@@ -98,7 +99,7 @@
                     <view class="price">
                       <view class="pricebox">
                         <text class="fuhao">￥</text>
-                        <text class="jiage">2779</text>
+                        <text class="jiage">{{item.price}}</text>
                         <text class="xiaoshu">.00</text>
                       </view>
                       <view class="imgbox">
@@ -108,14 +109,14 @@
                     </view>
                     <view class="num">
                       <view class="jianhao"></view>
-                      <input type="text" />
+                      <input type="text" value="{{item.num}}"/>
                       <text class="jiahao">+</text>
                     </view>
                   </view>
                   <view class="guanzhu">
                     <text>移入关注</text>
                     <text class="shuxian">|</text>
-                    <text>删除</text>
+                    <text bindtap="deleteSpcar" data-item="{{item}}">删除</text>
                   </view>
                 </view>
               </view>

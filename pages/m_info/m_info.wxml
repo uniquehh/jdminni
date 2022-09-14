@@ -236,7 +236,7 @@
       </view>
       <view class="poptitle">
         <view style="color:#f2270c;margin-bottom:5px">￥<text style="font-size:24px">{{tapSKu?skuinfo.price:price[0]}}</text>.{{tapSKu?'00':price[1]}}</view>
-        <view style="font-size: 12px;"><text style="margin-right: 10px;color: #8c8c8c;">已选</text>{{tapSKu?skuinfo.sku:choosedSku}}</view>
+        <view style="font-size: 12px;"><text style="margin-right: 10px;color: #8c8c8c;">已选</text>{{tapSKu?skuinfo.sku:choosedSku.sku}}</view>
       </view>
     </view>
     <scroll-view scroll-y="true" style="height: 330px;">
@@ -249,7 +249,7 @@
           </view>
       </view>
       <view class="chonum">
-        <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">数量</view>
+        <view style="color: #2c0d0d;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">数量</view>
         <view class="numitem">
           <view class="countnum" bindtap="reduceNum">-</view>
           <view class="numinput">

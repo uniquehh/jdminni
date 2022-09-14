@@ -41,7 +41,6 @@ Page({
       skuinfo:this.data.skuinfo,
       tapSKu:this.data.tapSKu
     })
-    console.log(this.data.tapSKu?this.data.choosedSku:'111',12356);
   },
   reduceNum(){
     this.data.num--;
@@ -70,7 +69,8 @@ Page({
     return d + '天' + h + '时' + m + '分' + s + '秒'; //返回函数计算出的值
 },
   addpro(e){
-    console.log(e);
+    console.log(this.data.information);
+    // 
     if(e.currentTarget.dataset.modle=="shopcar"){
       this.data.shopcar=true;
     }else{
@@ -90,6 +90,42 @@ Page({
     if(!wx.getStorageSync('info')){
       wx.navigateTo({
         url: '../m_login/m_login',
+      })
+    }else{
+      let info=JSON.parse(wx.getStorageSync('info'));
+      let price=0;
+      let money=0;
+      let sku='';
+      let that=this;
+      if(this.data.tapSKu){
+        price=this.data.skuinfo.price;
+        sku=JSON.stringify(this.data.skuinfo);
+      }else{
+        price=this.data.information.price
+        sku=JSON.stringify(this.data.choosedSku);
+      }
+      money=price*this.data.num;
+      // 
+      wx.request({
+        url: 'http://api_devs.wanxikeji.cn/api/shoppingCarAddModify',
+        data:{
+          token:info.token,
+          good_id:this.data.information.good_id,
+          num:this.data.num,
+          price,
+          money,
+          sku,
+        },
+        success(res){
+            wx.showToast({
+              title: res.data.msg,
+            })
+            if(res.data.code==2000){
+              that.setData({
+                showPop:false
+              })
+            }
+        }
       })
     }
   },
@@ -118,7 +154,7 @@ Page({
               item.checked=0;
           })
           that.data.sku=tempsku;
-          that.data.choosedSku=tempsku.sku_list[0].sku;
+          that.data.choosedSku=tempsku.sku_list[0];
           console.log(that.data.sku,457);
         }
         that.setData({
@@ -142,7 +178,7 @@ Page({
       }
     })
     setInterval(()=>{
-      this.data.countTime=this.countDown('2022-09-13 12:30:00')
+      this.data.countTime=this.countDown('2022-09-14 24:00:00')
       this.setData({
         countTime:this.data.countTime,
       })

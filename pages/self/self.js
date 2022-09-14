@@ -1,4 +1,5 @@
 // pages/self/self.js
+import {getUserProFile,getUserCode,axios} from "../../utils/util"
 Page({
 
   /**
@@ -7,7 +8,46 @@ Page({
   data: {
 
   },
-
+  async wxlogin(){
+    let nickName_icon = await getUserProFile();
+    let nickName=nickName_icon.userInfo.nickName;
+    let icon=nickName_icon.userInfo.avatarUrl;
+    let codes = await getUserCode();
+    let userInfo=await axios({
+      url:"http://api_devs.wanxikeji.cn/api/codeExchangeOpenid",
+      data:{
+        code:codes.code
+      }
+    })
+    let sessionkey=userInfo.data.data.session_key;
+    let openid=userInfo.data.data.openid;
+    wx.setStorageSync('session_key', userInfo.data.data.session_key);
+    wx.setStorageSync('openid', userInfo.data.data.openid);
+    if(!userInfo.data.data.info){
+      console.log(1);
+      let ress=await axios({
+        url:"http://api_devs.wanxikeji.cn/api/register",
+        data:{
+          openid:openid,
+          nick_name:nickName,
+          icon:icon
+        }
+      })
+      let info=ress.data.data;
+      console.log(info);
+      wx.setStorageSync('info', JSON.stringify(info));
+      wx.setStorageSync('token', info.token);
+      wx.showToast({
+        title:"登录成功",
+      })
+    }else{
+      wx.setStorageSync('info', JSON.stringify(userInfo.data.data.info));
+      wx.setStorageSync('token', userInfo.data.data.info.token);
+      wx.showToast({
+        title:"登录成功",
+      })
+    }
+},
   /**
    * 生命周期函数--监听页面加载
    */

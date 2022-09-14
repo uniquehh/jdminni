@@ -1,2 +1,5 @@
 <!--pages/self/self.wxml-->
-<text>pages/self/self.wxml</text>
+<view>
+  <button bindtap="wxlogin">授权登录</button>
+</view>
+
