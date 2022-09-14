@@ -9,7 +9,7 @@
       <view class="besictext">
         <view class="left">
           <view class="text">收货人</view>
-          <input type="text" value="{{basicInfo.name}}" placeholder="请填写收货人姓名" />
+          <input type="text" value="{{basicInfo.name}}" placeholder="请填写收货人姓名" bindinput="inputName" />
         </view>
         <view class="clearcont">
           <image src="../../img/hcleartext.svg"></image>
@@ -20,7 +20,7 @@
           <view class="text">联系方式</view>
           <view class="teltext">+86</view>
           <image class="telimg" src="../../img/hxia.svg"></image>
-          <input type="text" value="{{basicInfo.tel}}" placeholder="请填写收货人手机号" />
+          <input type="text" value="{{basicInfo.tel}}" placeholder="请填写收货人手机号" bindinput="inputTel" />
         </view>
         <view class="clearcont">
           <image src="../../img/hcleartext.svg"></image>
@@ -35,7 +35,7 @@
             bindchange="pickerChange"
             >
               <view class="pickertext">
-                <view class="wenben" wx:if="{{!basicInfo.diqu.length}}">省市区县、乡镇等</view>
+                <view class="wenben placehold" wx:if="{{!basicInfo.diqu.length}}">省市区县、乡镇等</view>
                 <view class="wenben" wx:if="{{basicInfo.diqu.length}}">{{basicInfo.diqu}}</view>
                 <image class="pickerimage" src="../../img/hrightjian.svg"></image>
               </view>
@@ -46,7 +46,7 @@
       <view class="besictext besiclast">
         <view class="left">
           <view class="text">详细地址</view>
-          <input type="text" value="{{basicInfo.dizhi}}" placeholder="街道、门牌号等" />
+          <input type="text" value="{{basicInfo.dizhi}}" placeholder="街道、门牌号等" bindinput="inputDiZhi" />
         </view>
         <view class="clearcont">
           <image src="../../img/hcleartext.svg"></image>
@@ -59,20 +59,23 @@
         <view class="tags">
           <view class="tagtext">标签</view>
           <view class="tagbox">
-            <view class="tag" bindtap="test">学校</view>
-            <view class="tag">家</view>
-            <view class="tag">公司</view>
-            <view class="tag addtag">+</view>
+            <view wx:for="{{tags}}" wx:key="index" bindtap="selectTag" data-index="{{index}}" 
+            class="tag {{index===item.idx?'tagcurr':''}}"
+            >{{item.val}}</view>
+            <view class="tag addtag" bindtap="addTag">+</view>
           </view>
         </view>
         <view wx:if="{{isAdd}}" class="shibie">
           <view class="title">智能识别地址：</view>
           <view class="areabox">
-            <textarea class="znshibie" rows="3" placeholder="粘贴整段文字，如：北京市大兴区科创十一街京东集团总部，张小三，12345679876" auto-height="true"></textarea>
+            <textarea class="znshibie" rows="3" placeholder="粘贴整段文字，如：北京市大兴区科创十一街京东集团总部，张小三，13072835455" auto-height="true"
+            value="{{shiBieVal}}"
+            bindinput="shiBieInput"
+            ></textarea>
           </view>
           <view class="areabtn">
-            <view class="clear">清空</view>
-            <view class="shibiebtn">识别</view>
+            <view class="clear" bindtap="clearShiBie">清空</view>
+            <view class="shibiebtn" bindtap="shiBieResult">识别</view>
           </view>
         </view>
         <view class="tishibox">
@@ -80,7 +83,10 @@
             <view class="tstext">设为默认地址</view>
             <view class="tishi">提醒：设为默认地址后，每次下单会默认使用该地址</view>
           </view>
-          <switch color="#FF0000"></switch>
+          <switch wx:if="{{isAdd}}" bindchange="isDefault" color="#FF0000"></switch>
+          <switch wx:if="{{!isAdd}}" bindchange="isDefault" color="#FF0000"
+          checked="{{defautAdrs}}"
+          ></switch>
         </view>
       </view>
     </view>
@@ -88,14 +94,15 @@
   <view class="footerbtn">
     <view class="confirm">
       <view class="cfbtnbox">
-        <button class="confirmbtn">
+        <button class="confirmbtn" bindtap="addAdress"
+        >
           确认
         </button>
       </view>
     </view>
     <view wx:if="{{!isAdd}}" class="confirm">
       <view class="cfbtnbox">
-        <button class="delete">
+        <button class="delete" bindtap="deleteAdres">
           删除
         </button>
       </view>

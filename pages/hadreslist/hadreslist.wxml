@@ -6,25 +6,31 @@
 <view class="address">
   <view class="adrslist">
     <radio-group>
-      <view class="adrsitem">
-        <label class="radiolabel">
-          <radio class="radio"></radio>
+      <view class="adrsitem" wx:for="{{addresList}}" wx:key="index">
+        <label class="radiolabel" style="flex: 1 1 auto;margin-right: 20rpx;"
+        bindtap="selectAdress"
+        data-item="{{item}}"
+        >
+          <radio class="radio" checked="{{item.address_id==sAdress.address_id?true:false}}" ></radio>
           <view class="itemmain">
             <view class="adrsbasic">
-              <view class="moren">默认</view>
-              <view class="adrstext">四川成都市金牛区抚琴街道</view>
+              <view class="moren" wx:if="{{item.default}}">默认</view>
+              <view class="adrstext">{{item.procince}}+{{item.city}}+{{item.area}}</view>
             </view>
             <view class="xiaoqu">
-              为民信局南区
+              {{item.detailed}}
             </view>
             <view class="basicinfo">
-              <text>木木</text>
-              <text>130****5450</text>
+              <text>{{item.name}}</text>
+              <text>{{item.phone}}</text>
             </view>
           </view>
         </label>
         <navigator url="../haddadres/haddadres?adres=edit">
-          <view class="editimg">
+          <view class="editimg"
+          bindtap="editAdress"
+          data-item="{{item}}"
+          >
             <image src="../../img/hedit.svg"></image>
           </view>
         </navigator>

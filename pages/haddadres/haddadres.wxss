@@ -62,10 +62,12 @@
   flex: 1 1 auto;
 }
 .pickertext{
-  color: #A18080;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.placehold{
+  color: #A18080;
 }
 .wenben{
   text-align: left;
@@ -103,8 +105,7 @@
   flex-wrap: wrap;
 }
 .tagbox .tag{
-  width: 120rpx;
-  padding: 10rpx 0rpx;
+  padding: 10rpx 40rpx;
   border: 2rpx solid gray;
   text-align: center;
   border-radius: 40rpx;
