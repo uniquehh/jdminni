@@ -1,10 +1,10 @@
 <!--pages/component/filt.wxml-->
-<view>
-
-  <scroll-view scroll-y="true" style="height: 100vh;">
+<view style="margin-top:50px">
+  <scroll-view scroll-y="true" style="height: calc(100vh - 50px); ">
     <view style="background-color: #F7F7F7;width: 90%;">
+    <view wx:if="{{!showCity}}">
       <view class="title">
-        配送至<text class="address">北京-朝阳区-三环到四环之间></text>
+        配送至<text class="address" bindtap="chooseCity">北京-朝阳区-三环到四环之间></text>
       </view>
       <view class="chooseType">
         <view class="chooseitem">1</view>
@@ -97,6 +97,16 @@
       <view class="clear">
         <button class="clearchoose">清除选项</button>
       </view>
+    </view>
+    <view wx:if="{{showCity}}" class="parld">
+      <view wx:for="{{city}}" wx:key="citykey">
+        <view style="background-color: white;">{{item.type}}</view>
+        <view class="items" wx:for="{{item.value}}" wx:key="valuekey" wx:for-index="indexs" wx:for-item="items">{{items}}</view>
+      </view>
+      <view class="ld">
+        <view  wx:for="{{city}}" wx:key="citykey">{{item.type}}</view>
+      </view>
+    </view>
     </view>
   </scroll-view>
 </view>

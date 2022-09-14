@@ -1,5 +1,5 @@
-<!--index.wxml-->
-<view >
+<!-- <view bindtouchmove="scrollToBottom"> -->
+<scroll-view enhanced="true" scroll-y="true" bindscrolltolower="scrollToBottom" style="height: 200vh;">
   <view class="search">
     <view class="search-box">
       <view class="inputbox">
@@ -69,11 +69,16 @@
             </view>
           </view>
         </view>
+        <view class="weui-loadmore" hidden="{{hidden}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">努力加载中</view>
+      </view> 
       </view>
     </view>
   </view>
-  <page-container show="{{showPop}}" position="{{popPosition}}" custom-style="{{customStyle}}" duration="{{duration}}" overlay-style="margin-top:250px" bind:clickoverlay="closePop">
+<!-- </view> -->
+  </scroll-view>
+  <page-container show="{{showPop}}" position="{{popPosition}}" custom-style="{{customStyle}}" duration="{{duration}}" overlay-style="{{layoutStyle}}" bind:clickoverlay="closePop">
     <brandForm wx:if="{{showBrand}}"></brandForm>
     <filtForm wx:if="{{!showBrand}}"></filtForm>
   </page-container>
-</view>

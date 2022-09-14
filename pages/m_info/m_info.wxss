@@ -282,6 +282,9 @@
   font-weight: 700;
   background-color: #FCEDEB;
 }
+.yh{
+  margin-bottom: 10px;
+}
 .i_yh{
   text-align: center;
   font-weight: bold;
@@ -326,6 +329,9 @@
   line-height: 20px;
   padding:0;
   border-radius: 20px;
+}
+.yhbtn .yh_cantbtn{
+  background-color: #ccc;
 }
 .yh{
   display: flex;

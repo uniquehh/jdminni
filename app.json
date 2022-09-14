@@ -2,8 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/type/type",
-    "pages/m_login/m_login",
     "pages/m_info/m_info",
+    "pages/m_login/m_login",
     "pages/m_category/m_category",
     "pages/surpri/surpri",
     "pages/spcar/spcar",
