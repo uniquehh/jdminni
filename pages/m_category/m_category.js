@@ -1,4 +1,6 @@
-// index.js
+
+const { axios } = require("../../utils/util");
+
 // 获取应用实例
 const app = getApp()
 
@@ -19,7 +21,15 @@ Page({
     showfilt:false,
     popPosition:'',
     customStyle:"",
+    layoutStyle:"",
     prolist:[],
+    duration:300,
+    request:{
+      pageIdx:1,
+      pageNum:10
+    },
+    hidden:false,
+    ifLoadMore:null,
   },
   showSec(e){
     // if(e.currentTarget.dataset.showoff==false){
@@ -34,16 +44,19 @@ Page({
     // }
     if(e.currentTarget.dataset.position=="top"){
       this.data.showBrand=true;
-      this.data.customStyle="margin-top:250px";
+      this.data.customStyle="margin-top:230px";
+      this.data.layoutStyle="margin-top:230px"
     }else{
       this.data.showBrand=false;
       this.data.customStyle="margin-left:10%";
+      this.data.layoutStyle=""
     }
     this.setData({ 
        showBrand:this.data.showBrand,
        showPop:true,
        popPosition:e.currentTarget.dataset.position,
-       customStyle:this.data.customStyle
+       customStyle:this.data.customStyle,
+       layoutStyle:this.data.layoutStyle
         // [`catData[${e.currentTarget.dataset.index}].showOut`]:e.currentTarget.dataset.showoff
     })
   },
@@ -56,29 +69,61 @@ Page({
       url: `../m_info/m_info`
     })
   },
-  closePop(){
-    this.setData({
-      showPop:false,
-      customStyle:"display:none"
-    })
-  },
-  onLoad(option) {
-    let id=wx.getStorageSync('typeId');
+  getProList(){
     let sl=this;
     wx.request({
       url: 'http://api_devs.wanxikeji.cn/api/goodList',
-      // data:{
-      //   good_type:id,
-      // },
-      success(res){
-        if(res.data.code==2000){
-          sl.data.prolist=res.data.data.data;
-          sl.setData({
-            prolist:sl.data.prolist,
-          })
+      data:{
+        page:sl.data.request.pageIdx,
+        size:sl.data.request.pageNum
+      },
+      success(res ){
+        let temp = res.data.data.data;
+        console.log(temp);
+        sl.data.request.pageNum+=10;
+        if (sl.data.ifLoadMore) {
+          console.log("应该加载更多");
+          //加载更多
+          if (sl.data.request.pageNum>res.data.data.count){
+            console.log("已经加载完啦");
+              sl.data.ifLoadMore = false;
+              this.setData({
+                hidden:true
+              })
+              wx.showToast({
+                title: '暂无更多内容！',
+                icon: 'loading',
+                duration: 2000
+              })
+          }
+        }else{
+          if (sl.dataifLoadMore == null){
+            sl.data.ifLoadMore = true;
+          }
         }
+        sl.setData({
+          prolist:temp,
+        });
+        wx.stopPullDownRefresh();//结束动画
       }
     })
+  },
+  scrollToBottom(){
+    if(this.data.ifLoadMore!=null){
+      console.log(11111);
+      this.getProList();
+    }
+  }, 
+  // 
+  closePop(){
+    this.setData({
+      customStyle:"",
+      duration:0,
+      showPop:false,
+    })
+  },
+  onLoad(option) {
+    this.getProList();
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗

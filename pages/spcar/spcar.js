@@ -70,6 +70,14 @@ Page({
       this.setData({
         spcarList:temp,
       })
+      // 获取用户优惠券
+      let res=await axios({
+        url:"http://api_devs.wanxikeji.cn/api/userCouponList",
+        data:{
+          token:wx.getStorageSync('token')
+        }
+      })
+      console.log(res,123540);
     }
   },
   // 点击函数--返回上一个页面

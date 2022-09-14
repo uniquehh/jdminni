@@ -1,4 +1,5 @@
 // pages/m_info/m_info.js
+import { axios } from "../../utils/util"
 Page({
 
   /**
@@ -15,7 +16,8 @@ Page({
     sku:{},
     skuinfo:{},
     choosedSku:[],
-    tapSKu:false
+    tapSKu:false,
+    currentCp:[]
   },
   goBack(){
     wx.navigateBack({
@@ -69,8 +71,6 @@ Page({
     return d + '天' + h + '时' + m + '分' + s + '秒'; //返回函数计算出的值
 },
   addpro(e){
-    console.log(this.data.information);
-    // 
     if(e.currentTarget.dataset.modle=="shopcar"){
       this.data.shopcar=true;
     }else{
@@ -81,11 +81,38 @@ Page({
       shopcar:this.data.shopcar
     })
   },
+  // 关闭弹窗
   closePop(){
     this.setData({
       showPop:false,
     })
   },
+  // 获取优惠券
+  async getDiscont(e){
+    let conponId=e.currentTarget.dataset.conpon.coupon_id;
+    this.data.currentCp.push(conponId);
+    console.log(this.data.currentCp.includes(conponId),123);
+    console.log(this.data.currentCp,152);
+    let res=await axios({
+      url:'http://api_devs.wanxikeji.cn/api/userCouponAdd',
+      data:{
+        token:wx.getStorageSync('token'),
+        coupon_id:conponId
+      }
+    })
+    let icon="success";
+    if(res.data.code!=2000){
+      icon="warn";
+    }
+    wx.showToast({
+      title: res.data.msg,
+      icon:icon
+    })
+    this.setData({
+      currentCp:this.data.currentCp
+    })
+  },
+  // 添加到购物车
   addselfpro(){
     if(!wx.getStorageSync('info')){
       wx.navigateTo({
@@ -155,7 +182,6 @@ Page({
           })
           that.data.sku=tempsku;
           that.data.choosedSku=tempsku.sku_list[0];
-          console.log(that.data.sku,457);
         }
         that.setData({
           information:that.data.information,
@@ -171,10 +197,13 @@ Page({
         if(res.data.code==2000){
           tempCont=res.data.data;
         }
-        that.data.conponList = tempCont.filter(item=>item.good_type_id==proinfo.type_parent_id);
-        // that.setData({
-        //   conponList:that.data.conponList,
-        // })
+        tempCont.forEach(item=>{
+          item.achieve=item.achieve.split(".")[0]
+          item.reduce=item.reduce.split(".")[0]
+        })
+        that.setData({
+          conponList:tempCont,
+        })
       }
     })
     setInterval(()=>{
