@@ -9,17 +9,20 @@
       <view class="adrmain">
         <view class="adrcont">
           <view class="adrhead">
-            <view class="adrhtab">默认</view>
-            <view class="adrhtext">四川成都市金牛区抚琴街道</view>
+            <view class="adrhtab"
+            wx:if="{{shAdress.default}}"
+            >默认</view>
+            <view class="adrhtext">{{shAdress.procince}} {{shAdress.city}} {{shAdress.area}}</view>
           </view>
-          <view class="adrcenter">为民信局</view>
-          <view class="adrfooter">木木 130****5450</view>
+          <view class="adrcenter">{{shAdress.detailed}}</view>
+          <view class="adrfooter">{{shAdress.name}} {{shAdress.phone}}</view>
         </view>
         <view class="adrjiantou">
           <image src="../../img/hrightjian.svg"></image>
         </view>
       </view>
     </navigator>
+    <!-- 平行四边形线条 -->
     <view class="divis-line">
       <view class="divisred"></view>
       <view class="divisblue"></view>
