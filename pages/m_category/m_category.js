@@ -95,6 +95,10 @@ Page({
                 icon: 'loading',
                 duration: 2000
               })
+          }else{
+            sl.setData({
+              hidden:false
+            })
           }
         }else{
           if (sl.dataifLoadMore == null){

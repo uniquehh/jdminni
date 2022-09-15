@@ -326,7 +326,6 @@
               </view>
               <view class="yhbtn">
                 2022.09.01-2022.09.30
-                <!-- {{tools.includes(currentCp,item.coupon_id)}} -->
                 <button class="yh_btn {{tools.includes(currentCp,item.coupon_id)?'yh_cantbtn':''}}" bindtap="getDiscont" data-conpon="{{item}}">领取</button>
               </view>
             </view>

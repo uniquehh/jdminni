@@ -160,6 +160,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log(options,456);
     let proinfo=JSON.parse(wx.getStorageSync('information'));
     let tempPri=proinfo.price;
     let priArr=tempPri.split(".");
@@ -171,7 +172,7 @@ Page({
     wx.request({
       url: 'http://api_devs.wanxikeji.cn/api/goodInfo',
       data:{
-        good_id:proinfo.good_id,
+        good_id:options?options.goodid:proinfo.good_id,
       },
       success(res){
         if(res.data.code==2000){

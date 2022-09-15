@@ -1,0 +1,193 @@
+<!--pages/spcar/spcar.wxml-->
+<page-meta>
+  <navigation-bar title=" "></navigation-bar>
+</page-meta>
+<view class="bordertop"></view>
+<view class="headnav">
+  <view class="imgbox" bindtap="goBack">
+    <image src="../../img/hleftjian.svg" class="goback"
+    ></image>
+  </view>
+  <view class="title" bindtap="test">购物车</view>
+  <image src="../../img/hmore.svg" class="more"></image>
+</view>
+<view class="spcar">
+  <view class="position" wx:if="{{isLogin&&spcarList.length}}">
+    <view class="posibox">
+      <view class="left">
+        <image bindtap="goBack" src="../../img/hposition.png" mode="aspectFit"></image>
+        <text>成都市金牛区</text>
+      </view>
+      <view class="right">
+        <text>|</text>
+        <text>编辑商品</text>
+      </view>
+    </view>
+    <view class="posibox posiboxtwo" wx:if="{{!isLogin}}">
+      <view  class="nolgone">
+      登陆后可同步账户购物车中的商品
+      </view>
+      <view class="loginbtn"
+      bindtap="clickLogin"
+      >登录</view>
+    </view>
+  </view>
+  <view wx:if="{{spcarList.length}}" class="head">
+    <text class="comnum">全部（{{spcarList.length}}）</text>
+    <text class="manjian">跨店满减（0）</text>
+  </view>
+  <view wx:if="{{!isLogin}}" class="nolgtwo">
+    <image src="../../img/hnologin.png"></image>
+    <view class="nolotext">登陆后可同步购物车中的商品</view>
+  </view>
+  <view wx:if="{{isLogin&&!spcarList.length}}" class="nolgtwo">
+    <image src="../../img/hnologin.png"></image>
+    <view class="nolotext">购物车空空如也，去逛逛吧~</view>
+  </view>
+  <view wx:if="{{isLogin&&spcarList.length}}" class="list">
+    <view class="list-main">
+      <view class="item" wx:for="{{spcarList}}" wx:key="spcarkey">
+        <checkbox-group bindchange="spcarItemCheck">
+          <view class="dianpu">
+            <label>
+              <checkbox color="#fff" class="check" value="{{item.shopping_car_id}}" checked="{{item.checked}}" />
+            </label>
+            <view class="name">
+              <image src="../../img/hdianpu.png"></image>
+              联合促销
+            </view>
+          </view>
+          <view class="agin">
+            <view class="bdtext">满2类总价9.7折，每类最多5件</view>
+            <view class="guang">
+              <text>再逛逛</text>
+              <image src="../../img/hrightjian.svg"></image>
+            </view>
+          </view>
+          <view class="produce">
+            <view class="pro-main">
+              <view class="checkgood">
+                <label>
+                  <checkbox color="#fff" value="{{item.good_id}}" checked="{{item.checked}}"/>
+                </label>
+                <view bindtap="toInfo" data-item="{{item}}">
+                  <image class="proimage" src="{{item.sku.img}}"/>
+                </view>
+              </view>
+              <view class="info">
+                <view bindtap="toInfo" data-item="{{item}}">
+                  <view class="title">
+                    {{item.sku.sku}}
+                  </view>
+                </view>
+                <view class="tabs">
+                  <view class="fuwu">
+                    <view class="tuijian">{{item.sku.sku}}</view>
+                    <view>
+                    选服务
+                      <image src="../../img/hxia.svg"></image>
+                    </view>
+                  </view>
+                  <view class="cuxiao">
+                    <view class="tabbtn">换促销
+                      <image src="../../img/hxia.svg"></image>
+                    </view>
+                    <view class="baitiao">白条3期免息</view>
+                  </view>
+                  <view class="yuyue">预约中，即将开始</view>
+                  <view class="prinum">
+                    <view class="price">
+                      <view class="pricebox">
+                        <text class="fuhao">￥</text>
+                        <text class="jiage">{{item.price}}</text>
+                        <text class="xiaoshu">.00</text>
+                      </view>
+                      <view class="imgbox">
+                        <image class="xinrenjia" src="../../img/hxinrenjia.png"></image>
+                        <image class="cgprice" src="../../img/hxia.svg"></image>
+                      </view>
+                    </view>
+                    <view class="num">
+                      <view class="jianhao" bindtap="modifynum" data-item="{{item.shopping_car_id}}" data-type="reduce"></view>
+                      <input type="text" value="{{item.num}}"/>
+                      <text class="jiahao" bindtap="modifynum" data-item="{{item.shopping_car_id}}" data-type="add">+</text>
+                    </view>
+                  </view>
+                  <view class="guanzhu">
+                    <text>移入关注</text>
+                    <text class="shuxian">|</text>
+                    <text bindtap="deleteSpcar" data-item="{{item}}">删除</text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="jiesuan">
+            <view class="jiesuanbox">
+              <view class="checkall">
+                <label>
+                  <checkbox class="jscheck" checked="{{allChecked}}"></checkbox>
+                  全选
+                </label>
+              </view>
+              <view class="sumprice">
+                <view class="zongji"> 总计:</view>
+                <view class="zongjinum">
+                ￥{{totalPrice}}.00
+                </view>
+                <navigator 
+                url="../hpayment/hpayment"
+                class="tojiesuan">
+                  去结算({{totalNum}}件)
+                </navigator>
+              </view>
+            </view>
+          </view>
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+  <view>
+    <image class="jdtupian" src="../../img/hjdtupian.png"></image>
+  </view>
+  <view class="division">
+    <view class="line"></view>
+    <view class="mayb">
+      <view>可能你还想要</view>
+    </view>
+    <view class="line"></view>
+  </view>
+  <view class="goodslist">
+    <view class="goods">
+      <navigator url="../hinfo/hinfo" class="goodnav">
+        <view class="gwrap">
+          <view class="goodimg">
+            <image src="../../img/hgood.webp"></image>
+          </view>
+          <view class="goodinfo">
+            <view class="goodtitle">
+              美菱(MELING)【离子净系列】556升一级能效变频双开门对开两门电冰箱家用风冷无霜BCD-556WPCX净味大容量
+            </view>
+            <view class="goodtab">
+              <view class="tabcont">
+                <image src="../../img/hzuidijia.png"></image>
+                <text>7天最低价</text>
+              </view>
+            </view>
+            <view class="price">
+              <view class="pricebox">
+                <text class="fuhao goodfuhao">￥</text>
+                <text class="jiage goodjiage">2779</text>
+                <text class="xiaoshu goodxiaoshu">.00</text>
+              </view>
+              <view class="imgbox miaoshabox">
+                <image class="miaosha" src="../../img/hmiaosha.png"></image>
+              </view>
+            </view>
+            <view class="pinglun">1000+条评论</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
