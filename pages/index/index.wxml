@@ -62,7 +62,7 @@
               data-type="{{itemss}}"
               data-goodtype="{{itemss.good_type_id}}"
               >
-                <image aspectFit src="/img/m_taylor.png"></image>
+                <image aspectFit src="{{itemss.img?itemss.img:'/img/m_taylor.png'}}"></image>
                 <view>{{itemss.type_name}}</view>
               </view>
             </view>

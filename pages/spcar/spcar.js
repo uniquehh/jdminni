@@ -12,6 +12,8 @@ function sumSpcarData(arr){
     obj.price+=item.money;
   })
   // console.log(checkList,4632);
+  wx.setStorageSync('checkList', checkList)
+  wx.setStorageSync('sumResult', obj)
   return obj
 }
 Page({
@@ -335,15 +337,19 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  async onShow() {
-    
+  onShow() {
+    this.setData({
+      spcarList:this.data.spcarList
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
+    this.setData({
+      spcarList:this.data.spcarList
+    })
   },
 
   /**

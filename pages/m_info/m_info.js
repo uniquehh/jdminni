@@ -162,11 +162,12 @@ Page({
     console.log(options,456);
     let good_id=0;
     let proinfo=JSON.parse(wx.getStorageSync('information'));
-    if(!JSON.stringify(options)=="{}"){
+    if(JSON.stringify(options)!="{}"){
       good_id=options.goodid;
     }else{
       good_id=proinfo.good_id;
     }
+    console.log(good_id,410);
     let tempPri=proinfo.price;
     let priArr=tempPri.split(".");
     let tempCont=[];
