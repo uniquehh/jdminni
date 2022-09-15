@@ -27,15 +27,15 @@
         bindtouchstart="mouseDown"
         bindscroll="asideGunDong"
         >
-          <view class="menu"></view>
-          <view class="menu"></view>
+          <view class="menu sky">白</view>
+          <view class="menu sky">白</view>
           <view class="menu {{currentType==item.id?'acurr':''}}" wx:for="{{aside}}" wx:key="index"
           bindtap="goodTypeClick"
           data-parent="{{item}}"
           >{{item.type_name}}
           </view>
-          <view class="menu"></view>
-          <view class="menu"></view>
+          <view class="menu sky">白</view>
+          <view class="menu sky">白</view>
         </scroll-view>
       </view>
     </view>

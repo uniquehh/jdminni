@@ -59,6 +59,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.sky{
+  opacity: 0;
+}
 .main{
   flex: 1 1 auto;
 }

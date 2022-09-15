@@ -9,21 +9,24 @@ Page({
     scrollTop:"",
     parentName:'',
     currentType:"",
-    isMouseUp:"false",
+    isMouseUp:false,
+    isShowTemp:false,
+
   },
   /**
    * 生命周期函数--监听页面加载
    */
   // 滚动事件
   asideGunDong(e){
+    let lengt = this.data.aside.length-10
     this.data.scrollTop = e.detail.scrollTop
-    if(this.data.scrollTop<40&&this.data.isMouseUp){
+    if(this.data.scrollTop<82&&this.data.isMouseUp){
       this.setData({
-        scrollTop:'40',
+        scrollTop:'82',
       })
-    }else if(this.data.scrollTop>737&&this.data.isMouseUp){
+    }else if(this.data.scrollTop>lengt*41&&this.data.isMouseUp){
       this.setData({
-        scrollTop:'737',
+        scrollTop:lengt*41 + '',
       })
     }
   },
@@ -33,14 +36,15 @@ Page({
   },
   // 抬起事件
   mouseup(){
+    let lengt = this.data.aside.length-10
     this.data.isMouseUp = true
-    if(this.data.scrollTop<40){
+    if(this.data.scrollTop<82){
       this.setData({
-        scrollTop:'40',
+        scrollTop:'82',
       })
-    }else if(this.data.scrollTop>737){
+    }else if(this.data.scrollTop>lengt*41){
       this.setData({
-        scrollTop:'737',
+        scrollTop:lengt*41+'',
       })
     }
   },
@@ -50,9 +54,6 @@ Page({
     function getGoodType(){
       wx.request({
         url: "http://api_devs.wanxikeji.cn/api/goodType",
-        data:{
-          groupid:1,
-        },
         success(res){
           if(res.data.code==2000){
             // 一级分类
@@ -99,6 +100,7 @@ Page({
   },
   // 侧边栏点击函数
   goodTypeClick(e){
+    console.log(e);
     if(this.data.scrollTop<737){
       this.setData({
         scrollTop:e.currentTarget.offsetTop,
