@@ -2,12 +2,16 @@
 import { getUserProFile,getUserCode,axios } from "../../utils/util"
 function sumSpcarData(arr){
   let checkList = arr.filter((item)=>item.isCheck == true);
+  // console.log(checkList,123);
   let obj = {price:0,num:0,}
-  console.log(checkList,"sum");
-  obj.num = checkList.length
   checkList.forEach(item=>{
-    obj.price += item.pirce-0
+    obj.num+=item.num;
   })
+  checkList.forEach(item=>{
+    item.money = (item.price-0)*item.num;
+    obj.price+=item.money;
+  })
+  // console.log(checkList,4632);
   return obj
 }
 Page({
@@ -20,10 +24,101 @@ Page({
     checkLader:true,
     sumPrice:0,
     checkGoods:0,
+    showpop:false,
+    popid:0,
+    pronum:0,
+    spcarid:0,
+    item:{}
+  },
+  // 子组件传函数
+  close(e){
+    this.setData({
+      showpop:e.detail
+    })
+  },
+  inputchangeNum(e){
+    this.data.spcarList.forEach(item=>{
+      if(item.shopping_car_id==e.detail.spid){
+        item.num=e.detail.num;
+      }
+    })
+    this.setData({
+      spcarList:this.data.spcarList
+    })
+  },
+  modifyNum(e){
+    this.data.spcarList.forEach(item=>{
+      if(item.shopping_car_id==e.detail.spid){
+        item.num=e.detail.num;
+      }
+    })
+    this.setData({
+      spcarList:this.data.spcarList
+    })
+  },
+  //输入框输入值修改
+  inputNum(e){
+    let id=e.currentTarget.dataset.spid;
+    this.data.spcarList.forEach(item=>{
+      if(item.shopping_car_id==id){
+        item.num=e.detail.value-0;
+      }
+    })
+    this.setData({
+      spcarList:this.data.spcarList,
+    })
+    let sumResult = sumSpcarData(this.data.spcarList)
+    this.data.sumPrice = sumResult.price
+    this.data.checkGoods = sumResult.num
+    this.setData({
+      sumPrice:this.data.sumPrice,
+      checkGoods:this.data.checkGoods,
+    })
+  },
+  // 展示sku
+  showPop(e){
+    this.setData({
+      showpop:true,
+      popid:e.currentTarget.dataset.goodid,
+      pronum:e.currentTarget.dataset.num,
+      spcarid:e.currentTarget.dataset.spcarid,
+      item:e.currentTarget.dataset.item
+    })
+  },
+  // 去商品详情页
+  toInfo(e){
+    wx.navigateTo({
+      url: `../m_info/m_info?goodid=${e.currentTarget.dataset.item.good_id}`,
+    })
+  },
+   // 加减数量
+   modifynum(e){
+    let spId=e.currentTarget.dataset.item;
+    this.data.spcarList.forEach(item=>{
+      if(item.shopping_car_id==spId){
+        if(e.currentTarget.dataset.type=="add"){
+          console.log("+");
+          item.num++;
+        }else{
+          item.num--;
+        }
+      }
+    })
+    this.setData({
+      spcarList:this.data.spcarList
+    })
+    let sumResult = sumSpcarData(this.data.spcarList)
+    this.data.sumPrice = sumResult.price
+    this.data.checkGoods = sumResult.num
+    this.setData({
+      sumPrice:this.data.sumPrice,
+      checkGoods:this.data.checkGoods,
+    })
   },
   // 购物车商品复选框选项组
   spcarItemCheck(e){
     // 点击店铺或者商品得复选框时切换选中状态
+    console.log(e);
     let temp = ""
     e.detail.value.forEach((item)=>{
       temp = this.data.spcarList[item.split("+")[0]-0].isCheck
@@ -41,7 +136,6 @@ Page({
       spcarList:this.data.spcarList,
     })
     let sumResult = sumSpcarData(this.data.spcarList)
-    console.log(sumResult,"res");
     this.data.sumPrice = sumResult.price
     this.data.checkGoods = sumResult.num
     this.setData({
@@ -76,7 +170,6 @@ Page({
       spcarList:this.data.spcarList,
     })
     let sumResult = sumSpcarData(this.data.spcarList)
-    console.log(sumResult,"res");
     this.data.sumPrice = sumResult.price
     this.data.checkGoods = sumResult.num
     this.setData({
@@ -145,7 +238,7 @@ Page({
       let temp=spcarData.data.data.data;
       temp.forEach(item=>{
         item.sku=JSON.parse(item.sku);
-        item.pirce=item.price.split(".")[0]
+        item.price=item.price.split(".")[0]
         item.isCheck=true
       })
       this.setData({
@@ -153,7 +246,6 @@ Page({
       })
       // 计算购物车选中商品
       let sumResult = sumSpcarData(this.data.spcarList)
-      console.log(sumResult,"res");
       this.data.sumPrice = sumResult.price
       this.data.checkGoods = sumResult.num
       this.setData({
@@ -167,7 +259,6 @@ Page({
           token:wx.getStorageSync('token')
         }
       })
-      console.log(res,123540);
     }
   },
   // 点击函数--返回上一个页面
@@ -191,7 +282,6 @@ Page({
         code,
       },
     })
-    console.log(res3);
     // 判断换取openid接口是否成功
     if(res3.statusCode == 200){
       if(res3.data.code ==2000){
@@ -246,38 +336,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   async onShow() {
-    if(!wx.getStorageSync('token')){
-      this.setData({
-        isLogin:false,
-      })
-    }else{
-      this.setData({
-        isLogin:true,
-      })
-      // 获取购物车数据
-      let spcarData = await axios({
-        url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
-        data:{
-          token: wx.getStorageSync('token'),
-        }
-      })
-      let temp=spcarData.data.data.data;
-      temp.forEach(item=>{
-        item.sku=JSON.parse(item.sku);
-        item.pirce=item.price.split(".")[0]
-        item.isCheck = true
-      })
-      this.setData({
-        spcarList:temp,
-      })
-      let sumResult = sumSpcarData(this.data.spcarList)
-      this.data.sumPrice = sumResult.price
-      this.data.checkGoods = sumResult.num
-      this.setData({
-        sumPrice:this.data.sumPrice,
-        checkGoods:this.data.checkGoods,
-      })
-    }
+    
   },
 
   /**

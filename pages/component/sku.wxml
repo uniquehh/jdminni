@@ -1,0 +1,66 @@
+<!--pages/component/sku.wxml-->
+<view>
+  <view class="titlewrap">
+      <view>
+        <image  mode="heightFix" class="popimg" src="{{tapSKu?skuinfo.img:choosedSku.img}}"/>
+      </view>
+      <view class="poptitle">
+        <view style="color:#f2270c;margin-bottom:5px">￥<text style="font-size:24px">{{tapSKu?skuinfo.price:price[0]}}</text>.{{tapSKu?'00':price[1]}}</view>
+        <view style="font-size: 12px;"><text style="margin-right: 10px;color: #8c8c8c;">已选</text>{{tapSKu?skuinfo.sku:choosedSku.sku}}</view>
+      </view>
+    </view>
+    <scroll-view scroll-y="true" style="height: 330px;">
+      <view class="cho" wx:for="{{sku.sku_column}}" wx:key="columnkey">
+        <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;" >{{item.key}}</view>
+          <view style="display: flex;flex-wrap: wrap; margin-right:10px" 
+          wx:for="{{item.value}}" wx:key="listkey" class="choitem {{item.checked==indexs?'choitem_checked':''}}" wx:for-index="indexs" wx:for-item="items"
+          bindtap="chooseSku" data-index="{{index}}" data-indexs="{{indexs}}"
+          >{{items}} 
+          </view>
+      </view>
+      <view class="chonum">
+        <view style="color: #2c0d0d;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">数量</view>
+        <view class="numitem">
+          <view class="countnum" bindtap="modifyNum" data-type="reduce">-</view>
+          <view class="numinput">
+            <input class="n_input" value="{{pronum}}" bindblur="inputNum" type="number"/>
+          </view>
+          <view class="countnum" bindtap="modifyNum" data-type="add">+</view>
+        </view>
+      </view>
+      <view style="padding: 0 18px;">
+        <view style="color: #262626;font-size: 13px;font-weight: 700;height: 40px;line-height: 40px;">京选服务</view>
+        <view>
+          <view class="servtitle">超值新品</view>
+          <view class="servgroup">
+            <radio-group>
+              <view class="servitem">
+                <label for="">
+                  <radio class="servradio"/>
+                  <view style="display: inline-block;width: 90%;margin-left: 30px;">
+                    <text style="color: #333;font-size: 13px;line-height: 1em;padding-bottom: 3px;padding-top: 3px;display: block;width: 100%;">十年免费换新<text class="servprice">￥135.00</text></text>
+                    <view style="color: #8c8c8c;font-size: 11px;">性能故障 只换不修</view>
+                  </view>
+                </label>
+              </view>
+              <view class="servitem">
+                <label for="">
+                  <radio class="servradio"/>
+                  <view style="display: inline-block;width: 90%;margin-left: 30px;">
+                    <text style="color: #333;font-size: 13px;line-height: 1em;padding-bottom: 3px;padding-top: 3px;display: block;width: 100%;">十年免费换新<text class="servprice">￥135.00</text></text>
+                    <view style="color: #8c8c8c;font-size: 11px;">性能故障 只换不修</view>
+                  </view>
+                </label>
+              </view>
+            </radio-group>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view class="i_confirm">
+      <button class="addconfirm" bindtap="addselfpro">确认</button>
+    </view>
+    <view class="closepop" bindtap="closePop">
+      <image src="/img/m_closepop.png" mode="widthFix" style="width: 20px;" />
+    </view>
+</view>

@@ -11,7 +11,8 @@
     "pages/hinfo/hinfo",
     "pages/hpayment/hpayment",
     "pages/hadreslist/hadreslist",
-    "pages/haddadres/haddadres"
+    "pages/haddadres/haddadres",
+    "pages/spcar copy/spcar copy"
   ],
   "window":{
     "navigationBarBackgroundColor":"#fff",

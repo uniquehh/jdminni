@@ -70,18 +70,18 @@
                 <label>
                   <checkbox color="#fff" value="{{index +'+'+ item.good_id}}" checked="{{item.isCheck}}" />
                 </label>
-                <navigator url="../hinfo/hinfo">
+                <view bindtap="toInfo" data-item="{{item}}">
                   <image class="proimage" src="{{item.sku.img}}"/>
-                </navigator>
+                </view>
               </view>
               <view class="info">
-                <navigator url="../hinfo/hinfo">
+                <view bindtap="toInfo" data-item="{{item}}">
                   <view class="title">
                     {{item.sku.sku}}
                   </view>
-                </navigator>
+                </view>
                 <view class="tabs">
-                  <view class="fuwu">
+                  <view class="fuwu" bindtap="showPop" data-goodid="{{item.good_id}}" data-num="{{item.num}}" data-spcarid="{{item.shopping_car_id}}" data-item="{{item}}">
                     <view class="tuijian">{{item.sku.sku}}</view>
                     <view>
                     选服务
@@ -108,9 +108,9 @@
                       </view>
                     </view>
                     <view class="num">
-                      <view class="jianhao"></view>
-                      <input type="text" value="{{item.num}}"/>
-                      <text class="jiahao">+</text>
+                      <view class="jianhao" bindtap="modifynum" data-item="{{item.shopping_car_id}}" data-type="reduce"></view>
+                      <input type="text" bindblur="inputNum" data-spid="{{item.shopping_car_id}}" value="{{item.num}}"/>
+                      <text class="jiahao" bindtap="modifynum" data-item="{{item.shopping_car_id}}" data-type="add">+</text>
                     </view>
                   </view>
                   <view class="guanzhu">
@@ -196,3 +196,6 @@
     </view>
   </view>
 </view>
+<page-container show="{{showpop}}" round="true" custom-style="max-height:95%;position:fixed;bottom:0;z-index:100">
+  <sku wx:if="{{showpop}}" goodid="{{popid}}" pronum="{{pronum}}" spcarid="{{spcarid}}" item="{{item}}" bindmodifyNum="modifyNum" bindinputchangeNum="inputchangeNum" bind:close="close"></sku>
+</page-container>

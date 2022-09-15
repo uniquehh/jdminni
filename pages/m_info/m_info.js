@@ -132,7 +132,6 @@ Page({
         sku=JSON.stringify(this.data.choosedSku);
       }
       money=price*this.data.num;
-      // 
       wx.request({
         url: 'http://api_devs.wanxikeji.cn/api/shoppingCarAddModify',
         data:{
@@ -161,7 +160,13 @@ Page({
    */
   onLoad(options) {
     console.log(options,456);
+    let good_id=0;
     let proinfo=JSON.parse(wx.getStorageSync('information'));
+    if(!JSON.stringify(options)=="{}"){
+      good_id=options.goodid;
+    }else{
+      good_id=proinfo.good_id;
+    }
     let tempPri=proinfo.price;
     let priArr=tempPri.split(".");
     let tempCont=[];
@@ -172,7 +177,7 @@ Page({
     wx.request({
       url: 'http://api_devs.wanxikeji.cn/api/goodInfo',
       data:{
-        good_id:options?options.goodid:proinfo.good_id,
+        good_id,
       },
       success(res){
         if(res.data.code==2000){
