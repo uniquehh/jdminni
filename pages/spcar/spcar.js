@@ -8,6 +8,8 @@ function sumSpcarData(arr){
   checkList.forEach(item=>{
     obj.price += item.pirce-0
   })
+  wx.setStorageSync('checkList', checkList)
+  wx.setStorageSync('sumResult', obj)
   return obj
 }
 Page({
