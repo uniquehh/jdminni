@@ -1,5 +1,15 @@
 // pages/spcar/spcar.js
 import { getUserProFile,getUserCode,axios } from "../../utils/util"
+function sumSpcarData(arr){
+  let checkList = arr.filter((item)=>item.isCheck == true);
+  let obj = {price:0,num:0,}
+  console.log(checkList,"sum");
+  obj.num = checkList.length
+  checkList.forEach(item=>{
+    obj.price += item.pirce-0
+  })
+  return obj
+}
 Page({
   /**
    * 页面的初始数据
@@ -7,10 +17,72 @@ Page({
   data: {
     isLogin:false,
     spcarList:[],
+    checkLader:true,
+    sumPrice:0,
+    checkGoods:0,
   },
   // 购物车商品复选框选项组
   spcarItemCheck(e){
+    // 点击店铺或者商品得复选框时切换选中状态
+    let temp = ""
+    e.detail.value.forEach((item)=>{
+      temp = this.data.spcarList[item.split("+")[0]-0].isCheck
+    })
+    if(temp){
+      e.detail.value.forEach((item)=>{
+        this.data.spcarList[item.split("+")[0]-0].isCheck = false
+      })
+    }else{
+      e.detail.value.forEach((item)=>{
+        this.data.spcarList[item.split("+")[0]-0].isCheck = true
+      })
+    }
+    this.setData({
+      spcarList:this.data.spcarList,
+    })
+    let sumResult = sumSpcarData(this.data.spcarList)
+    console.log(sumResult,"res");
+    this.data.sumPrice = sumResult.price
+    this.data.checkGoods = sumResult.num
+    this.setData({
+      sumPrice:this.data.sumPrice,
+      checkGoods:this.data.checkGoods,
+    })
+    // 校验全选复选框状态
+    let arr = this.data.spcarList.filter((item)=>item.isCheck == false)
+    if(arr.length){
+      this.data.checkLader = false
+    }else{
+      this.data.checkLader = true
+    }
+    this.setData({
+      checkLader:this.data.checkLader,
+    })
+  },
+  // 设置全选复选框得状态和全选功能
+  checkAll(e){
     console.log(e);
+    // 全选复选框点击控制商品和店铺的选中状态
+    if(!e.detail.value.length){
+      this.data.spcarList.forEach((item)=>{
+        item.isCheck = false
+      })
+    }else{
+      this.data.spcarList.forEach((item)=>{
+        item.isCheck = true
+      })
+    }
+    this.setData({
+      spcarList:this.data.spcarList,
+    })
+    let sumResult = sumSpcarData(this.data.spcarList)
+    console.log(sumResult,"res");
+    this.data.sumPrice = sumResult.price
+    this.data.checkGoods = sumResult.num
+    this.setData({
+      sumPrice:this.data.sumPrice,
+      checkGoods:this.data.checkGoods,
+    })
   },
   // 删除购物车
   async deleteSpcar(e){
@@ -36,9 +108,17 @@ Page({
       temp.forEach(item=>{
         item.sku=JSON.parse(item.sku);
         item.pirce=item.price.split(".")[0]
+        item.isCheck=true
       })
       this.setData({
         spcarList:temp,
+      })
+      let sumResult = sumSpcarData(this.data.spcarList)
+      this.data.sumPrice = sumResult.price
+      this.data.checkGoods = sumResult.num
+      this.setData({
+        sumPrice:this.data.sumPrice,
+        checkGoods:this.data.checkGoods,
       })
     }
   },
@@ -66,9 +146,19 @@ Page({
       temp.forEach(item=>{
         item.sku=JSON.parse(item.sku);
         item.pirce=item.price.split(".")[0]
+        item.isCheck=true
       })
       this.setData({
         spcarList:temp,
+      })
+      // 计算购物车选中商品
+      let sumResult = sumSpcarData(this.data.spcarList)
+      console.log(sumResult,"res");
+      this.data.sumPrice = sumResult.price
+      this.data.checkGoods = sumResult.num
+      this.setData({
+        sumPrice:this.data.sumPrice,
+        checkGoods:this.data.checkGoods,
       })
       // 获取用户优惠券
       let res=await axios({
@@ -123,8 +213,16 @@ Page({
           token: wx.getStorageSync('token'),
         }
       })
+      spcarData.data.data.data.forEach((item)=>item.isCheck = true)
       this.setData({
         spcarList:spcarData.data.data.data,
+      })
+      let sumResult = sumSpcarData(this.data.spcarList)
+      this.data.sumPrice = sumResult.price
+      this.data.checkGoods = sumResult.num
+      this.setData({
+        sumPrice:this.data.sumPrice,
+        checkGoods:this.data.checkGoods,
       })
     }else{
       let res4 = await axios({
@@ -142,7 +240,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
   },
 
   /**
@@ -168,9 +265,17 @@ Page({
       temp.forEach(item=>{
         item.sku=JSON.parse(item.sku);
         item.pirce=item.price.split(".")[0]
+        item.isCheck = true
       })
       this.setData({
         spcarList:temp,
+      })
+      let sumResult = sumSpcarData(this.data.spcarList)
+      this.data.sumPrice = sumResult.price
+      this.data.checkGoods = sumResult.num
+      this.setData({
+        sumPrice:this.data.sumPrice,
+        checkGoods:this.data.checkGoods,
       })
     }
   },

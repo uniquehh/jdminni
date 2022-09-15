@@ -42,6 +42,8 @@ function axios(options){
     })
   })
 }
+// 计算购物车数据
+
 module.exports = {
   formatTime,getUserProFile,getUserCode,axios,
 }

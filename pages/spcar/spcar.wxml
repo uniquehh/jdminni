@@ -50,7 +50,7 @@
         <checkbox-group bindchange="spcarItemCheck">
           <view class="dianpu">
             <label>
-              <checkbox color="#fff" class="check" value="" />
+              <checkbox color="#fff" class="check" value="{{index}}" checked="{{item.isCheck}}" />
             </label>
             <view class="name">
               <image src="../../img/hdianpu.png"></image>
@@ -68,7 +68,7 @@
             <view class="pro-main">
               <view class="checkgood">
                 <label>
-                  <checkbox color="#fff" value="" />
+                  <checkbox color="#fff" value="{{index +'+'+ item.good_id}}" checked="{{item.isCheck}}" />
                 </label>
                 <navigator url="../hinfo/hinfo">
                   <image class="proimage" src="{{item.sku.img}}"/>
@@ -122,28 +122,33 @@
               </view>
             </view>
           </view>
-          <view class="jiesuan">
+        </checkbox-group>
+        <view class="jiesuan">
+          <checkbox-group bindchange="checkAll">
             <view class="jiesuanbox">
               <view class="checkall">
                 <label>
-                  <checkbox class="jscheck"></checkbox>
+                  <checkbox color="#fff" class="jscheck"
+                  value="全选"
+                  checked="{{checkLader}}"
+                  ></checkbox>
                   全选
                 </label>
               </view>
               <view class="sumprice">
                 <view class="zongji"> 总计:</view>
                 <view class="zongjinum">
-                ￥0.00
+                ￥{{sumPrice}}
                 </view>
                 <navigator 
                 url="../hpayment/hpayment"
                 class="tojiesuan">
-                  去结算(0件)
+                  去结算({{checkGoods}}件)
                 </navigator>
               </view>
             </view>
-          </view>
-        </checkbox-group>
+          </checkbox-group>
+        </view>
       </view>
     </view>
   </view>
