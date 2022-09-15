@@ -79,12 +79,13 @@
 }
 /* 订单列表 */
 .orderlist{
-  background-color: white;
-  border-radius: 20rpx;
   margin-bottom: 30rpx;
 }
 .odlistmain{
+  background-color: white;
+  border-radius: 20rpx;
   padding: 30rpx;
+  margin-bottom: 30rpx;
 }
 .oditem{
   border-bottom: 2rpx solid #F2F2F2;

@@ -38,28 +38,33 @@
   </view>
   <!-- 订单列表 -->
   <view class="orderlist">
-    <view class="odlistmain">
+    <view class="odlistmain" wx:for="{{orderList}}"
+    wx:key="index"
+    >
       <view class="oditem">
         <view class="odtitle">JD 京东自营</view>
-        <navigator url="../hinfo/hinfo">
+        <navigator url="../m_info/m_info"
+        bindtap="toGoodInfo"
+        data-item="{{item}}"
+        >
           <view class="odcont">
             <view class="odimage">
-              <image src="../../img/hgood.webp"></image>
+              <image src="{{item.sku.img}}"></image>
             </view>
             <view class="odinfo">
               <view class="odgdtitle">
-                美菱(MELING)【离子净系列】556升一级能效变频双开门对开两门电冰箱家用风冷无霜BCD-556WPCX净味大容量
+                {{item.good_name}}
               </view>
               <view class="odgdpara">
-                【大1匹】风酷三级 性价比优选
+                {{item.guiGe}}
               </view>
               <view class="odgdprice">
                 <view class="prinum">
                   <view class="price">
                     <view class="pricebox">
                       <text class="fuhao">￥</text>
-                      <text class="jiage">2779</text>
-                      <text class="xiaoshu">.00</text>
+                      <text class="jiage">{{item.pirce}}</text>
+                      <!-- <text class="xiaoshu">.00</text> -->
                     </view>
                     <view class="imgbox">
                       <image class="xinrenjia" src="../../img/hxinrenjia.png"></image>
@@ -67,7 +72,7 @@
                     </view>
                   </view>
                   <view class="odgdnum">
-                    13.00kg x 1
+                    13.00kg x {{item.num}}
                   </view>
                 </view>
               </view>
@@ -112,7 +117,7 @@
     <view class="odcpmain">
       <view class="prmoney">
         <view class="prmleft">商品金额</view>
-        <view class="prmright">￥2779.00</view>
+        <view class="prmright">￥{{sumPrice}}</view>
       </view>
       <view class="yunfei">
       <view class="yfleft">运费</view>
@@ -152,8 +157,8 @@
           <view class="price">
             <view class="pricebox">
               <text class="fuhao">￥</text>
-              <text class="jiage">2779</text>
-              <text class="xiaoshu">.00</text>
+              <text class="jiage">{{sumPrice}}</text>
+              <!-- <text class="xiaoshu">.00</text> -->
             </view>
           </view>
         </view>
@@ -178,8 +183,8 @@
           <view class="price">
             <view class="pricebox">
               <text class="fuhao paymfh">￥</text>
-              <text class="jiage paymjg">2779</text>
-              <text class="xiaoshu paymxs">.00</text>
+              <text class="jiage paymjg">{{sumPrice}}</text>
+              <!-- <text class="xiaoshu paymxs">.00</text> -->
             </view>
           </view>
         </view>

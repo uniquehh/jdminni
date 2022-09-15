@@ -7,6 +7,8 @@ Page({
    */
   data: {
     shAdress:{},
+    orderList:[],
+    sumPrice:0,
   },
 
   /**
@@ -15,7 +17,10 @@ Page({
   onLoad(options) {
 
   },
-
+  toGoodInfo(e){
+    let obj = e.currentTarget.dataset.item
+    wx.setStorageSync('information', JSON.stringify(obj))
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -27,8 +32,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   async onShow() {
+    // 设置收货地址
     let sAdress = wx.getStorageSync('sAdress');
-    console.log(sAdress,"@@");
     if(sAdress){
       this.data.shAdress = {}
       this.data.shAdress = sAdress
@@ -51,8 +56,19 @@ Page({
         shAdress:this.data.shAdress,
       })
     }
+    // 根据购物车订单数据--进行结算页渲染
+    let checkGood = wx.getStorageSync('checkList')
+    checkGood.forEach((item)=>{
+      item.guiGe = item.sku.sku.join(" ")
+      this.data.sumPrice += item.pirce*item.num
+    })
+    console.log(checkGood);
+    this.data.orderList = checkGood
+    this.setData({
+      orderList:this.data.orderList,
+      sumPrice:(this.data.sumPrice-0).toFixed(2),
+    })
   },
-
   /**
    * 生命周期函数--监听页面隐藏
    */

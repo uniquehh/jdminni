@@ -113,7 +113,7 @@
               <text style="font-size: 13px;color:#8c8c8c;margin-left: 160px;font-weight: normal;">好评度<text style="font-weight: bold;">99%</text></text>
           </view>
           <view style="flex-shrink:0" bindtap="addpro" data-modle="discount">
-            <image mode="widthFix" style="width: 12px;" src="/img/m_contmore.png" />
+            <image mode="widthFix" style="width: 12px;" src="../../img/hrightjian.svg" />
           </view>
         </view>
         <view class="contTypes">
@@ -188,7 +188,7 @@
               <text style="font-size: 13px;color:#8c8c8c;margin-left: 160px;font-weight: normal;">查看全部问答</text>
           </view>
           <view style="flex-shrink:0" bindtap="addpro" data-modle="discount">
-            <image mode="widthFix" style="width: 12px;" src="/img/m_contmore.png" />
+            <image mode="widthFix" style="width: 12px;" src="../../img/hrightjian.svg" />
           </view>
         </view>
         <view class="ques">

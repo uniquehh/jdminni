@@ -49,7 +49,7 @@
         "text": "购物车"
       },
       {
-        "pagePath": "pages/self/self",
+        "pagePath": "pages/m_login/m_login",
         "iconPath": "./img/hself.png",
         "selectedIconPath": "./img/hself.png",
         "text": "登录"
