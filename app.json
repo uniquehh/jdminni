@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/hpayment/hpayment",
     "pages/index/index",
     "pages/type/type",
     "pages/m_info/m_info",
@@ -8,7 +9,7 @@
     "pages/surpri/surpri",
     "pages/spcar/spcar",
     "pages/self/self",
-    "pages/hpayment/hpayment",
+    
     "pages/hadreslist/hadreslist",
     "pages/haddadres/haddadres",
     "pages/spcar copy/spcar copy"

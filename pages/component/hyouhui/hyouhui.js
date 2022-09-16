@@ -30,6 +30,7 @@ Component({
     this.setData({
       youHuiList:res.data.data,
     })
+    console.log(this.data.youHuiList);
     if(this.data.youHuiList.length){
       this.setData({
         isYouYh: true,

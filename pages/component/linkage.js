@@ -86,6 +86,7 @@ Component({
       },2000)
 
       // 防抖
+      // 如果之前有定时器就清除
       // if(this.data.timer){
       //   clearTimeout(this.data.timer);
       // }

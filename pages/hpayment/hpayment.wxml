@@ -187,7 +187,7 @@
       </view>
     </view>
   </view>
-  <page-container wx:if="{{isShowYouHui}}" show="{{isShowYouHui}}" position="bottom">
-    <hyh bindcloseCont="closeCont"></hyh>
+  <page-container round show="{{isShowYouHui}}" position="bottom" custom-style="max-height:80%">
+    <hyh wx:if="{{isShowYouHui}}" bindcloseCont="closeCont"></hyh>
   </page-container>
 </view>
