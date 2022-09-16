@@ -14,8 +14,8 @@
 <scroll-view class="spcar" scroll-y="true" style="height: 100vh;" 
 lower-threshold="180"
 bindscrolltolower="scrollToBottom" enhanced="true">
-  <view class="position" wx:if="{{isLogin&&spcarList.length}}">
-    <view class="posibox">
+  <view class="position" wx:if="{{!isLogin}}">
+    <view class="posibox" wx:if="{{isLogin}}">
       <view class="left">
         <image bindtap="goBack" src="../../img/hposition.png" mode="aspectFit"></image>
         <text>成都市金牛区</text>

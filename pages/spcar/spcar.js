@@ -285,6 +285,7 @@ Page({
   async onLoad(options) {
     // 判断是否登录
     if(!wx.getStorageSync('token')){
+      console.log(this.data.isLogin);
       this.setData({
         isLogin:false,
         hidden:true
@@ -367,12 +368,14 @@ Page({
       this.setData({
         spcarList:spcarData.data.data.data,
       })
+      console.log(this.data.spcarList,"11");
       let sumResult = sumSpcarData(this.data.spcarList)
       this.data.sumPrice = sumResult.price
       this.data.checkGoods = sumResult.num
       this.setData({
         sumPrice:this.data.sumPrice,
         checkGoods:this.data.checkGoods,
+        isLogin:true,
       })
     }else{
       let res4 = await axios({
@@ -384,6 +387,25 @@ Page({
         },
       })
       wx.setStorageSync('token', res4.data.token)
+      // 获取购物车数据
+      let spcarData = await axios({
+        url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
+        data:{
+          token: wx.getStorageSync('token'),
+        }
+      })
+      spcarData.data.data.data.forEach((item)=>item.isCheck = true)
+      this.setData({
+        spcarList:spcarData.data.data.data,
+      })
+      console.log(this.data.spcarList,"22");
+      let sumResult = sumSpcarData(this.data.spcarList)
+      this.data.sumPrice = sumResult.price
+      this.data.checkGoods = sumResult.num
+      this.setData({
+        sumPrice:this.data.sumPrice,
+        checkGoods:this.data.checkGoods,
+      })
     }
   },
   /**

@@ -9,12 +9,33 @@ Page({
     orderList:[],
     sumPrice:0,
     isShowYouHui:false,
+    youhui:0,
   },
   // 优惠卷
-  getYouHui(){
+  showYHPC(){
     this.setData({
       isShowYouHui:true,
     })
+  },
+   // 接收子组件传递来的值
+   closeCont(e){
+    if(e.detail){
+      this.setData({
+        isShowYouHui:false
+      })
+    }
+  },
+  useYouHui(e){
+    if(e.detail){
+      this.setData({
+        isShowYouHui:false
+      })
+    }
+  },
+  getYouHui(e){
+    console.log(e);
+    this.data.youhui = e.detail.reduce
+    wx.setStorageSync('checkedYH', e.detail)
   },
   /**
    * 生命周期函数--监听页面加载
@@ -62,6 +83,7 @@ Page({
     }
     // 根据购物车订单数据--进行结算页渲染
     let checkGood = wx.getStorageSync('checkList')
+    console.log(checkGood,"222333");
     checkGood.forEach((item)=>{
       item.guiGe = item.sku.sku.join(" ")
       this.data.sumPrice += (item.price-0)*item.num
@@ -72,19 +94,10 @@ Page({
       sumPrice:(this.data.sumPrice-0).toFixed(2),
     })
   },
-  // 接收子组件传递来的值
-  closeCont(e){
-    if(e.detail){
-      this.setData({
-        isShowYouHui:false
-      })
-    }
-  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
   },
 
   /**

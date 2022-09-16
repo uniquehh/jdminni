@@ -117,7 +117,7 @@
         <view class="yfright">￥0.00
         </view>
       </view>
-      <view class="youhui" bindtap="getYouHui">
+      <view class="youhui" bindtap="showYHPC">
         <view class="yhleft">
           <view class="yhltag">
             优惠卷
@@ -125,7 +125,7 @@
           </view>
         </view>
         <view class="yhright">
-          <view class="yhnum">-￥5.00</view>
+          <view class="yhnum">-￥{{youhui}}</view>
           <image src="../../img/hrightjian.svg"></image>
         </view>
       </view>
@@ -188,6 +188,6 @@
     </view>
   </view>
   <page-container round show="{{isShowYouHui}}" position="bottom" custom-style="max-height:80%">
-    <hyh wx:if="{{isShowYouHui}}" bindcloseCont="closeCont"></hyh>
+    <hyh wx:if="{{isShowYouHui}}" bindcloseCont="closeCont" binduseYouHui="useYouHui" bindgetYouHui="getYouHui"></hyh>
   </page-container>
 </view>
