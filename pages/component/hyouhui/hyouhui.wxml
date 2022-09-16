@@ -21,23 +21,23 @@
       抱歉，无优惠卷可用!!
     </view>
     <scroll-view scroll-y="true" style="height:500rpx">
-      <view  class="yhitem" wx:for="{{youHuiList}}" wx:key="index">
-        <checkbox-group bindchange="checkYh">
-          <label>
-            <view class="itemmain">
-              <image class="itimage" src="../../../img/hnologin.png"></image>
-              <view class="itright">
-                <view class="ittext">
-                  <view class="irtitle">{{item.reduce}}</view>
-                  <view class="irtime">满{{item.achieve}}可用</view>
-                  <view class="irtag">超一年未购用户可享</view>
+        <radio-group bindchange="checkYh">
+          <view  class="yhitem" wx:for="{{youHuiList}}" wx:key="index">
+              <label>
+                <view class="itemmain">
+                  <image class="itimage" src="../../../img/hnologin.png"></image>
+                  <view class="itright">
+                    <view class="ittext">
+                      <view class="irtitle">{{item.reduce}}</view>
+                      <view class="irtime">满{{item.achieve}}可用</view>
+                      <view class="irtag">超一年未购用户可享</view>
+                    </view>
+                    <view><radio color="#000" value="{{item.coupon_id}}"/></view>
+                  </view>
                 </view>
-                <view><checkbox color="#000" value=""></checkbox></view>
-              </view>
-            </view>
-          </label>
-        </checkbox-group>
-      </view>
+              </label>
+          </view>
+        </radio-group>
     </scroll-view>
   </view>
   <view class="confirm">
