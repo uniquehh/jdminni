@@ -185,7 +185,7 @@ bindscrolltolower="scrollToBottom" enhanced="true">
               <view class="pricebox">
                 <text class="fuhao goodfuhao">￥</text>
                 <text class="jiage goodjiage">{{item.price}}</text>
-                <text class="xiaoshu goodxiaoshu">.00</text>
+                <!-- <text class="xiaoshu goodxiaoshu">.00</text> -->
               </view>
               <view class="imgbox miaoshabox">
                 <image class="miaosha" src="../../img/hmiaosha.png"></image>

@@ -17,25 +17,16 @@
     <view class="aside">
       <view class="scrollbox">
         <scroll-view
+        class="scroll"
         scroll-y="true"
         scroll-into-view="{{currentType}}"
-        enhanced="{{true}}"
-        scroll-top="{{scrollTop}}"
-        enable-passive="true"
-        scroll-with-animation="true"
-        bindtouchend="mouseup"
-        bindtouchstart="mouseDown"
-        bindscroll="asideGunDong"
         >
-          <view class="menu sky">白</view>
-          <view class="menu sky">白</view>
           <view class="menu {{currentType==item.id?'acurr':''}}" wx:for="{{aside}}" wx:key="index"
           bindtap="goodTypeClick"
+          id="{{item.id}}"
           data-parent="{{item}}"
           >{{item.type_name}}
           </view>
-          <view class="menu sky">白</view>
-          <view class="menu sky">白</view>
         </scroll-view>
       </view>
     </view>
