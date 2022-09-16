@@ -128,6 +128,12 @@
   background-color: red;
   border: 4rpx solid red;
 }
+.hyh .wx-checkbox-input{
+  border-radius: 50%;
+  width: 30rpx;
+  height: 30rpx;
+  border: 4rpx solid #BEBEBE;
+}
 .list-main .item{
   background-color: white;
   border-radius: 40rpx;
@@ -242,20 +248,28 @@
   height: 40rpx;
 }
 .num input{
-  width: 80rpx;
-  padding: 10rpx 0;
+  width: 60rpx;
+  /* padding: 10rpx 0; */
   background-color: #F2F2F2;
   text-align: center;
-  margin: 0 10rpx;
+  margin: 0 14rpx;
   min-height: 0;
-  height: 20rpx !important;
+  height: 38rpx !important;
+}
+.jianhaobox{
+  height: 100%;
+  width: 30rpx;
+  display: flex;
+  align-items: center;
 }
 .jianhao{
-  width: 20rpx;
+  width: 32rpx;
   height: 0px;
   border: 2rpx solid black;
 }
 .jiahao{
+  width: 32rpx;
+  text-align: center;
   font-weight: bold;
   margin-bottom: 6rpx;
 }
@@ -393,7 +407,7 @@
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   word-break: break-all;
   -webkit-box-orient: vertical;
 }

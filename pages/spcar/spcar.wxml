@@ -110,9 +110,13 @@ bindscrolltolower="scrollToBottom" enhanced="true">
                       </view>
                     </view>
                     <view class="num">
-                      <view class="jianhao" bindtap="modifynum" data-item="{{item.shopping_car_id}}" data-type="reduce"></view>
+                      <view class="jianhaobox"
+                      bindtap="modifynum" data-item="{{item.shopping_car_id}}" data-type="reduce"
+                      >
+                        <view class="jianhao"></view>
+                      </view>
                       <input type="text" bindblur="inputNum" data-spid="{{item.shopping_car_id}}" value="{{item.num}}"/>
-                      <text class="jiahao" bindtap="modifynum" data-item="{{item.shopping_car_id}}" data-type="add">+</text>
+                      <view class="jiahao" bindtap="modifynum" data-item="{{item.shopping_car_id}}" data-type="add">+</view>
                     </view>
                   </view>
                   <view class="guanzhu">

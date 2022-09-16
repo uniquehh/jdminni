@@ -1,5 +1,5 @@
 <page-meta>
-<navigation-bar title="确认订单"></navigation-bar>
+  <navigation-bar title="确认订单"></navigation-bar>
 </page-meta>
 <view class="bordertop"></view>
 <view class="payment">
@@ -9,9 +9,7 @@
       <view class="adrmain">
         <view class="adrcont">
           <view class="adrhead">
-            <view class="adrhtab"
-            wx:if="{{shAdress.default}}"
-            >默认</view>
+            <view class="adrhtab" wx:if="{{shAdress.default}}">默认</view>
             <view class="adrhtext">{{shAdress.procince}} {{shAdress.city}} {{shAdress.area}}</view>
           </view>
           <view class="adrcenter">{{shAdress.detailed}}</view>
@@ -38,15 +36,10 @@
   </view>
   <!-- 订单列表 -->
   <view class="orderlist">
-    <view class="odlistmain" wx:for="{{orderList}}"
-    wx:key="index"
-    >
+    <view class="odlistmain" wx:for="{{orderList}}" wx:key="index">
       <view class="oditem">
         <view class="odtitle">JD 京东自营</view>
-        <navigator url="../m_info/m_info"
-        bindtap="toGoodInfo"
-        data-item="{{item}}"
-        >
+        <navigator url="../m_info/m_info" bindtap="toGoodInfo" data-item="{{item}}">
           <view class="odcont">
             <view class="odimage">
               <image src="{{item.sku.img}}"></image>
@@ -120,11 +113,11 @@
         <view class="prmright">￥{{sumPrice}}</view>
       </view>
       <view class="yunfei">
-      <view class="yfleft">运费</view>
-      <view class="yfright">￥0.00
+        <view class="yfleft">运费</view>
+        <view class="yfright">￥0.00
+        </view>
       </view>
-      </view>
-      <view class="youhui">
+      <view class="youhui" bindtap="getYouHui">
         <view class="yhleft">
           <view class="yhltag">
             优惠卷
@@ -138,8 +131,8 @@
       </view>
       <view class="jingdou">
         <view class="jdleft">
-        京豆
-        <image src="../../img/hpriceshuomin.svg"></image>
+          京豆
+          <image src="../../img/hpriceshuomin.svg"></image>
         </view>
         <view class="jdright">共9，满500可用</view>
       </view>
@@ -194,4 +187,7 @@
       </view>
     </view>
   </view>
+  <page-container wx:if="{{isShowYouHui}}" show="{{isShowYouHui}}" position="bottom">
+    <hyh bindcloseCont="closeCont"></hyh>
+  </page-container>
 </view>

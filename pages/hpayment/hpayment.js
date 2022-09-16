@@ -1,7 +1,6 @@
 // pages/hpayment/hpayment.js
 import { axios } from "../../utils/util"
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -9,8 +8,14 @@ Page({
     shAdress:{},
     orderList:[],
     sumPrice:0,
+    isShowYouHui:false,
   },
-
+  // 优惠卷
+  getYouHui(){
+    this.setData({
+      isShowYouHui:true,
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -25,7 +30,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    
   },
 
   /**
@@ -60,14 +64,21 @@ Page({
     let checkGood = wx.getStorageSync('checkList')
     checkGood.forEach((item)=>{
       item.guiGe = item.sku.sku.join(" ")
-      this.data.sumPrice += item.pirce*item.num
+      this.data.sumPrice += (item.price-0)*item.num
     })
-    console.log(checkGood);
     this.data.orderList = checkGood
     this.setData({
       orderList:this.data.orderList,
       sumPrice:(this.data.sumPrice-0).toFixed(2),
     })
+  },
+  // 接收子组件传递来的值
+  closeCont(e){
+    if(e.detail){
+      this.setData({
+        isShowYouHui:false
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面隐藏
