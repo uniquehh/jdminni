@@ -1,5 +1,5 @@
 <!-- <view bindtouchmove="scrollToBottom"> -->
-<scroll-view enhanced="true" scroll-y="true" bindscrolltolower="scrollToBottom" style="height: 200vh;">
+<scroll-view enhanced="true" scroll-y="true" bindscrolltolower="scrollToBottom" style="height: 100vh;">
   <view class="search">
     <view class="search-box">
       <view class="inputbox">
