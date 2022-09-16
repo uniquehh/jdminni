@@ -1,0 +1,19 @@
+<!--pages/component/linkage.wxml-->
+<view>
+  <text class="zmtitle">字母排序</text>
+  <text class="zmtitle">推荐排序</text>
+</view>
+<view class="ld">
+  <view  wx:for="{{city}}" wx:key="citykey" class="lditem {{currentType==item.type?'check':''}}" bindtap="click" data-type="{{item.type}}">{{item.type}}</view>
+  </view>
+    <view style="background-color: #f7f7f7;position: fixed;z-index: 2;width: 100%;">{{currentType}}</view>
+    <scroll-view scroll-y="true" style="height: 320px;" scroll-into-view="{{currentType}}" bindscroll="scroll">
+      <radio-group>
+        <view wx:for="{{city}}" wx:key="citykey" id="{{item.type}}" class="scrollitem">
+          <view style="background-color: #f7f7f7;">{{item.type}}</view>
+          <label class="items" wx:for="{{item.value}}" wx:key="valuekey" wx:for-index="indexs"wx:for-item="items">
+            <radio />{{items}}
+          </label>
+        </view>
+      </radio-group>
+ </scroll-view>

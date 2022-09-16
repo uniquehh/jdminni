@@ -51,6 +51,7 @@ Page({
                 })
               })
             });
+            console.log(temp,123);
             that.setData({
               aside:temp,
               currentType:temp[0].id,
@@ -67,7 +68,6 @@ Page({
   },
   // 侧边栏点击函数
   goodTypeClick(e){
-    console.log(e);
     this.data.currentType=e.currentTarget.id;
     let gpItem=e.currentTarget.dataset.parent.good_type_id;
     this.data.aside.forEach((item)=>{

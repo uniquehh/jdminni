@@ -1,3 +1,4 @@
+/* pages/component/linkage.wxss */
 /* pages/component/filt.wxss */
 .chooseType{
   padding:10px 5px 0 5px;

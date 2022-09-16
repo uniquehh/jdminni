@@ -1,5 +1,5 @@
 <!-- <view bindtouchmove="scrollToBottom"> -->
-<scroll-view enhanced="true" scroll-y="true" bindscrolltolower="scrollToBottom" style="height: 100vh;">
+<scroll-view enhanced="true" scroll-y="true" bindscroll="scrollToTop" bindscrolltolower="scrollToBottom" style="height: 100vh;">
   <view class="search">
     <view class="search-box">
       <view class="inputbox">
@@ -29,7 +29,7 @@
             <view class="line"></view>
             <view class="screen screen2" bindtap="showSec" data-position="right">筛选</view>
         </view>
-        <scroll-view scroll-x="true">
+        <scroll-view scroll-x="true" class="fixnum {{fiex?'fiex':''}}">
             <view class="m_category"  >
                 <view class="m_item" wx:for="{{catData}}" bindtap="{{item.showTr?'showSec':''}}"  data-showoff="{{item.showOut}}" data-index="{{index}}" data-position="top" wx:key="catkey">{{item.name}}
                   <!-- 下拉三角 -->
@@ -79,6 +79,6 @@
 <!-- </view> -->
   </scroll-view>
   <page-container show="{{showPop}}" position="{{popPosition}}" custom-style="{{customStyle}}" duration="{{duration}}" overlay-style="{{layoutStyle}}" bind:clickoverlay="closePop">
-    <brandForm wx:if="{{showBrand}}"></brandForm>
-    <filtForm wx:if="{{!showBrand}}"></filtForm>
+    <brandForm wx:if="{{showBrand&&showPop}}"></brandForm>
+    <filtForm wx:if="{{!showBrand&&showPop}}"></filtForm>
   </page-container>

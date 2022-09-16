@@ -30,6 +30,8 @@ Page({
     },
     hidden:false,
     ifLoadMore:null,
+    top:{},
+    fiex:false
   },
   showSec(e){
     // if(e.currentTarget.dataset.showoff==false){
@@ -43,9 +45,14 @@ Page({
     //   this.data.showBrand=false;
     // }
     if(e.currentTarget.dataset.position=="top"){
+      if(this.data.fiex){
+        this.data.customStyle="margin-top:50px";
+        this.data.layoutStyle="margin-top:50px"
+      }else{
+        this.data.customStyle="margin-top:230px";
+        this.data.layoutStyle="margin-top:230px"
+      }
       this.data.showBrand=true;
-      this.data.customStyle="margin-top:230px";
-      this.data.layoutStyle="margin-top:230px"
     }else{
       this.data.showBrand=false;
       this.data.customStyle="margin-left:10%";
@@ -114,11 +121,9 @@ Page({
   },
   scrollToBottom(){
     if(this.data.ifLoadMore!=null){
-      console.log(11111);
       this.getProList();
     }
   }, 
-  // 
   closePop(){
     this.setData({
       customStyle:"",
@@ -129,13 +134,26 @@ Page({
   onLoad(option) {
     this.getProList();
   },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-      }
-    })
+  // 获取节点
+  queryMultipleNodes (){
+    let query = wx.createSelectorQuery().in(this)
+    let that=this;
+    query.select('.fixnum').boundingClientRect(function(res){
+      that.data.top=res;
+    }).exec()
+  },
+  onReady(){
+    this.queryMultipleNodes();//获取节点信息
+  },
+  scrollToTop(e){
+    if(e.detail.scrollTop>=this.data.top.top){
+      this.setData({
+        fiex:true,
+      })
+    }else{
+      this.setData({
+        fiex:false,
+      })
+    }
   },
 })

@@ -4,7 +4,6 @@
 }
 .search{
   border-bottom: 2rpx solid #E5E5E5;
-  position: sticky;
   top: 0;
   background-color: white;
   z-index: 999;
@@ -70,6 +69,12 @@
     padding:15px 15px 15px 30px;
     font-size: 13px;
     border-bottom:1px solid #eee;
+}
+.fiex{
+  position: fixed;
+  top:0;
+  background-color: white;
+  box-shadow: 0 1px 3px 3px #ccc;
 }
 .line{
     background-color: #ccc;

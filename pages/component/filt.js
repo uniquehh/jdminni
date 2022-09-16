@@ -12,29 +12,7 @@ Component({
    */
   data: {
     showCity:false,
-    // 
-    city:[
-      {type:"A",
-        value:["a","b","c","d"]
-      },
-      {type:"B",
-        value:["a","b","c","d"]
-      },
-      {type:"C",
-        value:["a","b","c","d"]
-      },
-      {type:"D",
-        value:["a","b","c","d"]
-      },
-      {type:"E",
-        value:["a","b","c","d"]
-      },
-      {type:"F",
-        value:["a","b","c","d"]
-      },
-    ]
   },
-
   /**
    * 组件的方法列表
    */
@@ -43,6 +21,7 @@ Component({
       this.setData({
         showCity:true
       })
-    }
-  }
+    },
+  },
+  
 })

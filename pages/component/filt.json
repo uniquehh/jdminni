@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "linkage":"/pages/component/linkage"
+  }
 }

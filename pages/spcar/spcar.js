@@ -280,6 +280,7 @@ Page({
     if(!wx.getStorageSync('token')){
       this.setData({
         isLogin:false,
+        hidden:true
       })
     }else{
       this.setData({
