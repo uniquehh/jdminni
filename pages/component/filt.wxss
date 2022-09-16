@@ -104,12 +104,19 @@
 }
 .items{
   margin-left:5px;
+  background-color: white;
 }
 .parld{
   position: relative;
 }
 .ld{
-  position: absolute;
+  position: fixed;
   right: 20px;
-  top:25%;
+  top:40%;
+}
+.zmtitle{
+  background-color: white;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
 }

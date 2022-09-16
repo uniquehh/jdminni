@@ -14,7 +14,7 @@
         <scroll-view style="background-color:#E8E8ED;" scroll-x="true">
         <view class="testmove">
             <view class="test" wx:for="{{scrData}}" wx:key="scrkey">
-                <image class="img" src="/img/m_air.png"/>
+                <image class="img" src="/img/hindex.png"/>
                 <view class="navCont">{{item}}</view>
             </view>
         </view>

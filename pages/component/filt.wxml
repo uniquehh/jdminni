@@ -99,13 +99,22 @@
       </view>
     </view>
     <view wx:if="{{showCity}}" class="parld">
-      <view wx:for="{{city}}" wx:key="citykey">
-        <view style="background-color: white;">{{item.type}}</view>
-        <view class="items" wx:for="{{item.value}}" wx:key="valuekey" wx:for-index="indexs" wx:for-item="items">{{items}}</view>
+      <view>
+        <text class="zmtitle">字母排序</text>
+        <text class="zmtitle">推荐排序</text>
       </view>
       <view class="ld">
         <view  wx:for="{{city}}" wx:key="citykey">{{item.type}}</view>
       </view>
+      <view>
+        <view wx:for="{{city}}" wx:key="citykey">
+          <view style="background-color: #f7f7f7;">{{item.type}}</view>
+          <view>
+            <view class="items" wx:for="{{item.value}}" wx:key="valuekey" wx:for-index="indexs" wx:for-item="items">{{items}}</view>
+          </view>
+        </view>
+      </view>
+      
     </view>
     </view>
   </scroll-view>
