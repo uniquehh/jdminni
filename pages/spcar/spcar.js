@@ -1,5 +1,5 @@
 // pages/spcar/spcar.js
-import { getUserProFile,getUserCode,axios } from "../../utils/util"
+import { getUserProFile,getUserCode,axios,showModalFn } from "../../utils/util"
 function sumSpcarData(arr){
   let checkList = arr.filter((item)=>item.isCheck == true);
   // console.log(checkList,123);
@@ -11,7 +11,7 @@ function sumSpcarData(arr){
     item.money = (item.price-0)*item.num;
     obj.price+=item.money;
   })
-  // console.log(checkList,4632);
+  console.log(checkList,4632);
   wx.setStorageSync('checkList', checkList)
   wx.setStorageSync('sumResult', obj)
   return obj
@@ -91,7 +91,7 @@ Page({
       popid:e.currentTarget.dataset.goodid,
       pronum:e.currentTarget.dataset.num,
       spcarid:e.currentTarget.dataset.spcarid,
-      item:e.currentTarget.dataset.item
+      item:e.currentTarget.dataset.item,
     })
   },
   // 去商品详情页
@@ -109,6 +109,9 @@ Page({
           console.log("+");
           item.num++;
         }else{
+          if(item.num == 1){
+            return
+          }
           item.num--;
         }
       }
@@ -188,39 +191,43 @@ Page({
   },
   // 删除购物车
   async deleteSpcar(e){
-    console.log(e.currentTarget.dataset.item,1522);
     let carItem = e.currentTarget.dataset.item;
-    let delcar= await axios({
-      url:"http://api_devs.wanxikeji.cn/api/shoppingCarDelete",
-      data:{
-        token:wx.getStorageSync('token'),
-        shopping_car_id:carItem.shopping_car_id
-      }
-    })
-    if(delcar.data.code==2000){
-      // 获取购物车数据
-      let spcarData = await axios({
-        url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
+    let cref = await showModalFn()
+    if(cref.confirm){
+      let delcar= await axios({
+        url:"http://api_devs.wanxikeji.cn/api/shoppingCarDelete",
         data:{
-          token: wx.getStorageSync('token'),
+          token:wx.getStorageSync('token'),
+          shopping_car_id:carItem.shopping_car_id
         }
       })
-      let temp=spcarData.data.data.data;
-      temp.forEach(item=>{
-        item.sku=JSON.parse(item.sku);
-        item.pirce=item.price.split(".")[0]
-        item.isCheck=true
-      })
-      this.setData({
-        spcarList:temp,
-      })
-      let sumResult = sumSpcarData(this.data.spcarList)
-      this.data.sumPrice = sumResult.price
-      this.data.checkGoods = sumResult.num
-      this.setData({
-        sumPrice:this.data.sumPrice,
-        checkGoods:this.data.checkGoods,
-      })
+      if(delcar.data.code==2000){
+        // 获取购物车数据
+        let spcarData = await axios({
+          url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
+          data:{
+            token: wx.getStorageSync('token'),
+          }
+        })
+        let temp=spcarData.data.data.data;
+        temp.forEach(item=>{
+          item.sku=JSON.parse(item.sku);
+          item.pirce=item.price.split(".")[0]
+          item.isCheck=true
+        })
+        this.setData({
+          spcarList:temp,
+        })
+        let sumResult = sumSpcarData(this.data.spcarList)
+        this.data.sumPrice = sumResult.price
+        this.data.checkGoods = sumResult.num
+        this.setData({
+          sumPrice:this.data.sumPrice,
+          checkGoods:this.data.checkGoods,
+        })
+      }
+    }else{
+      console.log("取消删除商品操作");
     }
   },
   scrollToBottom(){

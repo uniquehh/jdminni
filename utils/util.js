@@ -42,8 +42,19 @@ function axios(options){
     })
   })
 }
-// 计算购物车数据
+// 模态框提示
+function showModalFn(){
+  return new Promise((reslove,reject)=>{
+    wx.showModal({
+      title: '删除商品',
+      content:"提示：删除后不可恢复",
+      success(res){
+        reslove(res)
+      }
+    })
+  })
+}
 
 module.exports = {
-  formatTime,getUserProFile,getUserCode,axios,
+  formatTime,getUserProFile,getUserCode,axios,showModalFn,
 }

@@ -1,0 +1,48 @@
+<view class="yhlist">
+  <view class="yhmain">
+    <view class="head">
+      <view class="close">
+        <view class="ctext">使用说明</view>
+        <image bindtap="closeCont" class="cimg" src="../../../img/m_closepop.png"></image>
+      </view>
+      <view class="title">
+        优惠卷
+      </view>
+      <view class="xuanxiang">
+        <view class="keyong yongcurr">可用优惠卷()
+          <view class="line"></view>
+        </view>
+        <view class="bukeyong">不可用优惠卷()
+        </view>
+      </view>
+      <view class="tishi">已选中推荐优惠，使用优惠卷两张，共可抵用￥10.00</view>
+    </view>
+    <view class="nodata" wx:if="{{!isYouYh}}">
+      抱歉，无优惠卷可用!!
+    </view>
+    <view class="yhitem" wx:for="{{youHuiList}}" wx:key="index">
+      <checkbox-group bindchange="checkYh">
+        <label>
+          <view class="itemmain">
+            <image class="itimage" src="../../../img/hnologin.png"></image>
+            <view class="itright">
+              <view class="ittext">
+                <view class="irtitle">不不不不不不不不不不不不不不不不不不</view>
+                <view class="irtime">s</view>
+                <view class="irtag">超一年未购用户可享</view>
+              </view>
+              <view><checkbox color="#000" value=""></checkbox></view>
+            </view>
+          </view>
+        </label>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="confirm">
+    <view class="cfbtnbox">
+      <button class="confirmbtn">
+        确认
+      </button>
+    </view>
+  </view>
+</view>
