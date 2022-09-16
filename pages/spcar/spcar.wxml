@@ -167,7 +167,7 @@
       <navigator url="../hinfo/hinfo" class="goodnav">
         <view class="gwrap">
           <view class="goodimg">
-            <image src="../../img/hgood.webp"></image>
+            <image src="http://api_devss.wanxikeji.cn/app/pic/20220913/20220913112441633.PNG"></image>
           </view>
           <view class="goodinfo">
             <view class="goodtitle">
