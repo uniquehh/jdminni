@@ -11,7 +11,9 @@
   <view class="title" bindtap="test">购物车</view>
   <image src="../../img/hmore.svg" class="more"></image>
 </view>
-<view class="spcar">
+<scroll-view class="spcar" scroll-y="true" style="height: 100vh;" 
+lower-threshold="180"
+bindscrolltolower="scrollToBottom" enhanced="true">
   <view class="position" wx:if="{{isLogin&&spcarList.length}}">
     <view class="posibox">
       <view class="left">
@@ -164,14 +166,14 @@
   </view>
   <view class="goodslist">
     <view class="goods">
-      <navigator url="../hinfo/hinfo" class="goodnav">
+      <navigator url="../hinfo/hinfo" class="goodnav" wx:for="{{prolist}}" wx:key="prokey">
         <view class="gwrap">
           <view class="goodimg">
-            <image src="../../img/hgood.webp"></image>
+            <image src="{{item.img}}"></image>
           </view>
           <view class="goodinfo">
             <view class="goodtitle">
-              美菱(MELING)【离子净系列】556升一级能效变频双开门对开两门电冰箱家用风冷无霜BCD-556WPCX净味大容量
+              {{item.good_name}}
             </view>
             <view class="goodtab">
               <view class="tabcont">
@@ -182,7 +184,7 @@
             <view class="price">
               <view class="pricebox">
                 <text class="fuhao goodfuhao">￥</text>
-                <text class="jiage goodjiage">2779</text>
+                <text class="jiage goodjiage">{{item.price}}</text>
                 <text class="xiaoshu goodxiaoshu">.00</text>
               </view>
               <view class="imgbox miaoshabox">
@@ -193,9 +195,13 @@
           </view>
         </view>
       </navigator>
+      <view class="weui-loadmore" hidden="{{hidden}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">努力加载中</view>
+      </view> 
     </view>
   </view>
-</view>
+</scroll-view>
 <page-container show="{{showpop}}" round="true" custom-style="max-height:95%;position:fixed;bottom:0;z-index:100">
   <sku wx:if="{{showpop}}" goodid="{{popid}}" pronum="{{pronum}}" spcarid="{{spcarid}}" item="{{item}}" bindmodifyNum="modifyNum" bindinputchangeNum="inputchangeNum" bind:close="close"></sku>
 </page-container>

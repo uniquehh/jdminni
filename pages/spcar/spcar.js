@@ -30,7 +30,14 @@ Page({
     popid:0,
     pronum:0,
     spcarid:0,
-    item:{}
+    item:{},
+    request:{
+      pageIdx:1,
+      pageNum:10
+    },
+    ifLoadMore:null,
+    hidden:false,
+    prolist:[]
   },
   // 子组件传函数
   close(e){
@@ -190,7 +197,6 @@ Page({
         shopping_car_id:carItem.shopping_car_id
       }
     })
-    console.log(delcar,13)
     if(delcar.data.code==2000){
       // 获取购物车数据
       let spcarData = await axios({
@@ -216,6 +222,55 @@ Page({
         checkGoods:this.data.checkGoods,
       })
     }
+  },
+  scrollToBottom(){
+    if(this.data.ifLoadMore!=null){
+      console.log(11111);
+      this.getProList();
+    }
+  }, 
+  getProList(){
+    let sl=this;
+    wx.request({
+      url: 'http://api_devs.wanxikeji.cn/api/goodList',
+      data:{
+        page:sl.data.request.pageIdx,
+        size:sl.data.request.pageNum
+      },
+      success(res ){
+        let temp = res.data.data.data;
+        console.log(temp);
+        sl.data.request.pageNum+=10;
+        if (sl.data.ifLoadMore) {
+          console.log("应该加载更多");
+          //加载更多
+          if (sl.data.request.pageNum>res.data.data.count){
+            console.log("已经加载完啦");
+              sl.data.ifLoadMore = false;
+              this.setData({
+                hidden:true
+              })
+              wx.showToast({
+                title: '暂无更多内容！',
+                icon: 'loading',
+                duration: 2000
+              })
+          }else{
+            sl.setData({
+              hidden:false
+            })
+          }
+        }else{
+          if (sl.data.ifLoadMore == null){
+            sl.data.ifLoadMore = true;
+          }
+        }
+        sl.setData({
+          prolist:temp,
+        });
+        wx.stopPullDownRefresh();//结束动画
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -254,13 +309,8 @@ Page({
         sumPrice:this.data.sumPrice,
         checkGoods:this.data.checkGoods,
       })
-      // 获取用户优惠券
-      let res=await axios({
-        url:"http://api_devs.wanxikeji.cn/api/userCouponList",
-        data:{
-          token:wx.getStorageSync('token')
-        }
-      })
+      // 获取商品信息
+      this.getProList();
     }
   },
   // 点击函数--返回上一个页面

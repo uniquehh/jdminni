@@ -79,15 +79,15 @@ Page({
       },
       success(res ){
         let temp = res.data.data.data;
-        console.log(temp);
         sl.data.request.pageNum+=10;
         if (sl.data.ifLoadMore) {
           console.log("应该加载更多");
+          console.log(sl.data.hidden,123);
           //加载更多
           if (sl.data.request.pageNum>res.data.data.count){
             console.log("已经加载完啦");
               sl.data.ifLoadMore = false;
-              this.setData({
+              sl.setData({
                 hidden:true
               })
               wx.showToast({
@@ -101,7 +101,7 @@ Page({
             })
           }
         }else{
-          if (sl.dataifLoadMore == null){
+          if (sl.data.ifLoadMore == null){
             sl.data.ifLoadMore = true;
           }
         }
