@@ -10,11 +10,57 @@ Page({
     sumPrice:0,
     isShowYouHui:false,
     youhui:0,
+    tempprice:0
   },
   // 优惠卷
   showYHPC(){
     this.setData({
       isShowYouHui:true,
+    })
+  },
+  // 支付功能
+  async wechatpay(){
+    let idarr=wx.getStorageSync('checkList');
+    let ids=[];
+    idarr.forEach(item=>{
+      ids.push(item.shopping_car_id);
+    })
+    console.log(ids);
+    if(this.data.youhui){
+      console.log(1);
+      let res=await axios({
+        url:"http://api_devs.wanxikeji.cn/api/generateOrder",
+        data:{
+          token:wx.getStorageSync('token'),
+          address_id:wx.getStorageSync('sAdress').address_id,
+          coupon_money:this.data.youhui,
+          money:this.data.sumPrice,
+          shopping_car_ids:ids,
+        }
+      })
+      console.log(res,123);
+    }else{
+      console.log(2);
+      let res=await axios({
+        url:"http://api_devs.wanxikeji.cn/api/generateOrder",
+        data:{
+          token:wx.getStorageSync('token'),
+          address_id:wx.getStorageSync('sAdress').address_id,
+          money:this.data.sumPrice,
+          shopping_car_ids:ids,
+        }
+      })
+    }
+  },
+  // 退换无忧功能
+  exchange(e){
+    if(e.detail.value){
+      this.data.sumPrice = ((this.data.sumPrice-0)+3).toFixed(2);
+    }else{
+      this.data.sumPrice = (this.data.sumPrice-3).toFixed(2);
+    }
+    this.setData({
+      sumPrice:this.data.sumPrice
     })
   },
    // 接收子组件传递来的值
@@ -34,13 +80,17 @@ Page({
   },
   getYouHui(e){
     this.data.youhui = e.detail.reduce;
-    wx.setStorageSync('checkedYH', e.detail)
+    this.data.sumPrice=this.data.tempprice-(this.data.youhui-0);
+    this.setData({
+      youhui:this.data.youhui,
+      sumPrice:this.data.sumPrice
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad(options) {
-
+ onLoad(options) {
+    // 设置收货地址
   },
   toGoodInfo(e){
     let obj = e.currentTarget.dataset.item
@@ -82,10 +132,10 @@ Page({
     }
     // 根据购物车订单数据--进行结算页渲染
     let checkGood = wx.getStorageSync('checkList')
-    console.log(checkGood,"222333");
     checkGood.forEach((item)=>{
       item.guiGe = item.sku.sku.join(" ")
       this.data.sumPrice += (item.price-0)*item.num
+      this.data.tempprice+=(item.price-0)*item.num
     })
     this.data.orderList = checkGood
     this.setData({
