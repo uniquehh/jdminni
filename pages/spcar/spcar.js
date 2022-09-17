@@ -11,7 +11,6 @@ function sumSpcarData(arr){
     item.money = (item.price-0)*item.num;
     obj.price+=item.money;
   })
-  console.log(checkList,4632);
   wx.setStorageSync('checkList', checkList)
   wx.setStorageSync('sumResult', obj)
   return obj
@@ -130,7 +129,6 @@ Page({
   // 购物车商品复选框选项组
   spcarItemCheck(e){
     // 点击店铺或者商品得复选框时切换选中状态
-    console.log(e);
     let temp = ""
     e.detail.value.forEach((item)=>{
       temp = this.data.spcarList[item.split("+")[0]-0].isCheck
@@ -246,13 +244,10 @@ Page({
       },
       success(res ){
         let temp = res.data.data.data;
-        console.log(temp);
         sl.data.request.pageNum+=10;
         if (sl.data.ifLoadMore) {
-          console.log("应该加载更多");
           //加载更多
           if (sl.data.request.pageNum>res.data.data.count){
-            console.log("已经加载完啦");
               sl.data.ifLoadMore = false;
               this.setData({
                 hidden:true
@@ -284,6 +279,7 @@ Page({
    */
   async onLoad(options) {
     // 判断是否登录
+    console.log(wx.getStorageSync('token'),"load");
     if(!wx.getStorageSync('token')){
       console.log(this.data.isLogin);
       this.setData({
@@ -318,9 +314,10 @@ Page({
         sumPrice:this.data.sumPrice,
         checkGoods:this.data.checkGoods,
       })
-      // 获取商品信息
-      this.getProList();
+      
     }
+    // 获取商品信息
+    this.getProList();
   },
   // 点击函数--返回上一个页面
   goBack(){
@@ -356,7 +353,8 @@ Page({
     // 如果token有效，即调用换取openid接口时返回数据内有info字段
     // 则说明token依然可用，否则再调用注册接口获取token
     if(res3.data.data.info){
-      wx.setStorageSync('token', res3.data.data.info.token)
+      wx.setStorageSync('token', res3.data.data.info.token);
+      wx.setStorageSync('info', res3.data.data.info);
       // 获取购物车数据
       let spcarData = await axios({
         url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
@@ -417,16 +415,59 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-    this.setData({
-      spcarList:this.data.spcarList
-    })
+  async onShow() {
+    if(!wx.getStorageSync('token')){
+      this.setData({
+        isLogin:false,
+        hidden:true
+      })
+    }else{
+      this.setData({
+        isLogin:true,
+      })
+      // 获取购物车数据
+      let spcarData = await axios({
+        url:'http://api_devs.wanxikeji.cn/api/shoppingCarList',
+        data:{
+          token: wx.getStorageSync('token'),
+        }
+      })
+      let temp=spcarData.data.data.data;
+      temp.forEach(item=>{
+        item.sku=JSON.parse(item.sku);
+        item.price=item.price.split(".")[0]
+        item.isCheck=true
+      })
+      temp.forEach(item=>{
+        let flag=1;
+        this.data.spcarList.forEach(items=>{
+          if(item.shopping_car_id==items.shopping_car_id){
+            flag=0;
+          }
+        })
+        if(flag){
+          this.data.spcarList.push(item)
+        }
+      })
+      console.log(this.data.spcarList,456);
+      this.setData({
+        spcarList:this.data.spcarList,
+      })
+      // 计算购物车选中商品
+      let sumResult = sumSpcarData(this.data.spcarList)
+      this.data.sumPrice = sumResult.price
+      this.data.checkGoods = sumResult.num
+      this.setData({
+        sumPrice:this.data.sumPrice,
+        checkGoods:this.data.checkGoods,
+      })
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {
+  async onHide() {
     this.setData({
       spcarList:this.data.spcarList
     })

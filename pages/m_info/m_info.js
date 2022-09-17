@@ -114,12 +114,12 @@ Page({
   },
   // 添加到购物车
   addselfpro(){
-    if(!wx.getStorageSync('info')){
+    if(!wx.getStorageSync('token')){
       wx.navigateTo({
         url: '../m_login/m_login',
       })
     }else{
-      let info=JSON.parse(wx.getStorageSync('info'));
+      let info=wx.getStorageSync('info');
       let price=0;
       let money=0;
       let sku='';
@@ -214,7 +214,7 @@ Page({
       }
     })
     setInterval(()=>{
-      this.data.countTime=this.countDown('2022-09-14 24:00:00')
+      this.data.countTime=this.countDown('2022-09-22 24:00:00')
       this.setData({
         countTime:this.data.countTime,
       })
