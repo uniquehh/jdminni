@@ -9,9 +9,6 @@ Component({
     youHuiList:[],
   },
   methods:{
-    checkYh(e){
-      console.log(e);
-    },
     useYouHui(e){
       this.triggerEvent("useYouHui",this.data.isClose)
     },

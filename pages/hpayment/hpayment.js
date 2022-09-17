@@ -9,6 +9,7 @@ Page({
     orderList:[],
     sumPrice:0,
     isShowYouHui:false,
+    couponMoney:0,
   },
   // 优惠卷
   getYouHui(){
@@ -53,7 +54,6 @@ Page({
       })
       let temp = res.data.data.filter((item)=>item.default == 1)
       wx.setStorageSync('sAdress', temp[0])
-      console.log(wx.getStorageSync('sAdress'));
       this.data.shAdress = {}
       this.data.shAdress = temp[0]
       this.setData({
@@ -72,11 +72,35 @@ Page({
       sumPrice:(this.data.sumPrice-0).toFixed(2),
     })
   },
+  // 支付功能
+  // async wechatpay(){
+  //   let temp=wx.getStorageSync("checkList")
+  //   let address=wx.getStorageSync('sAdress').address_id;
+  //   console.log(address,123);
+  //   let ids=[];
+  //   temp.forEach(item=>{
+  //     ids.push(item.shopping_car_id);
+  //   })
+  //   if(wx.getStorageSync('yhmoney')){
+  //     let res= await axios({
+  //       url:'http://api_devs.wanxikeji.cn/api/generateOrder',
+  //       data:{
+  //         token:wx.getStorageSync('token'),
+  //         address_id:address,
+  //         coupon_money:wx.getStorageSync('yhmoney'),
+  //         money:this.data.sumPrice,
+  //         shopping_car_ids:ids
+  //       }
+  //     })
+  //     console.log(res,1230);
+  //   }
+  // },
   // 接收子组件传递来的值
   closeCont(e){
     if(e.detail){
       this.setData({
-        isShowYouHui:false
+        isShowYouHui:false,
+        couponMoney:wx.getStorageSync('yhmoney')
       })
     }
   },

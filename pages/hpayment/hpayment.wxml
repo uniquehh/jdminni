@@ -125,7 +125,7 @@
           </view>
         </view>
         <view class="yhright">
-          <view class="yhnum">-￥5.00</view>
+          <view class="yhnum">-￥{{couponMoney}}</view>
           <image src="../../img/hrightjian.svg"></image>
         </view>
       </view>
@@ -188,6 +188,6 @@
     </view>
   </view>
   <page-container round show="{{isShowYouHui}}" position="bottom" custom-style="max-height:80%">
-    <hyh wx:if="{{isShowYouHui}}" bindcloseCont="closeCont"></hyh>
+    <hyh wx:if="{{isShowYouHui}}"  bindcloseCont="closeCont"></hyh>
   </page-container>
 </view>
