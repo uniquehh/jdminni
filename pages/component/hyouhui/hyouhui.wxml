@@ -20,19 +20,19 @@
     <view class="nodata" wx:if="{{!isYouYh}}">
       抱歉，无优惠卷可用!!
     </view>
-    <scroll-view scroll-y="true" style="height:500rpx">
-        <radio-group bindchange="checkYh">
+    <scroll-view wx:if="{{isYouYh}}" scroll-y="true" style="height:500rpx">
+        <radio-group>
           <view  class="yhitem" wx:for="{{youHuiList}}" wx:key="index">
-              <label>
+              <label bindtap="clickLabel" data-item="{{item}}">
                 <view class="itemmain">
-                  <image class="itimage" src="../../../img/hnologin.png"></image>
+                  <image class="itimage" src="../../../img/m_taylor.png"></image>
                   <view class="itright">
                     <view class="ittext">
                       <view class="irtitle">{{item.reduce}}</view>
                       <view class="irtime">满{{item.achieve}}可用</view>
                       <view class="irtag">超一年未购用户可享</view>
                     </view>
-                    <view><radio color="#000" value=""/></view>
+                    <view><radio color="#000" value="{{item.reduce}}" id="{{'h'+item.coupon_id}}" checked="{{currentId==('h'+item.coupon_id)?true:false}}"/></view>
                   </view>
                 </view>
               </label>
@@ -41,7 +41,7 @@
     </scroll-view>
   </view>
   <view class="confirm">
-    <view class="cfbtnbox">
+    <view class="cfbtnbox" bindtap="useYouHui">
       <button class="confirmbtn">
         确认
       </button>

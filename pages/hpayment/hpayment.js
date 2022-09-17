@@ -9,13 +9,33 @@ Page({
     orderList:[],
     sumPrice:0,
     isShowYouHui:false,
-    couponMoney:0,
+    youhui:0,
   },
   // 优惠卷
-  getYouHui(){
+  showYHPC(){
     this.setData({
       isShowYouHui:true,
     })
+  },
+   // 接收子组件传递来的值
+   closeCont(e){
+    if(e.detail){
+      this.setData({
+        isShowYouHui:false
+      })
+    }
+  },
+  useYouHui(e){
+    if(e.detail){
+      this.setData({
+        isShowYouHui:false
+      })
+    }
+  },
+  getYouHui(e){
+    console.log(e);
+    this.data.youhui = e.detail.reduce
+    wx.setStorageSync('checkedYH', e.detail)
   },
   /**
    * 生命周期函数--监听页面加载
@@ -54,6 +74,7 @@ Page({
       })
       let temp = res.data.data.filter((item)=>item.default == 1)
       wx.setStorageSync('sAdress', temp[0])
+      console.log(wx.getStorageSync('sAdress'));
       this.data.shAdress = {}
       this.data.shAdress = temp[0]
       this.setData({
@@ -62,6 +83,7 @@ Page({
     }
     // 根据购物车订单数据--进行结算页渲染
     let checkGood = wx.getStorageSync('checkList')
+    console.log(checkGood,"222333");
     checkGood.forEach((item)=>{
       item.guiGe = item.sku.sku.join(" ")
       this.data.sumPrice += (item.price-0)*item.num
@@ -72,43 +94,10 @@ Page({
       sumPrice:(this.data.sumPrice-0).toFixed(2),
     })
   },
-  // 支付功能
-  // async wechatpay(){
-  //   let temp=wx.getStorageSync("checkList")
-  //   let address=wx.getStorageSync('sAdress').address_id;
-  //   console.log(address,123);
-  //   let ids=[];
-  //   temp.forEach(item=>{
-  //     ids.push(item.shopping_car_id);
-  //   })
-  //   if(wx.getStorageSync('yhmoney')){
-  //     let res= await axios({
-  //       url:'http://api_devs.wanxikeji.cn/api/generateOrder',
-  //       data:{
-  //         token:wx.getStorageSync('token'),
-  //         address_id:address,
-  //         coupon_money:wx.getStorageSync('yhmoney'),
-  //         money:this.data.sumPrice,
-  //         shopping_car_ids:ids
-  //       }
-  //     })
-  //     console.log(res,1230);
-  //   }
-  // },
-  // 接收子组件传递来的值
-  closeCont(e){
-    if(e.detail){
-      this.setData({
-        isShowYouHui:false,
-        couponMoney:wx.getStorageSync('yhmoney')
-      })
-    }
-  },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide() {
-
   },
 
   /**
