@@ -36,7 +36,7 @@ Page({
       let info=ress.data.data;
       console.log(info);
       wx.setStorageSync('info', JSON.stringify(info));
-      wx.setStorageSync('token', info.token);
+      wx.setStorageSync('token', ress.data.token);
       wx.navigateBack()
     }else{
       wx.setStorageSync('info', JSON.stringify(userInfo.data.data.info));
