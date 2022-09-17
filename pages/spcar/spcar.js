@@ -362,7 +362,10 @@ Page({
           token: wx.getStorageSync('token'),
         }
       })
-      spcarData.data.data.data.forEach((item)=>item.isCheck = true)
+      spcarData.data.data.data.forEach((item)=>{
+        item.isCheck = true
+        item.sku = JSON.parse(item.sku)
+      })
       this.setData({
         spcarList:spcarData.data.data.data,
       })

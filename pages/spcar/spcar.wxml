@@ -170,7 +170,7 @@ bindscrolltolower="scrollToBottom" enhanced="true">
   </view>
   <view class="goodslist">
     <view class="goods">
-      <navigator url="../hinfo/hinfo" class="goodnav" wx:for="{{prolist}}" wx:key="prokey">
+      <view class="goodnav" wx:for="{{prolist}}" wx:key="prokey" bindtap="toInfo" data-item="{{item}}">
         <view class="gwrap">
           <view class="goodimg">
             <image src="{{item.img}}"></image>
@@ -198,7 +198,7 @@ bindscrolltolower="scrollToBottom" enhanced="true">
             <view class="pinglun">1000+条评论</view>
           </view>
         </view>
-      </navigator>
+      </view>
       <view class="weui-loadmore" hidden="{{hidden}}">
         <view class="weui-loading"></view>
         <view class="weui-loadmore__tips">努力加载中</view>

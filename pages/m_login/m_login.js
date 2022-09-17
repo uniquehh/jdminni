@@ -21,6 +21,7 @@ Page({
     })
     let sessionkey=userInfo.data.data.session_key;
     let openid=userInfo.data.data.openid;
+    console.log(userInfo,"hh");
     wx.setStorageSync('session_key', userInfo.data.data.session_key);
     wx.setStorageSync('openid', userInfo.data.data.openid);
     if(!userInfo.data.data.info){

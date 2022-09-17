@@ -18,17 +18,21 @@ Component({
     },
     useYouHui(e){
       this.triggerEvent("useYouHui",this.data.isClose)
-      this.triggerEvent("youhui",this.data.youhui)
-      this.triggerEvent("getYouHui",this.data.youhui)
+      let oldYH = wx.getStorageSync('checkedYH')
+      if(oldYH){
+        if(!this.data.youhui){
+          this.triggerEvent("getYouHui",oldYH)
+        }else{
+          this.triggerEvent("getYouHui",this.data.youhui)
+        }
+      }else{
+        this.triggerEvent("getYouHui",this.data.youhui)
+      }
     },
     closeCont(){
       this.triggerEvent("closeCont",this.data.isClose)
     },
   },
-  // 退出子组件得钩子
-  // detached(){
-  //   console.log("tuichu");
-  // },
   async attached(){
     // 设置选中得优惠卷
     let oldYH = wx.getStorageSync('checkedYH')

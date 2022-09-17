@@ -150,7 +150,7 @@
           <view class="price">
             <view class="pricebox">
               <text class="fuhao">￥</text>
-              <text class="jiage">{{sumPrice}}</text>
+              <text class="jiage">{{finallPrice}}</text>
               <!-- <text class="xiaoshu">.00</text> -->
             </view>
           </view>
@@ -176,14 +176,14 @@
           <view class="price">
             <view class="pricebox">
               <text class="fuhao paymfh">￥</text>
-              <text class="jiage paymjg">{{sumPrice}}</text>
+              <text class="jiage paymjg">{{finallPrice}}</text>
               <!-- <text class="xiaoshu paymxs">.00</text> -->
             </view>
           </view>
         </view>
       </view>
       <view class="paymright">
-        <view class="paybtn">在线支付</view>
+        <view class="paybtn" bindtap="goPayment">在线支付</view>
       </view>
     </view>
   </view>

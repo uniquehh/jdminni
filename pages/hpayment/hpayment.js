@@ -8,8 +8,31 @@ Page({
     shAdress:{},
     orderList:[],
     sumPrice:0,
+    finallPrice:0,
     isShowYouHui:false,
     youhui:0,
+  },
+  // 点击支付
+  async goPayment(){
+    console.log(this.data.orderList,"hh");
+    let obj = {
+      token: wx.getStorageSync('token'),
+      address_id: this.data.shAdress.address_id,
+      coupon_money: this.data.youhui,
+      money: this.data.finallPrice,
+      shopping_car_ids:[],
+    }
+    this.data.orderList.forEach((item)=>{
+      obj.shopping_car_ids.push(item.shopping_car_id)
+    })
+    obj.shopping_car_ids = JSON.stringify(obj.shopping_car_ids)
+    console.log(obj);
+    let res = await axios({
+      url:"http://api_devs.wanxikeji.cn/api/generateOrder",
+      data:obj,
+      method:"POST",
+    })
+    console.log(res);
   },
   // 优惠卷
   showYHPC(){
@@ -34,7 +57,17 @@ Page({
   },
   getYouHui(e){
     console.log(e);
-    this.data.youhui = e.detail.reduce
+    if(!e.detail){
+      this.setData({
+        youhui:0,
+      })
+    }else{
+      this.setData({
+        youhui:e.detail.reduce-0,
+        finallPrice:(this.data.sumPrice-(e.detail.reduce-0)).toFixed(2)
+      })
+    }
+    // 存上一次选中的优惠卷，便于优惠卷列表选中
     wx.setStorageSync('checkedYH', e.detail)
   },
   /**
@@ -83,7 +116,6 @@ Page({
     }
     // 根据购物车订单数据--进行结算页渲染
     let checkGood = wx.getStorageSync('checkList')
-    console.log(checkGood,"222333");
     checkGood.forEach((item)=>{
       item.guiGe = item.sku.sku.join(" ")
       this.data.sumPrice += (item.price-0)*item.num
@@ -91,7 +123,8 @@ Page({
     this.data.orderList = checkGood
     this.setData({
       orderList:this.data.orderList,
-      sumPrice:(this.data.sumPrice-0).toFixed(2),
+      sumPrice:this.data.sumPrice-0,
+      finallPrice:this.data.sumPrice-0,
     })
   },
   /**
