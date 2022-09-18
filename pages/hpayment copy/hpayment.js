@@ -25,11 +25,11 @@ Page({
     idarr.forEach(item=>{
       ids.push(item.shopping_car_id);
     })
-    console.log(ids);
     if(this.data.youhui){
       console.log(1);
       let res=await axios({
         url:"http://api_devs.wanxikeji.cn/api/generateOrder",
+        method:"POST",
         data:{
           token:wx.getStorageSync('token'),
           address_id:wx.getStorageSync('sAdress').address_id,
@@ -43,6 +43,7 @@ Page({
       console.log(2);
       let res=await axios({
         url:"http://api_devs.wanxikeji.cn/api/generateOrder",
+        method:"POST",
         data:{
           token:wx.getStorageSync('token'),
           address_id:wx.getStorageSync('sAdress').address_id,
@@ -50,6 +51,25 @@ Page({
           shopping_car_ids:ids,
         }
       })
+      let needscode={};
+      console.log(res,123);
+      if(res.data.code==2000){
+        needscode=res.data.data;
+        console.log('进来了');
+        wx.requestPayment({
+          nonceStr: needscode.nonce_str,
+          package: `prepay_id=${needscode.prepay_id}`,
+          paySign: needscode.paySign,
+          timeStamp: needscode.timeStamp,
+          signType:"MD5",
+          success(res){
+            console.log(res,'pay');
+          },
+          fail(res){
+            console.log(res,'fail');
+          }
+        })
+      }
     }
   },
   // 退换无忧功能
