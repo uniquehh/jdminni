@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/hpayment copy/hpayment",
     "pages/index/index",
+    "pages/hpayment copy/hpayment",
     "pages/hpayment/hpayment",
     "pages/type/type",
     "pages/m_info/m_info",
