@@ -14,25 +14,49 @@ Page({
   },
   // 点击支付
   async goPayment(){
-    console.log(this.data.orderList,"hh");
-    let obj = {
-      token: wx.getStorageSync('token'),
-      address_id: this.data.shAdress.address_id,
-      coupon_money: this.data.youhui,
-      money: this.data.finallPrice,
-      shopping_car_ids:[],
+    if(this.data.finallPrice===0){
+      wx.showToast({
+        title: '缺少商品！',
+        icon:"error",
+      })
+    }else{
+      let obj = {
+        token: wx.getStorageSync('token'),
+        address_id: this.data.shAdress.address_id,
+        coupon_money: this.data.youhui,
+        money: this.data.finallPrice,
+        shopping_car_ids:[],
+      }
+      this.data.orderList.forEach((item)=>{
+        obj.shopping_car_ids.push(item.shopping_car_id)
+      })
+      console.log(obj);
+      let res = await axios({
+        url:"http://api_devs.wanxikeji.cn/api/generateOrder",
+        data:obj,
+        method:"POST",
+      })
+      console.log(res);
+      let payment = wx.requestPayment({
+        nonceStr: res.data.data.nonce_str,
+        package: `prepay_id=${res.data.data.prepay_id}`,
+        paySign: res.data.data.paySign,
+        timeStamp: res.data.data.timeStamp,
+        signType: "MD5",
+        success(res){
+          wx.showToast({
+            title: '购买成功',
+            icon:"success",
+          })
+        },
+        fail(res){
+          wx.showToast({
+            title: '已取消支付',
+            icon:"error",
+          })
+        },
+      })
     }
-    this.data.orderList.forEach((item)=>{
-      obj.shopping_car_ids.push(item.shopping_car_id)
-    })
-    obj.shopping_car_ids = JSON.stringify(obj.shopping_car_ids)
-    console.log(obj);
-    let res = await axios({
-      url:"http://api_devs.wanxikeji.cn/api/generateOrder",
-      data:obj,
-      method:"POST",
-    })
-    console.log(res);
   },
   // 优惠卷
   showYHPC(){
